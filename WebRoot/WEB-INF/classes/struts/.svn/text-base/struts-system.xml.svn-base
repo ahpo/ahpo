@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="system" namespace="/" extends="enjoyor-default">
+		<action name="sysUserQuery" class="sysUserAction" method="sysUserQuery">
+			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserList.jsp</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserToUpdate" class="sysUserAction" method="sysUserToUpdate">
+			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserUpdate.jsp
+			</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserUpdate" class="sysUserAction" method="sysUserUpdate">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserToUpdatePwd" class="sysUserAction" method="sysUserToUpdatePwd">
+			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserUpdatePwd.jsp
+			</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserUpdatePwd" class="sysUserAction" method="sysUserUpdatePwd">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserToCreate" class="sysUserAction" method="sysUserToCreate">
+			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserCreate.jsp
+			</result>
+		</action>
+		<action name="sysUserCreate" class="sysUserAction" method="sysUserCreate">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserDelete" class="sysUserAction" method="sysUserDelete">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserToPrivilege" class="sysUserAction" method="sysUserToPrivilege">
+			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserPrivilege.jsp
+			</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysUserPrivilege" class="sysUserAction" method="sysUserPrivilege">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		
+		<action name="sysResQuery" class="sysUserAction" method="sysResQuery">
+		    <result name="success">/WEB-INF/jsp/sys/sysUser/sysResQuery.jsp</result>
+        </action>
+		<action name="sysResDetail" class="sysUserAction" method="sysResDetail">
+		    <result name="success">/WEB-INF/jsp/sys/sysUser/sysResDetail.jsp</result>
+        </action>
+        <action name="res_*" class="sysUserAction" method="{1}"/>
+		
+		<action name="sysRoleQuery" class="sysRoleAction" method="sysRoleQuery">
+			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRoleList.jsp</result>
+		</action>
+		<action name="sysRoleToUpdate" class="sysRoleAction" method="sysRoleToUpdate">
+			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRoleUpdate.jsp
+			</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysRoleUpdate" class="sysRoleAction" method="sysRoleUpdate">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysRoleToCreate" class="sysRoleAction" method="sysRoleToCreate">
+			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRoleCreate.jsp
+			</result>
+		</action>
+		<action name="sysRoleCreate" class="sysRoleAction" method="sysRoleCreate">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysRoleDelete" class="sysRoleAction" method="sysRoleDelete">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysRoleToPrivilege" class="sysRoleAction" method="sysRoleToPrivilege">
+			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRolePrivilege.jsp
+			</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysRolePrivilege" class="sysRoleAction" method="sysRolePrivilege">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysLogToQuery" class="sysLogAction" method="sysLogToQuery">
+			<result name="success">/WEB-INF/jsp/sys/sysLog/sysLogQuery.jsp</result>
+		</action>
+		<action name="sysLogQuery" class="sysLogAction" method="sysLogQuery">
+			<result name="success">/WEB-INF/jsp/sys/sysLog/sysLogQuery.jsp</result>
+		</action>
+		<action name="sysDeptQuery" class="sysDeptAction" method="sysDeptQuery">
+			<result name="success">/WEB-INF/jsp/sys/sysDept/sysDeptList.jsp</result>
+		</action>
+		<action name="sysDeptToUpdate" class="sysDeptAction" method="sysDeptToUpdate">
+			<result name="success">/WEB-INF/jsp/sys/sysDept/sysDeptUpdate.jsp
+			</result>
+			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysDeptUpdate" class="sysDeptAction" method="sysDeptUpdate">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysDeptToCreate" class="sysDeptAction" method="sysDeptToCreate">
+			<result name="success">/WEB-INF/jsp/sys/sysDept/sysDeptCreate.jsp
+			</result>
+		</action>
+		<action name="sysDeptCreate" class="sysDeptAction" method="sysDeptCreate">
+			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
+		</action>
+		<action name="sysDeptDelete" class="sysDeptAction" method="sysDeptDelete">
+			<result name="success">/admin/ajaxDone.jsp</result>
+		</action>
+	</package>
+</struts>

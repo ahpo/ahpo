@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/pub/action
+END
+AbstractAction.class
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/12/trunk/v-admin/target/classes/com/pub/action/AbstractAction.class
+END
+IAction.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/pub/action/IAction.class
+END
+RandomPictureAction.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/pub/action/RandomPictureAction.class
+END

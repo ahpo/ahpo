@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo
+END
+ResNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/ResNode.java
+END
+SysRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysRole.java
+END
+SysFunctionExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysFunctionExample.java
+END
+SysResourceExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysResourceExample.java
+END
+SysResFuncRelation.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysResFuncRelation.java
+END
+SysDepartment.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysDepartment.java
+END
+MenuNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/MenuNode.java
+END
+SysRoleExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysRoleExample.java
+END
+SysUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysUser.java
+END
+SysDepartmentExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysDepartmentExample.java
+END
+SysLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysLog.java
+END
+SysFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysFunction.java
+END
+SysResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysResource.java
+END
+SysUserExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysUserExample.java
+END
+SysLogExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/vo/SysLogExample.java
+END

@@ -1,0 +1,51 @@
+package com.easygo.dao.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.easygo.vo.ejdb.RoadList;
+import com.easygo.vo.ejdb.RoadListExample;
+
+@Repository
+public interface RoadListMapper {
+	int countByExample(RoadListExample example);
+
+	int deleteByExample(RoadListExample example);
+
+	int deleteByPrimaryKey(Integer id);
+
+	int insert(RoadList record);
+
+	int insertSelective(RoadList record);
+
+	List<RoadList> selectByExample(RoadListExample example);
+
+	/**
+	 * 
+	 * 根据example获取视频分页数据信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            行偏�?
+	 * @param pageSize
+	 *            分页大小
+	 * @return
+	 */
+	List<RoadList> selectPageByExample(
+			@Param("example") RoadListExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+	RoadList selectByPrimaryKey(Integer id);
+
+	int updateByExampleSelective(@Param("record") RoadList record,
+			@Param("example") RoadListExample example);
+
+	int updateByExample(@Param("record") RoadList record,
+			@Param("example") RoadListExample example);
+
+	int updateByPrimaryKeySelective(RoadList record);
+
+	int updateByPrimaryKey(RoadList record);
+}

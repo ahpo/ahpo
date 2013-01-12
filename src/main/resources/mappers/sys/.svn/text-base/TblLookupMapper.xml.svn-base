@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easygo.dao.ejdb.TblLookupMapper" >
+  <resultMap id="BaseResultMap" type="com.easygo.vo.ejdb.TblLookup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="lookup_name" property="lookupName" jdbcType="VARCHAR" />
+    <result column="lookup_key" property="lookupKey" jdbcType="VARCHAR" />
+    <result column="lookup_value" property="lookupValue" jdbcType="VARCHAR" />
+    <result column="describeinfo" property="describeinfo" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, lookup_name, lookup_key, lookup_value, describeinfo, updatetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easygo.vo.ejdb.TblLookupExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_lookup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectPageByExample" parameterType="map" resultMap="BaseResultMap">
+    select
+    <if test="example != null and example.distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_lookup
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example != null and example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+     limit #{offset}, #{pageSize}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_lookup
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_lookup
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.easygo.vo.ejdb.TblLookupExample" >
+    delete from tbl_lookup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.easygo.vo.ejdb.TblLookup" >
+    insert into tbl_lookup (id, lookup_name, lookup_key, 
+      lookup_value, describeinfo, updatetime
+      )
+    values (#{id,jdbcType=INTEGER}, #{lookupName,jdbcType=VARCHAR}, #{lookupKey,jdbcType=VARCHAR}, 
+      #{lookupValue,jdbcType=VARCHAR}, #{describeinfo,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.easygo.vo.ejdb.TblLookup" >
+    insert into tbl_lookup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lookupName != null" >
+        lookup_name,
+      </if>
+      <if test="lookupKey != null" >
+        lookup_key,
+      </if>
+      <if test="lookupValue != null" >
+        lookup_value,
+      </if>
+      <if test="describeinfo != null" >
+        describeinfo,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lookupName != null" >
+        #{lookupName,jdbcType=VARCHAR},
+      </if>
+      <if test="lookupKey != null" >
+        #{lookupKey,jdbcType=VARCHAR},
+      </if>
+      <if test="lookupValue != null" >
+        #{lookupValue,jdbcType=VARCHAR},
+      </if>
+      <if test="describeinfo != null" >
+        #{describeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.easygo.vo.ejdb.TblLookupExample" resultType="java.lang.Integer" >
+    select count(*) from tbl_lookup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tbl_lookup
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.lookupName != null" >
+        lookup_name = #{record.lookupName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lookupKey != null" >
+        lookup_key = #{record.lookupKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lookupValue != null" >
+        lookup_value = #{record.lookupValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describeinfo != null" >
+        describeinfo = #{record.describeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tbl_lookup
+    set id = #{record.id,jdbcType=INTEGER},
+      lookup_name = #{record.lookupName,jdbcType=VARCHAR},
+      lookup_key = #{record.lookupKey,jdbcType=VARCHAR},
+      lookup_value = #{record.lookupValue,jdbcType=VARCHAR},
+      describeinfo = #{record.describeinfo,jdbcType=VARCHAR},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easygo.vo.ejdb.TblLookup" >
+    update tbl_lookup
+    <set >
+      <if test="lookupName != null" >
+        lookup_name = #{lookupName,jdbcType=VARCHAR},
+      </if>
+      <if test="lookupKey != null" >
+        lookup_key = #{lookupKey,jdbcType=VARCHAR},
+      </if>
+      <if test="lookupValue != null" >
+        lookup_value = #{lookupValue,jdbcType=VARCHAR},
+      </if>
+      <if test="describeinfo != null" >
+        describeinfo = #{describeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easygo.vo.ejdb.TblLookup" >
+    update tbl_lookup
+    set lookup_name = #{lookupName,jdbcType=VARCHAR},
+      lookup_key = #{lookupKey,jdbcType=VARCHAR},
+      lookup_value = #{lookupValue,jdbcType=VARCHAR},
+      describeinfo = #{describeinfo,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

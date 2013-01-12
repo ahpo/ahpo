@@ -1,0 +1,45 @@
+package com.easygo.service.ejdb;
+
+import java.util.List;
+
+import com.easygo.vo.ejdb.RoadInfo;
+import com.easygo.vo.ejdb.RoadInfoExample;
+import com.pub.service.Service;
+
+public interface RoadInfoService extends Service {
+
+	public int countByExample(RoadInfoExample example);
+
+	public List<RoadInfo> selectByExample(RoadInfoExample example);
+
+	/**
+	 * 获取指定范围的路口分页信息列表
+	 * 
+	 * @param example
+	 * @param offset
+	 * @param pageSize
+	 * @return
+	 */
+	public List<RoadInfo> selectPageByExample(RoadInfoExample example,
+			int offset, int pageSize);
+
+	public RoadInfo selectByPrimaryKey(Integer id);
+
+	public int updateByPrimaryKey(RoadInfo record);
+
+	/**
+	 * 相似性记录检查
+	 * 
+	 * @param example
+	 * @param id
+	 *            roadInfo的id
+	 * @param flag
+	 *            0:修改; 1:插入
+	 * @return
+	 */
+	public boolean checkSimilarity(RoadInfoExample example, Integer id, int flag);
+
+	public int insertSelective(RoadInfo record);
+
+	public int deleteByPrimaryKey(Integer id);
+}

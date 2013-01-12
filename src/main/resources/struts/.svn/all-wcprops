@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/struts
+END
+struts-system.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/10/trunk/v-admin/src/main/resources/struts/struts-system.xml
+END
+struts-business.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/struts/struts-business.xml
+END
+struts-identify.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/struts/struts-identify.xml
+END

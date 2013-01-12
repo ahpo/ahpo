@@ -1,0 +1,386 @@
+package com.easygo.action.ejdb;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.easygo.service.ejdb.RoadInfoListService;
+import com.easygo.service.ejdb.RoadInfoService;
+import com.easygo.vo.ejdb.RoadInfo;
+import com.easygo.vo.ejdb.RoadInfoList;
+import com.enjoyor.util.logger.Logger;
+import com.enjoyor.util.logger.LoggerFactory;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.pub.util.config.Des;
+import com.pub.util.constant.Constants;
+import com.pub.util.interceptor.SysOperLogAnnotation;
+import com.pub.webapp.ui.pagination.Page;
+import com.pub.webapp.ui.pagination.PageHandle;
+import com.pub.webapp.ui.util.OperateResult;
+import com.pub.webapp.ui.util.WebConstants;
+import com.sys.service.SysRoleService;
+import com.sys.service.SysUserService;
+import com.sys.vo.SysFunction;
+
+@Controller
+@Scope("prototype")
+public class RoadInfoListAction extends ActionSupport {
+
+	private static final long serialVersionUID = 1L;
+
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	private Integer id;
+	private Integer roadid;
+	private String roadcontext;
+	private String roadphotopath;
+	private String filepath;
+	private Integer mobiletype;
+	private String serverurl;
+	private String recordtime;
+	private Date updatadate;
+	private String person;
+	private String back;
+	private List<SysFunction> funcList;
+
+	private OperateResult operateResult = new OperateResult();
+	private Integer ids[];
+	private List<RoadInfoList> resultList;
+	private List<RoadInfo> roads;
+
+	private PageHandle pageHandler;
+	private Page page;
+	private String currentPage;
+	private String pageMethod = "";
+
+	@Resource
+	private RoadInfoListService roadInfoListService;
+	@Resource
+	private RoadInfoService roadInfoService;
+	@Resource
+	private SysUserService sysUserService;
+	@Resource
+	private SysRoleService sysRoleService;
+
+	public void setSysUserService(SysUserService sysUserService) {
+		this.sysUserService = sysUserService;
+	}
+
+	public void setSysRoleService(SysRoleService sysRoleService) {
+		this.sysRoleService = sysRoleService;
+	}
+
+	public void setRoadInfoListService(RoadInfoListService roadInfoListService) {
+		this.roadInfoListService = roadInfoListService;
+	}
+
+	public void setRoadInfoService(RoadInfoService roadInfoService) {
+		this.roadInfoService = roadInfoService;
+	}
+
+	public String roadInfoListQuery() {
+		String resCode = Constants.QUERY_ROADINFOLIST_QUERY;
+		Map<String, Object> session = ActionContext.getContext().getSession();
+
+		String resType = (String) session.get(Constants.RES_TYPE);
+		Integer urid;
+		if (Constants.RES_TYPE_USER.equals(resType)) {
+			urid = (Integer) session.get(Constants.UID);
+			funcList = sysUserService.selectFuncByUidAndResCode(urid, resCode);
+		} else {
+			urid = (Integer) session.get(Constants.RID);
+			funcList = sysRoleService.selectFuncByRidAndResCode(urid, resCode);
+		}
+		if (funcList == null || funcList.isEmpty()) {
+			return LOGIN;
+		}
+		int totalRows = 0;
+		pageHandler = new PageHandle();
+		totalRows = roadInfoListService.countByExample(null);
+		page = pageHandler.getPage(null, currentPage, pageMethod, totalRows);
+		resultList = roadInfoListService.selectPageByExample(null,
+				page.getStartRow(), page.getPageSize());
+		return SUCCESS;
+	}
+
+	public String roadInfoListToUpdate() {
+		RoadInfoList record = roadInfoListService.selectByPrimaryKey(id);
+		this.roadid = record.getRoadid();
+		this.roadcontext = record.getRoadcontext();
+		this.roadphotopath = Des.decrypt(record.getRoadphotopath());
+		this.filepath = record.getFilepath();
+		this.mobiletype = record.getMobiletype();
+		this.serverurl = Des.decrypt(record.getServerurl());
+		this.recordtime = record.getRecordtime();
+		this.back = record.getBack();
+		roads = roadInfoService.selectByExample(null);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "修改图像信息")
+	public String roadInfoListUpdate() {
+		operateResult.setOperation(WebConstants.ROADINFOLIST_UPDATE);
+		operateResult.setUrl("roadInfoListQuery.action");
+		Map<String, String> parms = new HashMap<String, String>();
+		parms.put("currentPage", currentPage);
+		operateResult.setParms(parms);
+		int rtn = 0;
+		if ("".equals(roadcontext.trim())) {
+			roadcontext = null;
+		}
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		if ("".equals(serverurl.trim())) {
+			serverurl = null;
+		}
+
+		RoadInfoList record = roadInfoListService.selectByPrimaryKey(id);
+		record.setRoadid(this.roadid);
+		record.setRoadcontext(this.roadcontext);
+		record.setRoadphotopath(Des.encrypt(this.roadphotopath));
+		record.setFilepath(filepath);
+		record.setMobiletype(mobiletype);
+		record.setServerurl(Des.encrypt(serverurl));
+		record.setRecordtime(this.recordtime);
+		record.setUpdatadate(new Date());
+		record.setBack(this.back);
+		rtn = roadInfoListService.updateByPrimaryKey(record);
+
+		if (rtn != 1) {
+			logger.info("cannot update, something is wrong");
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_ROADINFOLIST_UPDATE);
+			return ERROR;
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String roadInfoListToCreate() {
+		roads = roadInfoService.selectByExample(null);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "创建图像信息")
+	public String roadInfoListCreate() {
+		operateResult.setOperation(WebConstants.ROADINFOLIST_CREATE);
+		operateResult.setUrl("roadInfoListQuery.action");
+		int rtn = 0;
+		if ("".equals(roadcontext.trim())) {
+			roadcontext = null;
+		}
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		if ("".equals(serverurl.trim())) {
+			serverurl = null;
+		}
+		person = (String) ActionContext.getContext().getSession()
+				.get(Constants.USER_NAME);
+		RoadInfoList record = new RoadInfoList();
+		record.setRoadid(this.roadid);
+		record.setRoadcontext(this.roadcontext);
+		record.setRoadphotopath(Des.encrypt(this.roadphotopath));
+		record.setFilepath(filepath);
+		record.setMobiletype(mobiletype);
+		record.setServerurl(Des.encrypt(serverurl));
+		record.setRecordtime(this.recordtime);
+		record.setUpdatadate(new Date());
+		record.setPerson(person);
+		record.setBack(this.back);
+		rtn = roadInfoListService.insertSelective(record);
+		if (rtn != 1) {
+			logger.info("cannot create, something is wrong");
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_ROADINFOLIST_CREATE);
+			return ERROR;
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "删除图像信息")
+	public String roadInfoListDelete() {
+		operateResult.setOperation(WebConstants.ROADINFOLIST_DELETE);
+		operateResult.setUrl("roadInfoListQuery.action");
+		for (int i = 0; i < ids.length; i++) {
+			roadInfoListService.deleteByPrimaryKey(ids[i]);
+			logger.info("record[" + ids[i] + "] is deleted");
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getRoadid() {
+		return roadid;
+	}
+
+	public void setRoadid(Integer roadid) {
+		this.roadid = roadid;
+	}
+
+	public String getRoadcontext() {
+		return roadcontext;
+	}
+
+	public void setRoadcontext(String roadcontext) {
+		this.roadcontext = roadcontext;
+	}
+
+	public String getRoadphotopath() {
+		return roadphotopath;
+	}
+
+	public void setRoadphotopath(String roadphotopath) {
+		this.roadphotopath = roadphotopath;
+	}
+
+	public String getRecordtime() {
+		return recordtime;
+	}
+
+	public void setRecordtime(String recordtime) {
+		this.recordtime = recordtime;
+	}
+
+	public Date getUpdatadate() {
+		return updatadate;
+	}
+
+	public void setUpdatadate(Date updatadate) {
+		this.updatadate = updatadate;
+	}
+
+	public String getPerson() {
+		return person;
+	}
+
+	public void setPerson(String person) {
+		this.person = person;
+	}
+
+	public String getBack() {
+		return back;
+	}
+
+	public void setBack(String back) {
+		this.back = back;
+	}
+
+	public OperateResult getOperateResult() {
+		return operateResult;
+	}
+
+	public void setOperateResult(OperateResult operateResult) {
+		this.operateResult = operateResult;
+	}
+
+	public Integer[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Integer[] ids) {
+		this.ids = ids;
+	}
+
+	public List<RoadInfoList> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(List<RoadInfoList> resultList) {
+		this.resultList = resultList;
+	}
+
+	public PageHandle getPageHandler() {
+		return pageHandler;
+	}
+
+	public void setPageHandler(PageHandle pageHandler) {
+		this.pageHandler = pageHandler;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(String currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public String getPageMethod() {
+		return pageMethod;
+	}
+
+	public void setPageMethod(String pageMethod) {
+		this.pageMethod = pageMethod;
+	}
+
+	public List<RoadInfo> getRoads() {
+		return roads;
+	}
+
+	public void setRoads(List<RoadInfo> roads) {
+		this.roads = roads;
+	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+
+	public Integer getMobiletype() {
+		return mobiletype;
+	}
+
+	public void setMobiletype(Integer mobiletype) {
+		this.mobiletype = mobiletype;
+	}
+
+	public String getServerurl() {
+		return serverurl;
+	}
+
+	public void setServerurl(String serverurl) {
+		this.serverurl = serverurl;
+	}
+
+	public List<SysFunction> getFuncList() {
+		return funcList;
+	}
+
+	public void setFuncList(List<SysFunction> funcList) {
+		this.funcList = funcList;
+	}
+}

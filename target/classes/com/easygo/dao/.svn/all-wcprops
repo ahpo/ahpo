@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao
+END
+CityMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/CityMapper.class
+END
+LoginMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/LoginMapper.class
+END
+RoadPositionMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/RoadPositionMapper.class
+END
+CarIllegalInfoMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/CarIllegalInfoMapper.class
+END
+RoadInfoListMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/RoadInfoListMapper.class
+END
+RoadInfoMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/RoadInfoMapper.class
+END
+RoadListMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/RoadListMapper.class
+END
+RoadReportMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/RoadReportMapper.class
+END
+SoftVersionMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/SoftVersionMapper.class
+END

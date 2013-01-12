@@ -1,0 +1,58 @@
+package com.easygo.service.impl.ejdb;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.easygo.dao.ejdb.RoadInfoListMapper;
+import com.easygo.service.ejdb.RoadInfoListService;
+import com.easygo.vo.ejdb.RoadInfoList;
+import com.easygo.vo.ejdb.RoadInfoListExample;
+import com.pub.service.impl.ServiceImpl;
+
+@Service("roadInfoListService")
+public class RoadInfoListServiceImpl extends ServiceImpl implements RoadInfoListService {
+
+	@Resource
+	private RoadInfoListMapper roadInfoListMapper;
+	public RoadInfoListMapper getRoadInfoListMapper() {
+		return roadInfoListMapper;
+	}
+
+	public void setRoadInfoListMapper(RoadInfoListMapper roadInfoListMapper) {
+		this.roadInfoListMapper = roadInfoListMapper;
+	}
+
+	public int countByExample(RoadInfoListExample example) {
+		logger.info("get count from roadInfoList by example...");
+		return roadInfoListMapper.countByExample(example);
+	}
+
+	public int deleteByPrimaryKey(Integer id) {
+		logger.info("delete record from roadInfoList by primarykey["+id+"]...");
+		return roadInfoListMapper.deleteByPrimaryKey(id);
+	}
+
+	public int insertSelective(RoadInfoList record) {
+		logger.info("insert record into roadInfoList...");
+		return roadInfoListMapper.insertSelective(record);
+	}
+
+	public List<RoadInfoList> selectPageByExample(
+			RoadInfoListExample example, int offset, int pageSize) {
+		logger.info("select page info from roadInfoList by example...");
+		return roadInfoListMapper.selectPageByExample(example, offset, pageSize);
+	}
+
+	public RoadInfoList selectByPrimaryKey(Integer id) {
+		logger.info("get roadInfoList by primarykey["+id+"]...");
+		return roadInfoListMapper.selectByPrimaryKey(id);
+	}
+
+	public int updateByPrimaryKey(RoadInfoList record) {
+		logger.info("update roadInfoList by primarykey["+record.getId()+"]...");
+		return roadInfoListMapper.updateByPrimaryKey(record);
+	}
+}

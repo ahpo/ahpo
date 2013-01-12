@@ -1,0 +1,50 @@
+package com.easygo.dao.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.easygo.vo.ejdb.RoadInfo;
+import com.easygo.vo.ejdb.RoadInfoExample;
+
+@Repository
+public interface RoadInfoMapper {
+	int countByExample(RoadInfoExample example);
+
+	int deleteByExample(RoadInfoExample example);
+
+	int deleteByPrimaryKey(Integer id);
+
+	int insert(RoadInfo record);
+
+	int insertSelective(RoadInfo record);
+
+	List<RoadInfo> selectByExample(RoadInfoExample example);
+
+	/**
+	 * 获取分页信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            行偏移
+	 * @param pageSize
+	 *            分页大小
+	 * @return
+	 */
+	List<RoadInfo> selectPageByExample(
+			@Param("example") RoadInfoExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+	RoadInfo selectByPrimaryKey(Integer id);
+
+	int updateByExampleSelective(@Param("record") RoadInfo record,
+			@Param("example") RoadInfoExample example);
+
+	int updateByExample(@Param("record") RoadInfo record,
+			@Param("example") RoadInfoExample example);
+
+	int updateByPrimaryKeySelective(RoadInfo record);
+
+	int updateByPrimaryKey(RoadInfo record);
+}

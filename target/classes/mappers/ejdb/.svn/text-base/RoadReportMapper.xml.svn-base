@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easygo.dao.ejdb.RoadReportMapper" >
+  <resultMap id="BaseResultMap" type="com.easygo.vo.ejdb.RoadReport" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="citycode" property="citycode" jdbcType="VARCHAR" />
+    <result column="nowday" property="nowday" jdbcType="VARCHAR" />
+    <result column="infotype" property="infotype" jdbcType="INTEGER" />
+    <result column="upstatus" property="upstatus" jdbcType="INTEGER" />
+    <result column="person" property="person" jdbcType="VARCHAR" />
+    <result column="updatadate" property="updatadate" jdbcType="TIMESTAMP" />
+    <result column="back" property="back" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.easygo.vo.ejdb.RoadReportWithBLOBs" extends="BaseResultMap" >
+    <result column="contxt" property="contxt" jdbcType="LONGVARCHAR" />
+    <result column="imgurl" property="imgurl" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, title, citycode, nowday, infotype, upstatus, person, updatadate, back
+  </sql>
+  <sql id="Blob_Column_List" >
+    contxt, imgurl
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.easygo.vo.ejdb.RoadReportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from roadreport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectPageByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <if test="example != null and example.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from roadreport
+    <if test="example != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example != null and example.orderByClause != null" >
+      order by ${example.orderByClause}
+    </if>
+     limit #{offset}, #{pageSize}
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easygo.vo.ejdb.RoadReportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from roadreport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from roadreport
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from roadreport
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.easygo.vo.ejdb.RoadReportExample" >
+    delete from roadreport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.easygo.vo.ejdb.RoadReportWithBLOBs" >
+    insert into roadreport (id, title, citycode, 
+      nowday, infotype, upstatus, 
+      person, updatadate, back, 
+      contxt, imgurl)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{citycode,jdbcType=VARCHAR}, 
+      #{nowday,jdbcType=VARCHAR}, #{infotype,jdbcType=INTEGER}, #{upstatus,jdbcType=INTEGER}, 
+      #{person,jdbcType=VARCHAR}, #{updatadate,jdbcType=TIMESTAMP}, #{back,jdbcType=VARCHAR}, 
+      #{contxt,jdbcType=LONGVARCHAR}, #{imgurl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easygo.vo.ejdb.RoadReportWithBLOBs" >
+    insert into roadreport
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="citycode != null" >
+        citycode,
+      </if>
+      <if test="nowday != null" >
+        nowday,
+      </if>
+      <if test="infotype != null" >
+        infotype,
+      </if>
+      <if test="upstatus != null" >
+        upstatus,
+      </if>
+      <if test="person != null" >
+        person,
+      </if>
+      <if test="updatadate != null" >
+        updatadate,
+      </if>
+      <if test="back != null" >
+        back,
+      </if>
+      <if test="contxt != null" >
+        contxt,
+      </if>
+      <if test="imgurl != null" >
+        imgurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null" >
+        #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="nowday != null" >
+        #{nowday,jdbcType=VARCHAR},
+      </if>
+      <if test="infotype != null" >
+        #{infotype,jdbcType=INTEGER},
+      </if>
+      <if test="upstatus != null" >
+        #{upstatus,jdbcType=INTEGER},
+      </if>
+      <if test="person != null" >
+        #{person,jdbcType=VARCHAR},
+      </if>
+      <if test="updatadate != null" >
+        #{updatadate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="back != null" >
+        #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="contxt != null" >
+        #{contxt,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imgurl != null" >
+        #{imgurl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.easygo.vo.ejdb.RoadReportExample" resultType="java.lang.Integer" >
+    select count(*) from roadreport
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update roadreport
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.citycode != null" >
+        citycode = #{record.citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nowday != null" >
+        nowday = #{record.nowday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.infotype != null" >
+        infotype = #{record.infotype,jdbcType=INTEGER},
+      </if>
+      <if test="record.upstatus != null" >
+        upstatus = #{record.upstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.person != null" >
+        person = #{record.person,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatadate != null" >
+        updatadate = #{record.updatadate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.back != null" >
+        back = #{record.back,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contxt != null" >
+        contxt = #{record.contxt,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.imgurl != null" >
+        imgurl = #{record.imgurl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update roadreport
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      citycode = #{record.citycode,jdbcType=VARCHAR},
+      nowday = #{record.nowday,jdbcType=VARCHAR},
+      infotype = #{record.infotype,jdbcType=INTEGER},
+      upstatus = #{record.upstatus,jdbcType=INTEGER},
+      person = #{record.person,jdbcType=VARCHAR},
+      updatadate = #{record.updatadate,jdbcType=TIMESTAMP},
+      back = #{record.back,jdbcType=VARCHAR},
+      contxt = #{record.contxt,jdbcType=LONGVARCHAR},
+      imgurl = #{record.imgurl,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update roadreport
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      citycode = #{record.citycode,jdbcType=VARCHAR},
+      nowday = #{record.nowday,jdbcType=VARCHAR},
+      infotype = #{record.infotype,jdbcType=INTEGER},
+      upstatus = #{record.upstatus,jdbcType=INTEGER},
+      person = #{record.person,jdbcType=VARCHAR},
+      updatadate = #{record.updatadate,jdbcType=TIMESTAMP},
+      back = #{record.back,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easygo.vo.ejdb.RoadReportWithBLOBs" >
+    update roadreport
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null" >
+        citycode = #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="nowday != null" >
+        nowday = #{nowday,jdbcType=VARCHAR},
+      </if>
+      <if test="infotype != null" >
+        infotype = #{infotype,jdbcType=INTEGER},
+      </if>
+      <if test="upstatus != null" >
+        upstatus = #{upstatus,jdbcType=INTEGER},
+      </if>
+      <if test="person != null" >
+        person = #{person,jdbcType=VARCHAR},
+      </if>
+      <if test="updatadate != null" >
+        updatadate = #{updatadate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="back != null" >
+        back = #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="contxt != null" >
+        contxt = #{contxt,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imgurl != null" >
+        imgurl = #{imgurl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.easygo.vo.ejdb.RoadReportWithBLOBs" >
+    update roadreport
+    set title = #{title,jdbcType=VARCHAR},
+      citycode = #{citycode,jdbcType=VARCHAR},
+      nowday = #{nowday,jdbcType=VARCHAR},
+      infotype = #{infotype,jdbcType=INTEGER},
+      upstatus = #{upstatus,jdbcType=INTEGER},
+      person = #{person,jdbcType=VARCHAR},
+      updatadate = #{updatadate,jdbcType=TIMESTAMP},
+      back = #{back,jdbcType=VARCHAR},
+      contxt = #{contxt,jdbcType=LONGVARCHAR},
+      imgurl = #{imgurl,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easygo.vo.ejdb.RoadReport" >
+    update roadreport
+    set title = #{title,jdbcType=VARCHAR},
+      citycode = #{citycode,jdbcType=VARCHAR},
+      nowday = #{nowday,jdbcType=VARCHAR},
+      infotype = #{infotype,jdbcType=INTEGER},
+      upstatus = #{upstatus,jdbcType=INTEGER},
+      person = #{person,jdbcType=VARCHAR},
+      updatadate = #{updatadate,jdbcType=TIMESTAMP},
+      back = #{back,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

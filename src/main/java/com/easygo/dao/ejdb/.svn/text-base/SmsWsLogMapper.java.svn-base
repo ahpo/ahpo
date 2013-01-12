@@ -1,0 +1,31 @@
+package com.easygo.dao.ejdb;
+
+import com.easygo.vo.ejdb.SmsWsLog;
+import com.easygo.vo.ejdb.SmsWsLogExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+@Repository
+public interface SmsWsLogMapper {
+    int countByExample(SmsWsLogExample example);
+
+    int deleteByExample(SmsWsLogExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(SmsWsLog record);
+
+    int insertSelective(SmsWsLog record);
+
+    List<SmsWsLog> selectByExample(SmsWsLogExample example);
+
+    SmsWsLog selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") SmsWsLog record, @Param("example") SmsWsLogExample example);
+
+    int updateByExample(@Param("record") SmsWsLog record, @Param("example") SmsWsLogExample example);
+
+    int updateByPrimaryKeySelective(SmsWsLog record);
+
+    int updateByPrimaryKey(SmsWsLog record);
+}

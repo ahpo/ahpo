@@ -1,0 +1,372 @@
+/**   
+ * @Title: UserRoadStatusAction.java 
+ * @Package com.easygo.action.ejdb 
+ * @author zgr  
+ * @date 2012-9-12 下午3:29:49 
+ * @version V1.0   
+ */
+package com.easygo.action.ejdb;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Controller;
+
+import com.easygo.service.ejdb.CityService;
+import com.easygo.service.ejdb.UserRoadStatusService;
+import com.easygo.vo.ejdb.UserRoadStatus;
+import com.easygo.vo.ejdb.UserRoadStatusExample;
+import com.opensymphony.xwork2.ActionContext;
+import com.pub.action.AbstractAction;
+import com.pub.util.constant.Constants;
+import com.pub.webapp.ui.pagination.Page;
+import com.pub.webapp.ui.pagination.PageHandle;
+import com.pub.webapp.ui.util.OperateResult;
+import com.pub.webapp.ui.util.WebConstants;
+import com.sys.vo.SysFunction;
+import com.sys.vo.SysResFuncRelation;
+
+/**
+ * @ClassName: UserRoadStatusAction
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @author zgr
+ * @date 2012-9-12 下午3:29:49
+ * @version 1.0
+ */
+@Controller
+@Scope("prototype")
+public class UserRoadStatusAction extends AbstractAction {
+
+	/**
+	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
+	 */
+	private static final long serialVersionUID = 5194716892868702656L;
+	private Integer id;
+	private String username;
+	private String citycode;
+	private String recorddate;
+	private Integer downtimes;
+	private String person;
+	private String back;
+	private Date localdatetime;
+	private String roadinfo;
+	private UserRoadStatus userRoadStatus;
+
+	private List<SysFunction> funcList;
+	private Integer ids[];
+	private List<?> resultList;
+	private OperateResult operateResult = new OperateResult();
+
+	private PageHandle pageHandler;
+	private Page page;
+	private String pageMethod = "";
+	private String currentPage;
+
+	@Resource
+	private UserRoadStatusService userRoadStatusService;
+	@Resource
+	private CityService cityService;
+
+	public void setCityService(CityService cityService) {
+		this.cityService = cityService;
+	}
+
+	public void setUserRoadStatusService(
+			UserRoadStatusService userRoadStatusService) {
+		this.userRoadStatusService = userRoadStatusService;
+	}
+
+	public String userRoadStatusQuery() {
+		String resCode = Constants.QUERY_USERROADSTATUS_QUERY;
+		Map<String, Object> session = ActionContext.getContext().getSession();
+
+		funcList = new ArrayList<SysFunction>();
+		@SuppressWarnings("unchecked")
+		List<SysResFuncRelation> list = (List<SysResFuncRelation>) session
+				.get(Constants.PRIVILEGE);
+		if (list != null) {
+			for (SysResFuncRelation relation : list) {
+				if (resCode.equals(relation.getSysResource().getResCode())) {
+					funcList.add(relation.getSysFunction());
+				}
+			}
+		}
+		if (funcList == null || funcList.isEmpty()) {
+			return LOGIN;
+		}
+		try {
+			int total = userRoadStatusService.countByExample(null);
+			pageHandler = new PageHandle();
+			page = pageHandler.getPage(null, currentPage, pageMethod, total);
+			resultList = userRoadStatusService.selectPageByExampleWithBLOBs(
+					null, page.getStartRow(), page.getPageSize());
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+
+		return SUCCESS;
+	}
+
+	public String userRoadStatusToUpdate() {
+		try {
+			userRoadStatus = userRoadStatusService.selectByPrimaryKey(id);
+			resultList = cityService.selectByExample(null);
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+		return SUCCESS;
+	}
+
+	public String userRoadStatusUpdate() {
+		Map<String, String> parms = new HashMap<String, String>();
+		parms.put("currentPage", currentPage);
+		operateResult.setParms(parms);
+		operateResult.setOperation(WebConstants.USERROADSTATUS_UPDATE);
+		operateResult.setUrl("userRoadStatusQuery.action");
+		UserRoadStatusExample example = new UserRoadStatusExample();
+		example.createCriteria().andUsernameEqualTo(username)
+				.andCitycodeEqualTo(citycode);
+		try {
+			if (!userRoadStatusService.checkSimilarity(example, id,
+					Constants.CHECKSIMILARITY_MODE_UPDATE)) {
+				LOGGER.info("cannot update, for the inputed username["
+						+ username + "] with citycode[" + citycode
+						+ "] is already exist");
+				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+				operateResult
+						.setReason(WebConstants.OPERATERESULT_REASON_USERROADSTATUS_UPDATE);
+				return ERROR;
+			}
+			userRoadStatus = userRoadStatusService.selectByPrimaryKey(id);
+			userRoadStatus.setUsername(username);
+			userRoadStatus.setCitycode(citycode);
+			userRoadStatus.setRoadinfo(roadinfo);
+			userRoadStatus.setDowntimes(downtimes);
+			userRoadStatus.setRecorddate(recorddate);
+			if (back == null && "".equals(back)) {
+				back = null;
+			}
+			userRoadStatus.setBack(back);
+			userRoadStatusService.updateByPrimaryKeyWithBLOBs(userRoadStatus);
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+		LOGGER.info("userroadstatus[" + id + "] is updated successfully");
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String userRoadStatusToCreate() {
+		try {
+			resultList = cityService.selectByExample(null);
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+		return SUCCESS;
+	}
+
+	public String userRoadStatusCreate() {
+		operateResult.setOperation(WebConstants.USERROADSTATUS_CREATE);
+		operateResult.setUrl("userRoadStatusQuery.action");
+
+		UserRoadStatusExample example = new UserRoadStatusExample();
+		example.createCriteria().andUsernameEqualTo(username)
+				.andCitycodeEqualTo(citycode);
+		try {
+			if (!userRoadStatusService.checkSimilarity(example, id,
+					Constants.CHECKSIMILARITY_MODE_CREATE)) {
+				LOGGER.info("cannot create, for the inputed username["
+						+ username + "] with citycode[" + citycode
+						+ "] is already exist");
+				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+				operateResult
+						.setReason(WebConstants.OPERATERESULT_REASON_USERROADSTATUS_CREATE);
+				return ERROR;
+			}
+			UserRoadStatus userRoadStatus = new UserRoadStatus();
+			userRoadStatus.setUsername(username);
+			userRoadStatus.setCitycode(citycode);
+			userRoadStatus.setRoadinfo(roadinfo);
+			userRoadStatus.setDowntimes(downtimes);
+			userRoadStatus.setRecorddate(recorddate);
+			userRoadStatus.setLocaldatetime(new Date());
+			if (back == null && "".equals(back)) {
+				back = null;
+			}
+			userRoadStatus.setBack(back);
+			userRoadStatusService.insertSelective(userRoadStatus);
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+		LOGGER.info("cityarea is created successfully");
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String userRoadStatusDelete() {
+		operateResult.setOperation(WebConstants.USERROADSTATUS_DELETE);
+		operateResult.setUrl("userRoadStatusQuery.action");
+		for (int i = 0; i < ids.length; i++) {
+			userRoadStatusService.deleteByPrimaryKey(ids[i]);
+			LOGGER.info("userRoadStatus[" + ids[i] + "] is deleted");
+		}
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getCitycode() {
+		return citycode;
+	}
+
+	public void setCitycode(String citycode) {
+		this.citycode = citycode;
+	}
+
+	public String getRecorddate() {
+		return recorddate;
+	}
+
+	public void setRecorddate(String recorddate) {
+		this.recorddate = recorddate;
+	}
+
+	public Integer getDowntimes() {
+		return downtimes;
+	}
+
+	public void setDowntimes(Integer downtimes) {
+		this.downtimes = downtimes;
+	}
+
+	public String getPerson() {
+		return person;
+	}
+
+	public void setPerson(String person) {
+		this.person = person;
+	}
+
+	public String getBack() {
+		return back;
+	}
+
+	public void setBack(String back) {
+		this.back = back;
+	}
+
+	public Date getLocaldatetime() {
+		return localdatetime;
+	}
+
+	public void setLocaldatetime(Date localdatetime) {
+		this.localdatetime = localdatetime;
+	}
+
+	public String getRoadinfo() {
+		return roadinfo;
+	}
+
+	public void setRoadinfo(String roadinfo) {
+		this.roadinfo = roadinfo;
+	}
+
+	public UserRoadStatus getUserRoadStatus() {
+		return userRoadStatus;
+	}
+
+	public void setUserRoadStatus(UserRoadStatus userRoadStatus) {
+		this.userRoadStatus = userRoadStatus;
+	}
+
+	public List<SysFunction> getFuncList() {
+		return funcList;
+	}
+
+	public void setFuncList(List<SysFunction> funcList) {
+		this.funcList = funcList;
+	}
+
+	public Integer[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Integer[] ids) {
+		this.ids = ids;
+	}
+
+	public List<?> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(List<?> resultList) {
+		this.resultList = resultList;
+	}
+
+	public OperateResult getOperateResult() {
+		return operateResult;
+	}
+
+	public void setOperateResult(OperateResult operateResult) {
+		this.operateResult = operateResult;
+	}
+
+	public PageHandle getPageHandler() {
+		return pageHandler;
+	}
+
+	public void setPageHandler(PageHandle pageHandler) {
+		this.pageHandler = pageHandler;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getPageMethod() {
+		return pageMethod;
+	}
+
+	public void setPageMethod(String pageMethod) {
+		this.pageMethod = pageMethod;
+	}
+
+	public String getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(String currentPage) {
+		this.currentPage = currentPage;
+	}
+}

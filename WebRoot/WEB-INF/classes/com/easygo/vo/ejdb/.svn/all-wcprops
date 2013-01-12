@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb
+END
+RoadReportWithBLOBs.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadReportWithBLOBs.java
+END
+CityArea.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/CityArea.java
+END
+TblDictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/TblDictionary.java
+END
+RoadInfoListExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadInfoListExample.java
+END
+RoadInfoExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadInfoExample.java
+END
+SmsWsLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SmsWsLog.java
+END
+SoftVersion.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SoftVersion.java
+END
+HttpRoadList.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/HttpRoadList.java
+END
+TblExc.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/TblExc.java
+END
+CarIllegalInfoExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/CarIllegalInfoExample.java
+END
+TblLookupExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/TblLookupExample.java
+END
+UserRoadStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/UserRoadStatus.java
+END
+SmsWsLogExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SmsWsLogExample.java
+END
+SmsWsTelExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SmsWsTelExample.java
+END
+RoadReportExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadReportExample.java
+END
+RoadListExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadListExample.java
+END
+RoadInfoList.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadInfoList.java
+END
+SmsWsSimExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SmsWsSimExample.java
+END
+RoadInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadInfo.java
+END
+UserRoadStatusExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/UserRoadStatusExample.java
+END
+City.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/City.java
+END
+Login.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/Login.java
+END
+RoadPosition.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadPosition.java
+END
+CarIllegalInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/CarIllegalInfo.java
+END
+TblLookup.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/TblLookup.java
+END
+CityAreaExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/CityAreaExample.java
+END
+SmsWsTel.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SmsWsTel.java
+END
+RoadReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadReport.java
+END
+RoadList.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadList.java
+END
+TblDictionaryExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/TblDictionaryExample.java
+END
+CityExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/CityExample.java
+END
+LoginExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/LoginExample.java
+END
+SmsWsSim.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SmsWsSim.java
+END
+RoadPositionExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/RoadPositionExample.java
+END
+CarIllegalInfoWithBLOBs.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/CarIllegalInfoWithBLOBs.java
+END
+SoftVersionExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/SoftVersionExample.java
+END
+HttpRoadListExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/HttpRoadListExample.java
+END
+TblExcExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/vo/ejdb/TblExcExample.java
+END

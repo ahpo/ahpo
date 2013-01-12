@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easygo.dao.SoftVersionMapper" >
+  <resultMap id="BaseResultMap" type="com.easygo.vo.SoftVersion" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="softversion" property="softversion" jdbcType="VARCHAR" />
+    <result column="used" property="used" jdbcType="INTEGER" />
+    <result column="softurl" property="softurl" jdbcType="VARCHAR" />
+    <result column="updatadate" property="updatadate" jdbcType="TIMESTAMP" />
+    <result column="person" property="person" jdbcType="VARCHAR" />
+    <result column="back" property="back" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.easygo.vo.SoftVersion" extends="BaseResultMap" >
+    <result column="softupdatacontxt" property="softupdatacontxt" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, softversion, used, softurl, updatadate, person, back
+  </sql>
+  <sql id="Blob_Column_List" >
+    softupdatacontxt
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.easygo.vo.SoftVersionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from softversion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectPageByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <if test="example != null and example.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from softversion
+     <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example != null and example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+     limit #{offset}, #{pageSize}
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easygo.vo.SoftVersionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from softversion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from softversion
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from softversion
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.easygo.vo.SoftVersionExample" >
+    delete from softversion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.easygo.vo.SoftVersion" >
+    insert into softversion (id, softversion, used, 
+      softurl, updatadate, person, 
+      back, softupdatacontxt)
+    values (#{id,jdbcType=INTEGER}, #{softversion,jdbcType=VARCHAR}, #{used,jdbcType=INTEGER}, 
+      #{softurl,jdbcType=VARCHAR}, #{updatadate,jdbcType=TIMESTAMP}, #{person,jdbcType=VARCHAR}, 
+      #{back,jdbcType=VARCHAR}, #{softupdatacontxt,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easygo.vo.SoftVersion" >
+    insert into softversion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="softversion != null" >
+        softversion,
+      </if>
+      <if test="used != null" >
+        used,
+      </if>
+      <if test="softurl != null" >
+        softurl,
+      </if>
+      <if test="updatadate != null" >
+        updatadate,
+      </if>
+      <if test="person != null" >
+        person,
+      </if>
+      <if test="back != null" >
+        back,
+      </if>
+      <if test="softupdatacontxt != null" >
+        softupdatacontxt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="softversion != null" >
+        #{softversion,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null" >
+        #{used,jdbcType=INTEGER},
+      </if>
+      <if test="softurl != null" >
+        #{softurl,jdbcType=VARCHAR},
+      </if>
+      <if test="updatadate != null" >
+        #{updatadate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="person != null" >
+        #{person,jdbcType=VARCHAR},
+      </if>
+      <if test="back != null" >
+        #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="softupdatacontxt != null" >
+        #{softupdatacontxt,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.easygo.vo.SoftVersionExample" resultType="java.lang.Integer" >
+    select count(*) from softversion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update softversion
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.softversion != null" >
+        softversion = #{record.softversion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.used != null" >
+        used = #{record.used,jdbcType=INTEGER},
+      </if>
+      <if test="record.softurl != null" >
+        softurl = #{record.softurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatadate != null" >
+        updatadate = #{record.updatadate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.person != null" >
+        person = #{record.person,jdbcType=VARCHAR},
+      </if>
+      <if test="record.back != null" >
+        back = #{record.back,jdbcType=VARCHAR},
+      </if>
+      <if test="record.softupdatacontxt != null" >
+        softupdatacontxt = #{record.softupdatacontxt,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update softversion
+    set id = #{record.id,jdbcType=INTEGER},
+      softversion = #{record.softversion,jdbcType=VARCHAR},
+      used = #{record.used,jdbcType=INTEGER},
+      softurl = #{record.softurl,jdbcType=VARCHAR},
+      updatadate = #{record.updatadate,jdbcType=TIMESTAMP},
+      person = #{record.person,jdbcType=VARCHAR},
+      back = #{record.back,jdbcType=VARCHAR},
+      softupdatacontxt = #{record.softupdatacontxt,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update softversion
+    set id = #{record.id,jdbcType=INTEGER},
+      softversion = #{record.softversion,jdbcType=VARCHAR},
+      used = #{record.used,jdbcType=INTEGER},
+      softurl = #{record.softurl,jdbcType=VARCHAR},
+      updatadate = #{record.updatadate,jdbcType=TIMESTAMP},
+      person = #{record.person,jdbcType=VARCHAR},
+      back = #{record.back,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easygo.vo.SoftVersion" >
+    update softversion
+    <set >
+      <if test="softversion != null" >
+        softversion = #{softversion,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null" >
+        used = #{used,jdbcType=INTEGER},
+      </if>
+      <if test="softurl != null" >
+        softurl = #{softurl,jdbcType=VARCHAR},
+      </if>
+      <if test="updatadate != null" >
+        updatadate = #{updatadate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="person != null" >
+        person = #{person,jdbcType=VARCHAR},
+      </if>
+      <if test="back != null" >
+        back = #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="softupdatacontxt != null" >
+        softupdatacontxt = #{softupdatacontxt,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.easygo.vo.SoftVersion" >
+    update softversion
+    set softversion = #{softversion,jdbcType=VARCHAR},
+      used = #{used,jdbcType=INTEGER},
+      softurl = #{softurl,jdbcType=VARCHAR},
+      updatadate = #{updatadate,jdbcType=TIMESTAMP},
+      person = #{person,jdbcType=VARCHAR},
+      back = #{back,jdbcType=VARCHAR},
+      softupdatacontxt = #{softupdatacontxt,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easygo.vo.SoftVersion" >
+    update softversion
+    set softversion = #{softversion,jdbcType=VARCHAR},
+      used = #{used,jdbcType=INTEGER},
+      softurl = #{softurl,jdbcType=VARCHAR},
+      updatadate = #{updatadate,jdbcType=TIMESTAMP},
+      person = #{person,jdbcType=VARCHAR},
+      back = #{back,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,95 @@
+package com.easygo.vo.ejdb;
+
+import java.util.Date;
+
+public class UserRoadStatus {
+    private Integer id;
+
+    private String username;
+
+    private String citycode;
+
+    private String recorddate;
+
+    private Integer downtimes;
+
+    private String person;
+
+    private String back;
+
+    private Date localdatetime;
+
+    private String roadinfo;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCitycode() {
+        return citycode;
+    }
+
+    public void setCitycode(String citycode) {
+        this.citycode = citycode;
+    }
+
+    public String getRecorddate() {
+        return recorddate;
+    }
+
+    public void setRecorddate(String recorddate) {
+        this.recorddate = recorddate;
+    }
+
+    public Integer getDowntimes() {
+        return downtimes;
+    }
+
+    public void setDowntimes(Integer downtimes) {
+        this.downtimes = downtimes;
+    }
+
+    public String getPerson() {
+        return person;
+    }
+
+    public void setPerson(String person) {
+        this.person = person;
+    }
+
+    public String getBack() {
+        return back;
+    }
+
+    public void setBack(String back) {
+        this.back = back;
+    }
+
+    public Date getLocaldatetime() {
+        return localdatetime;
+    }
+
+    public void setLocaldatetime(Date localdatetime) {
+        this.localdatetime = localdatetime;
+    }
+
+    public String getRoadinfo() {
+        return roadinfo;
+    }
+
+    public void setRoadinfo(String roadinfo) {
+        this.roadinfo = roadinfo;
+    }
+}

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao
+END
+SysUserMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysUserMapper.java
+END
+SysLogMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysLogMapper.java
+END
+SysRoleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysRoleMapper.java
+END
+SysDepartmentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysDepartmentMapper.java
+END
+SysFunctionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysFunctionMapper.java
+END
+SysUserRFMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysUserRFMapper.java
+END
+SysResourceMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysResourceMapper.java
+END
+SysRoleRFMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/dao/SysRoleRFMapper.java
+END

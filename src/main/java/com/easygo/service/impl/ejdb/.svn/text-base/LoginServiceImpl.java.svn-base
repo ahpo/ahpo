@@ -1,0 +1,90 @@
+package com.easygo.service.impl.ejdb;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.easygo.dao.ejdb.LoginMapper;
+import com.easygo.service.ejdb.LoginService;
+import com.easygo.vo.ejdb.Login;
+import com.easygo.vo.ejdb.LoginExample;
+import com.pub.service.impl.ServiceImpl;
+
+@Service("loginService")
+public class LoginServiceImpl extends ServiceImpl implements LoginService {
+
+	@Resource
+	private LoginMapper loginMapper;
+
+	public LoginMapper getLoginMapper() {
+		return loginMapper;
+	}
+
+	public void setLoginMapper(LoginMapper loginMapper) {
+		this.loginMapper = loginMapper;
+	}
+
+	public int countByExample(LoginExample example) {
+		logger.info("get count from Login by example...");
+		return loginMapper.countByExample(example);
+	}
+
+	public int deleteByPrimaryKey(Integer id) {
+		logger.info("delete record[" + id + "] from login by primarykey...");
+		return loginMapper.deleteByPrimaryKey(id);
+	}
+
+	public int insertSelective(Login record) {
+		logger.info("insert record into login...");
+		return loginMapper.insertSelective(record);
+	}
+
+	public List<Login> selectPageByExample(LoginExample example, int offset,
+			int pageSize) {
+		logger.info("get page info from login by example...");
+		return loginMapper.selectPageByExample(example, offset, pageSize);
+	}
+
+	public Login selectByPrimaryKey(Integer id) {
+		logger.info("get login by primarykey[" + id + "]...");
+		return loginMapper.selectByPrimaryKey(id);
+	}
+
+	public int updateByPrimaryKey(Login record) {
+		logger.info("update login by primarykey[" + record.getId() + "]...");
+		return loginMapper.updateByPrimaryKey(record);
+	}
+
+	/**
+	 * 相似性记录检�?
+	 * 
+	 * @param example
+	 * @param id
+	 *            login的id
+	 * @param flag
+	 *            表示符号 0:修改; 1:插入
+	 * @return true:不存在相似的记录; false:存在相似记录
+	 */
+	public boolean checkSimilarity(LoginExample example, Integer id, int flag) {
+		List<Login> list = loginMapper.selectByExample(example);
+		if (list == null || list.size() < 1) {
+			return true;
+		}
+
+		if (flag == 0) { // update
+			if (list.size() == 1 && list.get(0).getId().equals(id)) {
+				return true;
+			}
+		}
+
+		// other return false
+		return false;
+	}
+
+	public List<Login> selectByExample(LoginExample example) {
+		logger.info("get logins by example...");
+		return loginMapper.selectByExample(example);
+	}
+}

@@ -1,0 +1,23 @@
+package com.easygo.vo.ejdb;
+
+public class RoadReportWithBLOBs extends RoadReport {
+    private String contxt;
+
+    private String imgurl;
+
+    public String getContxt() {
+        return contxt;
+    }
+
+    public void setContxt(String contxt) {
+        this.contxt = contxt;
+    }
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
+}

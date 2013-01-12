@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb
+END
+RoadInfoListMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/RoadInfoListMapper.java
+END
+RoadInfoMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/RoadInfoMapper.java
+END
+CityAreaMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/CityAreaMapper.java
+END
+TblDictionaryMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/TblDictionaryMapper.java
+END
+LoginMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/LoginMapper.java
+END
+CityMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/CityMapper.java
+END
+RoadPositionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/RoadPositionMapper.java
+END
+CarIllegalInfoMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/CarIllegalInfoMapper.java
+END
+TblLookupMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/TblLookupMapper.java
+END
+SmsWsLogMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/SmsWsLogMapper.java
+END
+SoftVersionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/SoftVersionMapper.java
+END
+SmsWsTelMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/SmsWsTelMapper.java
+END
+RoadReportMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/RoadReportMapper.java
+END
+RoadListMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/RoadListMapper.java
+END
+HttpRoadListMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/HttpRoadListMapper.java
+END
+TblExcMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/TblExcMapper.java
+END
+SmsWsSimMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/SmsWsSimMapper.java
+END
+UserRoadStatusMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/dao/ejdb/UserRoadStatusMapper.java
+END

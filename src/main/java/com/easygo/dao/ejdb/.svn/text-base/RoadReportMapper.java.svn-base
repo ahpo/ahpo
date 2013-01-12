@@ -1,0 +1,58 @@
+package com.easygo.dao.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.easygo.vo.ejdb.RoadReport;
+import com.easygo.vo.ejdb.RoadReportExample;
+import com.easygo.vo.ejdb.RoadReportWithBLOBs;
+
+@Repository
+public interface RoadReportMapper {
+	int countByExample(RoadReportExample example);
+
+	int deleteByExample(RoadReportExample example);
+
+	int deleteByPrimaryKey(Integer id);
+
+	int insert(RoadReportWithBLOBs record);
+
+	int insertSelective(RoadReportWithBLOBs record);
+
+	List<RoadReportWithBLOBs> selectByExampleWithBLOBs(RoadReportExample example);
+
+	List<RoadReport> selectByExample(RoadReportExample example);
+
+	/**
+	 * 获取路况播报分页信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            行偏�?
+	 * @param pageSize
+	 *            分页大小
+	 * @return
+	 */
+	List<RoadReportWithBLOBs> selectPageByExampleWithBLOBs(
+			@Param("example") RoadReportExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+	RoadReportWithBLOBs selectByPrimaryKey(Integer id);
+
+	int updateByExampleSelective(@Param("record") RoadReportWithBLOBs record,
+			@Param("example") RoadReportExample example);
+
+	int updateByExampleWithBLOBs(@Param("record") RoadReportWithBLOBs record,
+			@Param("example") RoadReportExample example);
+
+	int updateByExample(@Param("record") RoadReport record,
+			@Param("example") RoadReportExample example);
+
+	int updateByPrimaryKeySelective(RoadReportWithBLOBs record);
+
+	int updateByPrimaryKeyWithBLOBs(RoadReportWithBLOBs record);
+
+	int updateByPrimaryKey(RoadReport record);
+}

@@ -1,0 +1,366 @@
+package com.easygo.action.ejdb;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.easygo.service.ejdb.CarIllegalInfoService;
+import com.easygo.vo.ejdb.CarIllegalInfoWithBLOBs;
+import com.enjoyor.util.logger.Logger;
+import com.enjoyor.util.logger.LoggerFactory;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.pub.util.constant.Constants;
+import com.pub.util.interceptor.SysOperLogAnnotation;
+import com.pub.webapp.ui.pagination.Page;
+import com.pub.webapp.ui.pagination.PageHandle;
+import com.pub.webapp.ui.util.OperateResult;
+import com.pub.webapp.ui.util.WebConstants;
+import com.sys.service.SysRoleService;
+import com.sys.service.SysUserService;
+import com.sys.vo.SysFunction;
+
+@Controller
+@Scope("prototype")
+public class CarIllegalInfoAction extends ActionSupport {
+
+	private static final long serialVersionUID = 6396756587390540150L;
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	private Integer id;
+	private String carno;
+	private String carpartno;
+	private String cartype;
+	private String carresultcode;
+	private String carresult;
+	private String recorddate;
+	private Integer hittimes;
+	private String back;
+	private Date localdatetime;
+	private String person;
+	private List<SysFunction> funcList;
+
+	private Integer ids[];
+	private List<CarIllegalInfoWithBLOBs> resultList;
+	private OperateResult operateResult = new OperateResult();
+
+	private PageHandle pageHandler;
+	private Page page;
+	private String pageMethod = "";
+	private String currentPage;
+
+	@Resource
+	private CarIllegalInfoService carIllegalInfoService;
+	@Resource
+	private SysUserService sysUserService;
+	@Resource
+	private SysRoleService sysRoleService;
+
+	public void setSysUserService(SysUserService sysUserService) {
+		this.sysUserService = sysUserService;
+	}
+
+	public void setSysRoleService(SysRoleService sysRoleService) {
+		this.sysRoleService = sysRoleService;
+	}
+
+	public void setCarIllegalInfoService(
+			CarIllegalInfoService carIllegalInfoService) {
+		this.carIllegalInfoService = carIllegalInfoService;
+	}
+
+	public String carIllegalInfoQuery() {
+		String resCode = Constants.QUERY_CARILLEGALINFO_QUERY;
+		Map<String, Object> session = ActionContext.getContext().getSession();
+
+		String resType = (String) session.get(Constants.RES_TYPE);
+		Integer urid;
+		if (Constants.RES_TYPE_USER.equals(resType)) {
+			urid = (Integer) session.get(Constants.UID);
+			funcList = sysUserService.selectFuncByUidAndResCode(urid, resCode);
+		} else {
+			urid = (Integer) session.get(Constants.RID);
+			funcList = sysRoleService.selectFuncByRidAndResCode(urid, resCode);
+		}
+		if (funcList == null || funcList.isEmpty()) {
+			return LOGIN;
+		}
+		int total = carIllegalInfoService.countByExample(null);
+		pageHandler = new PageHandle();
+		page = pageHandler.getPage(null, currentPage, pageMethod, total);
+		resultList = carIllegalInfoService.selectPageByExampleWithBLOBs(null,
+				page.getStartRow(), page.getPageSize());
+		return SUCCESS;
+	}
+
+	public String carIllegalInfoToUpdate() {
+		CarIllegalInfoWithBLOBs record = carIllegalInfoService
+				.selectByPrimaryKey(id);
+		this.carno = record.getCarno();
+		this.carpartno = record.getCarpartno();
+		this.cartype = record.getCartype();
+		this.carresultcode = record.getCarresultcode();
+		this.carresult = record.getCarresult();
+		this.hittimes = record.getHittimes();
+		this.recorddate = record.getRecorddate();
+		this.localdatetime = record.getLocaldatetime();
+		this.back = record.getBack();
+
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "修改车辆违章信息")
+	public String carIllegalInfoUpdate() {
+		Map<String, String> parms = new HashMap<String, String>();
+		parms.put("currentPage", currentPage);
+		operateResult.setParms(parms);
+		operateResult.setOperation(WebConstants.CARILLEGALINFO_UPDATE);
+		operateResult.setUrl("carIllegalInfoQuery.action");
+		CarIllegalInfoWithBLOBs record = carIllegalInfoService
+				.selectByPrimaryKey(id);
+		record.setId(id);
+		record.setCarno(carno);
+		record.setCarpartno(carpartno);
+		record.setCartype(cartype);
+		if ("".equals(carresult.trim())) {
+			carresult = null;
+		}
+		if ("".equals(carresultcode.trim())) {
+			carresultcode = null;
+		}
+		record.setCarresult(carresult);
+		record.setCarresultcode(carresultcode);
+		record.setHittimes(hittimes);
+		record.setRecorddate(recorddate);
+		record.setLocaldatetime(new Date());
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		record.setBack(back);
+
+		int rtn = carIllegalInfoService.updateByPrimaryKey(record);
+		if (rtn != 1) {
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_CARILLEGALINFO_UPDATE);
+			return ERROR;
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String carIllegalInfoToCreate() {
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "创建车辆违章信息")
+	public String carIllegalInfoCreate() {
+		operateResult.setOperation(WebConstants.CARILLEGALINFO_CREATE);
+		operateResult.setUrl("carIllegalInfoQuery.action");
+		CarIllegalInfoWithBLOBs record = new CarIllegalInfoWithBLOBs();
+		record.setCarno(carno);
+		record.setCarpartno(carpartno);
+		record.setCartype(cartype);
+		if ("".equals(carresult.trim())) {
+			carresult = null;
+		}
+		if ("".equals(carresultcode.trim())) {
+			carresultcode = null;
+		}
+		record.setCarresult(carresult);
+		record.setCarresultcode(carresultcode);
+		record.setHittimes(hittimes);
+		record.setRecorddate(recorddate);
+		record.setLocaldatetime(new Date());
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		record.setBack(back);
+		person = (String) ActionContext.getContext().getSession()
+				.get(Constants.USER_NAME);
+		record.setPerson(person);
+
+		int rtn = carIllegalInfoService.insertSelective(record);
+		if (rtn != 1) {
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_CARILLEGALINFO_CREATE);
+			return ERROR;
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "删除车辆违章信息")
+	public String carIllegalInfoDelete() {
+		operateResult.setOperation(WebConstants.CARILLEGALINFO_DELETE);
+		operateResult.setUrl("carIllegalInfoQuery.action");
+		for (int i = 0; i < ids.length; i++) {
+			carIllegalInfoService.deleteByPrimaryKey(ids[i]);
+			logger.info("record[" + ids[i] + "] is deleted");
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCarno() {
+		return carno;
+	}
+
+	public void setCarno(String carno) {
+		this.carno = carno;
+	}
+
+	public String getCarpartno() {
+		return carpartno;
+	}
+
+	public void setCarpartno(String carpartno) {
+		this.carpartno = carpartno;
+	}
+
+	public String getCartype() {
+		return cartype;
+	}
+
+	public void setCartype(String cartype) {
+		this.cartype = cartype;
+	}
+
+	public String getCarresultcode() {
+		return carresultcode;
+	}
+
+	public void setCarresultcode(String carresultcode) {
+		this.carresultcode = carresultcode;
+	}
+
+	public String getCarresult() {
+		return carresult;
+	}
+
+	public void setCarresult(String carresult) {
+		this.carresult = carresult;
+	}
+
+	public String getRecorddate() {
+		return recorddate;
+	}
+
+	public void setRecorddate(String recorddate) {
+		this.recorddate = recorddate;
+	}
+
+	public Integer getHittimes() {
+		return hittimes;
+	}
+
+	public void setHittimes(Integer hittimes) {
+		this.hittimes = hittimes;
+	}
+
+	public String getBack() {
+		return back;
+	}
+
+	public void setBack(String back) {
+		this.back = back;
+	}
+
+	public Date getLocaldatetime() {
+		return localdatetime;
+	}
+
+	public void setLocaldatetime(Date localdatetime) {
+		this.localdatetime = localdatetime;
+	}
+
+	public String getPerson() {
+		return person;
+	}
+
+	public void setPerson(String person) {
+		this.person = person;
+	}
+
+	public Integer[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Integer[] ids) {
+		this.ids = ids;
+	}
+
+	public List<CarIllegalInfoWithBLOBs> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(List<CarIllegalInfoWithBLOBs> resultList) {
+		this.resultList = resultList;
+	}
+
+	public OperateResult getOperateResult() {
+		return operateResult;
+	}
+
+	public void setOperateResult(OperateResult operateResult) {
+		this.operateResult = operateResult;
+	}
+
+	public PageHandle getPageHandler() {
+		return pageHandler;
+	}
+
+	public void setPageHandler(PageHandle pageHandler) {
+		this.pageHandler = pageHandler;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getPageMethod() {
+		return pageMethod;
+	}
+
+	public void setPageMethod(String pageMethod) {
+		this.pageMethod = pageMethod;
+	}
+
+	public String getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(String currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public List<SysFunction> getFuncList() {
+		return funcList;
+	}
+
+	public void setFuncList(List<SysFunction> funcList) {
+		this.funcList = funcList;
+	}
+}

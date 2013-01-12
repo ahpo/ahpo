@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sys.dao.SysFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.sys.vo.SysFunction" >
+    <id column="FUNCID" property="funcid" jdbcType="INTEGER" />
+    <result column="FUNC_NAME" property="funcName" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FUNCID, FUNC_NAME, MEMO, IMG_URL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sys.vo.SysFunctionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_func
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_func
+    where FUNCID = #{funcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_func
+    where FUNCID = #{funcid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sys.vo.SysFunctionExample" >
+    delete from sys_func
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sys.vo.SysFunction" >
+    insert into sys_func (FUNCID, FUNC_NAME, MEMO, 
+      IMG_URL)
+    values (#{funcid,jdbcType=INTEGER}, #{funcName,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sys.vo.SysFunction" >
+    insert into sys_func
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="funcid != null" >
+        FUNCID,
+      </if>
+      <if test="funcName != null" >
+        FUNC_NAME,
+      </if>
+      <if test="memo != null" >
+        MEMO,
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="funcid != null" >
+        #{funcid,jdbcType=INTEGER},
+      </if>
+      <if test="funcName != null" >
+        #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sys.vo.SysFunctionExample" resultType="java.lang.Integer" >
+    select count(*) from sys_func
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_func
+    <set >
+      <if test="record.funcid != null" >
+        FUNCID = #{record.funcid,jdbcType=INTEGER},
+      </if>
+      <if test="record.funcName != null" >
+        FUNC_NAME = #{record.funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+        MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgUrl != null" >
+        IMG_URL = #{record.imgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_func
+    set FUNCID = #{record.funcid,jdbcType=INTEGER},
+      FUNC_NAME = #{record.funcName,jdbcType=VARCHAR},
+      MEMO = #{record.memo,jdbcType=VARCHAR},
+      IMG_URL = #{record.imgUrl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sys.vo.SysFunction" >
+    update sys_func
+    <set >
+      <if test="funcName != null" >
+        FUNC_NAME = #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FUNCID = #{funcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sys.vo.SysFunction" >
+    update sys_func
+    set FUNC_NAME = #{funcName,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      IMG_URL = #{imgUrl,jdbcType=VARCHAR}
+    where FUNCID = #{funcid,jdbcType=INTEGER}
+  </update>
+</mapper>

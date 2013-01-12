@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo
+END
+CarIllegalInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CarIllegalInfo.class
+END
+CarIllegalInfoExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CarIllegalInfoExample$Criteria.class
+END
+RoadInfoListExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoListExample$GeneratedCriteria.class
+END
+SoftVersionExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/SoftVersionExample$Criterion.class
+END
+RoadList.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadList.class
+END
+RoadReport.class
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadReport.class
+END
+RoadInfoExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoExample$GeneratedCriteria.class
+END
+RoadListExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadListExample$Criteria.class
+END
+RoadReportExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadReportExample$Criteria.class
+END
+CarIllegalInfoWithBLOBs.class
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CarIllegalInfoWithBLOBs.class
+END
+CityExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CityExample$GeneratedCriteria.class
+END
+LoginExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/LoginExample$GeneratedCriteria.class
+END
+RoadInfoListExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoListExample$Criterion.class
+END
+RoadPositionExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadPositionExample$GeneratedCriteria.class
+END
+CarIllegalInfoExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CarIllegalInfoExample$GeneratedCriteria.class
+END
+SoftVersionExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/SoftVersionExample.class
+END
+RoadReportWithBLOBs.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadReportWithBLOBs.class
+END
+RoadInfoExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoExample$Criterion.class
+END
+RoadListExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadListExample$GeneratedCriteria.class
+END
+RoadReportExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadReportExample$GeneratedCriteria.class
+END
+CityExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CityExample$Criterion.class
+END
+LoginExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/LoginExample$Criterion.class
+END
+City.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/City.class
+END
+Login.class
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/Login.class
+END
+RoadInfoListExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoListExample.class
+END
+RoadPositionExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadPositionExample$Criterion.class
+END
+CarIllegalInfoExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CarIllegalInfoExample$Criterion.class
+END
+RoadPosition.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadPosition.class
+END
+CityExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CityExample$Criteria.class
+END
+LoginExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/LoginExample$Criteria.class
+END
+RoadInfoExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoExample.class
+END
+RoadPositionExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadPositionExample$Criteria.class
+END
+RoadListExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadListExample$Criterion.class
+END
+RoadReportExample$Criterion.class
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadReportExample$Criterion.class
+END
+SoftVersion.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/SoftVersion.class
+END
+LoginExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/LoginExample.class
+END
+CityExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CityExample.class
+END
+SoftVersionExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/SoftVersionExample$Criteria.class
+END
+RoadPositionExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadPositionExample.class
+END
+CarIllegalInfoExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/CarIllegalInfoExample.class
+END
+RoadListExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadListExample.class
+END
+RoadInfoList.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoList.class
+END
+RoadReportExample.class
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadReportExample.class
+END
+RoadInfoListExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoListExample$Criteria.class
+END
+RoadInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfo.class
+END
+SoftVersionExample$GeneratedCriteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/SoftVersionExample$GeneratedCriteria.class
+END
+RoadInfoExample$Criteria.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/vo/RoadInfoExample$Criteria.class
+END

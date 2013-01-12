@@ -1,0 +1,48 @@
+package com.easygo.service.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.easygo.vo.ejdb.RoadPosition;
+import com.easygo.vo.ejdb.RoadPositionExample;
+import com.pub.service.Service;
+
+public interface RoadPositionService extends Service {
+	public int countByExample(RoadPositionExample example);
+
+	int deleteByPrimaryKey(Integer id);
+
+	int insertSelective(RoadPosition record);
+
+	/**
+	 * 根据example获取分页信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            　行偏移
+	 * @param pageSize
+	 *            　分页大小
+	 * @return
+	 */
+	List<RoadPosition> selectPageByExample(
+			@Param("example") RoadPositionExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+	RoadPosition selectByPrimaryKey(Integer id);
+
+	int updateByPrimaryKey(RoadPosition record);
+
+	/**
+	 * 相似性记录检查
+	 * 
+	 * @param example
+	 * @param id
+	 *            roadpositon的id
+	 * @param flag
+	 *            表示符号 0:修改; 1:插入
+	 * @return true:不存在相似的记录; false:存在相似记录
+	 */
+	public boolean checkSimilarity(RoadPositionExample example, Integer id,
+			int flag);
+}

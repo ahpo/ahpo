@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers
+END
+CarIllegalInfoMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/CarIllegalInfoMapper.xml
+END
+SysUserMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysUserMapper.xml
+END
+SysLogMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysLogMapper.xml
+END
+SoftVersionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SoftVersionMapper.xml
+END
+RoadReportMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/RoadReportMapper.xml
+END
+RoadListMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/RoadListMapper.xml
+END
+SysFunctionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysFunctionMapper.xml
+END
+SysResourceMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysResourceMapper.xml
+END
+SysRoleRFMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysRoleRFMapper.xml
+END
+RoadInfoListMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/RoadInfoListMapper.xml
+END
+SysRoleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysRoleMapper.xml
+END
+RoadInfoMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/RoadInfoMapper.xml
+END
+SysDepartmentMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysDepartmentMapper.xml
+END
+SysUserRFMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/SysUserRFMapper.xml
+END
+LoginMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/LoginMapper.xml
+END
+CityMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/CityMapper.xml
+END
+RoadPositionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/mappers/RoadPositionMapper.xml
+END

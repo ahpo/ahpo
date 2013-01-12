@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysRole
+END
+sysRoleCreate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysRole/sysRoleCreate.jsp
+END
+sysRolePrivilege.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysRole/sysRolePrivilege.jsp
+END
+sysRoleList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysRole/sysRoleList.jsp
+END
+sysRoleUpdate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysRole/sysRoleUpdate.jsp
+END

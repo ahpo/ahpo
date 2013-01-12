@@ -1,0 +1,31 @@
+package com.easygo.dao.ejdb;
+
+import com.easygo.vo.ejdb.SmsWsSim;
+import com.easygo.vo.ejdb.SmsWsSimExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+@Repository
+public interface SmsWsSimMapper {
+    int countByExample(SmsWsSimExample example);
+
+    int deleteByExample(SmsWsSimExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(SmsWsSim record);
+
+    int insertSelective(SmsWsSim record);
+
+    List<SmsWsSim> selectByExample(SmsWsSimExample example);
+
+    SmsWsSim selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") SmsWsSim record, @Param("example") SmsWsSimExample example);
+
+    int updateByExample(@Param("record") SmsWsSim record, @Param("example") SmsWsSimExample example);
+
+    int updateByPrimaryKeySelective(SmsWsSim record);
+
+    int updateByPrimaryKey(SmsWsSim record);
+}

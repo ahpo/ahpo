@@ -1,0 +1,49 @@
+package com.easygo.dao.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.easygo.vo.ejdb.City;
+import com.easygo.vo.ejdb.CityExample;
+
+@Repository
+public interface CityMapper {
+	int countByExample(CityExample example);
+
+	int deleteByExample(CityExample example);
+
+	int deleteByPrimaryKey(Integer id);
+
+	int insert(City record);
+
+	int insertSelective(City record);
+
+	List<City> selectByExample(CityExample example);
+
+	/**
+	 * 获取分页信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            行偏移
+	 * @param pageSize
+	 *            分页大小
+	 * @return
+	 */
+	List<City> selectPageByExample(@Param("example") CityExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+	City selectByPrimaryKey(Integer id);
+
+	int updateByExampleSelective(@Param("record") City record,
+			@Param("example") CityExample example);
+
+	int updateByExample(@Param("record") City record,
+			@Param("example") CityExample example);
+
+	int updateByPrimaryKeySelective(City record);
+
+	int updateByPrimaryKey(City record);
+}

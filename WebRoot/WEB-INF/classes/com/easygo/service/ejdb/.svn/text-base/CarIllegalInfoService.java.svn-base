@@ -1,0 +1,36 @@
+package com.easygo.service.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.easygo.vo.ejdb.CarIllegalInfoExample;
+import com.easygo.vo.ejdb.CarIllegalInfoWithBLOBs;
+import com.pub.service.Service;
+
+public interface CarIllegalInfoService extends Service {
+
+	public int countByExample(CarIllegalInfoExample example);
+
+	/**
+	 * 根据example获取分页信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            　行偏移
+	 * @param pageSize
+	 *            　分页大小
+	 * @return
+	 */
+	public List<CarIllegalInfoWithBLOBs> selectPageByExampleWithBLOBs(
+			@Param("example") CarIllegalInfoExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+	public int insertSelective(CarIllegalInfoWithBLOBs record);
+
+	public int deleteByPrimaryKey(Integer id);
+
+	public int updateByPrimaryKey(CarIllegalInfoWithBLOBs record);
+
+	public CarIllegalInfoWithBLOBs selectByPrimaryKey(Integer id);
+}

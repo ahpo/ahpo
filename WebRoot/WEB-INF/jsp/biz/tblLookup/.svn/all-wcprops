@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/biz/tblLookup
+END
+tblLookupList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/biz/tblLookup/tblLookupList.jsp
+END
+tblLookupUpdate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/biz/tblLookup/tblLookupUpdate.jsp
+END
+tblLookupCreate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/biz/tblLookup/tblLookupCreate.jsp
+END

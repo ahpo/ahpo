@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 设置mysql驱动路径 -->
+	<classPathEntry
+		location="E:\jeework\enjoyor\enjoyor-web\other\mysql-connector-java-5.0.8-bin.jar" />
+	<!-- 此处指定生成针对MyBatis3的DAO -->
+	<context id="context1" targetRuntime="MyBatis3">
+		<!-- 去除自动生成的注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<!-- <property name="suppressDate" value="true" /> -->
+		</commentGenerator>
+		<!-- jdbc连接信息 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/ejdb" userId="root"
+			password="root" />
+		<!-- 生成vo对象 -->
+		<javaModelGenerator targetPackage="com.easygo.vo"
+			targetProject="../java" />
+		<!-- 生成用于查询的Example对象 -->
+		<sqlMapGenerator targetPackage="com.easygo.vo"
+			targetProject="../java" />
+		<!-- 生成DAO的类文件以及配置文件 -->
+		<javaClientGenerator targetPackage="com.easygo.dao"
+			targetProject="../java" type="XMLMAPPER" />
+		<!-- 想要生成的数据库表,自动化工具会根据该表的结构生成相应的vo对象 -->
+		<!-- <table catalog="" schema="" tableName="login" domainObjectName="Login"/> -->
+		<table catalog="" schema="" tableName="carillegalinfo"
+			domainObjectName="CarIllegalInfo" />
+		<table catalog="" schema="" tableName="roadinfo"
+			domainObjectName="RoadInfo" />
+		<table catalog="" schema="" tableName="roadinfolist"
+			domainObjectName="RoadInfoList" />
+		<table catalog="" schema="" tableName="roadlist"
+			domainObjectName="RoadList" />
+		<table catalog="" schema="" tableName="roadreport"
+			domainObjectName="RoadReport" />
+		<table catalog="" schema="" tableName="city"
+			domainObjectName="City" />
+		<table catalog="" schema="" tableName="softversion"
+			domainObjectName="SoftVersion" />
+		<table catalog="" schema="" tableName="login"
+			domainObjectName="Login" />
+		<table catalog="" schema="" tableName="roadposition"
+			domainObjectName="RoadPosition" />
+		<table catalog="" schema="" tableName="sys_user"
+			domainObjectName="User" />
+		<table catalog="" schema="" tableName="sys_role"
+			domainObjectName="Role" />
+		<table catalog="" schema="" tableName="sys_res"
+			domainObjectName="Resource" />
+		<table catalog="" schema="" tableName="sys_func"
+			domainObjectName="Function" />
+		<table catalog="" schema="" tableName="sys_rf"
+			domainObjectName="ResFuncRelation" />
+		<table catalog="" schema="" tableName="sys_dept"
+			domainObjectName="Department" />
+	</context>
+</generatorConfiguration>

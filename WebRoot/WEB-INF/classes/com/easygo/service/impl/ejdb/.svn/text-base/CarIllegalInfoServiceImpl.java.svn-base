@@ -1,0 +1,72 @@
+package com.easygo.service.impl.ejdb;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Service;
+
+import com.easygo.dao.ejdb.CarIllegalInfoMapper;
+import com.easygo.service.ejdb.CarIllegalInfoService;
+import com.easygo.vo.ejdb.CarIllegalInfoExample;
+import com.easygo.vo.ejdb.CarIllegalInfoWithBLOBs;
+import com.pub.service.impl.ServiceImpl;
+
+@Service("carIllegalInfoService")
+public class CarIllegalInfoServiceImpl extends ServiceImpl implements
+		CarIllegalInfoService {
+
+	@Resource
+	private CarIllegalInfoMapper carIllegalInfoMapper;
+
+	public CarIllegalInfoMapper getCarIllegalInfoMapper() {
+		return carIllegalInfoMapper;
+	}
+
+	public void setCarIllegalInfoMapper(
+			CarIllegalInfoMapper carIllegalInfoMapper) {
+		this.carIllegalInfoMapper = carIllegalInfoMapper;
+	}
+
+	public int countByExample(CarIllegalInfoExample example) {
+		// TODO Auto-generated method stub
+		logger.info("get count by example...");
+		return carIllegalInfoMapper.countByExample(example);
+	}
+
+	public List<CarIllegalInfoWithBLOBs> selectPageByExampleWithBLOBs(
+			@Param("example") CarIllegalInfoExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize) {
+		// TODO Auto-generated method stub
+		logger.info("get carIllegalInfo page info...");
+		return carIllegalInfoMapper.selectPageByExampleWithBLOBs(example,
+				offset, pageSize);
+	}
+
+	public int insertSelective(CarIllegalInfoWithBLOBs record) {
+		// TODO Auto-generated method stub
+		logger.info("insert record into carIllegalInfo..");
+		return carIllegalInfoMapper.insertSelective(record);
+	}
+
+	public int deleteByPrimaryKey(Integer id) {
+		// TODO Auto-generated method stub
+		logger.info("delete record[" + id + "] from carIllegalInfo...");
+		return carIllegalInfoMapper.deleteByPrimaryKey(id);
+	}
+
+	public int updateByPrimaryKey(CarIllegalInfoWithBLOBs record) {
+		// TODO Auto-generated method stub
+		logger.info("update carIllegalInfo by primarykey[" + record.getId()
+				+ "]...");
+		return carIllegalInfoMapper.updateByPrimaryKey(record);
+	}
+
+	public CarIllegalInfoWithBLOBs selectByPrimaryKey(Integer id) {
+		// TODO Auto-generated method stub
+		logger.info("get carIllegalInfo by primarykey[" + id + "]...");
+		return carIllegalInfoMapper.selectByPrimaryKey(id);
+	}
+
+}

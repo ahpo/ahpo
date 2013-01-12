@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service
+END
+SysLogService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service/SysLogService.java
+END
+SysRoleService.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service/SysRoleService.java
+END
+SysDepartmentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service/SysDepartmentService.java
+END
+SysFunctionService.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service/SysFunctionService.java
+END
+SysUserRFService.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service/SysUserRFService.java
+END
+SysResourceService.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/9/trunk/v-admin/src/main/java/com/sys/service/SysResourceService.java
+END
+SysRoleRFService.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service/SysRoleRFService.java
+END
+SysUserService.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/service/SysUserService.java
+END

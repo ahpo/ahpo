@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser
+END
+sysUserPrivilege.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/sysUserPrivilege.jsp
+END
+Copy of sysUserList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/Copy%20of%20sysUserList.jsp
+END
+sysUserList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/sysUserList.jsp
+END
+sysResDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/11/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/sysResDetail.jsp
+END
+sysUserUpdatePwd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/sysUserUpdatePwd.jsp
+END
+Copy of sysResQuery.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/Copy%20of%20sysResQuery.jsp
+END
+sysResQuery.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/sysResQuery.jsp
+END
+sysUserUpdate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/sysUserUpdate.jsp
+END
+sysUserCreate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/jsp/sys/sysUser/sysUserCreate.jsp
+END

@@ -1,0 +1,50 @@
+package com.easygo.service.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.easygo.vo.ejdb.City;
+import com.easygo.vo.ejdb.CityExample;
+import com.pub.service.Service;
+
+public interface CityService extends Service {
+
+	public int countByExample(CityExample example);
+
+	/**
+	 * 根据example获取分页信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            　行偏移
+	 * @param pageSize
+	 *            　分页大小
+	 * @return
+	 */
+	public List<City> selectPageByExample(
+			@Param("example") CityExample example, @Param("offset") int offset,
+			@Param("pageSize") int pageSize);
+
+	public List<City> selectByExample(CityExample example);
+
+	public City selectByPrimaryKey(Integer id);
+
+	public int deleteByPrimaryKey(Integer id);
+
+	public int updateByPrimaryKey(City record);
+
+	public int insertSelective(City record);
+
+	/**
+	 * 相似性记录检查
+	 * 
+	 * @param example
+	 * @param id
+	 *            city的id
+	 * @param flag
+	 *            表示符号 0:修改; 1:插入
+	 * @return true:不存在相似的记录; false:存在相似记录
+	 */
+	public boolean checkSimilarity(CityExample example, Integer id, int flag);
+}

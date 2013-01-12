@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config-definition>
+	<sys>
+		<company>杭州智谷信息技术有限公司</company>
+		<address>浙江省杭州市XX路XX号</address>
+		<tel>0571-87830810</tel>
+		<fax>0571-87816810</fax>
+		<system>后台管理系统</system>
+		<version>V1.0.0</version>
+		<logo>images/vnie.png</logo>
+	</sys>
+	<test>
+		<c>测试纸</c>
+	</test>
+</config-definition>

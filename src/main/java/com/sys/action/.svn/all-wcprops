@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/action
+END
+LoginAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vnie/!svn/ver/4/trunk/v-admin/src/main/java/com/sys/action/LoginAction.java
+END
+SysDeptAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/action/SysDeptAction.java
+END
+SysUserAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/9/trunk/v-admin/src/main/java/com/sys/action/SysUserAction.java
+END
+SysLogAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/action/SysLogAction.java
+END
+SysRoleAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/sys/action/SysRoleAction.java
+END

@@ -1,0 +1,376 @@
+package com.easygo.action.ejdb;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.easygo.service.ejdb.CityAreaService;
+import com.easygo.service.ejdb.CityService;
+import com.easygo.service.ejdb.RoadInfoService;
+import com.easygo.vo.ejdb.CityArea;
+import com.easygo.vo.ejdb.RoadInfo;
+import com.enjoyor.util.logger.Logger;
+import com.enjoyor.util.logger.LoggerFactory;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.pub.util.constant.Constants;
+import com.pub.util.interceptor.SysOperLogAnnotation;
+import com.pub.webapp.ui.pagination.Page;
+import com.pub.webapp.ui.pagination.PageHandle;
+import com.pub.webapp.ui.util.OperateResult;
+import com.pub.webapp.ui.util.WebConstants;
+import com.sys.service.SysRoleService;
+import com.sys.service.SysUserService;
+import com.sys.vo.SysFunction;
+
+@Controller
+@Scope("prototype")
+public class RoadInfoAction extends ActionSupport {
+
+	private static final long serialVersionUID = -818777432035810153L;
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	private Integer id;
+	private String roadname;
+	private Integer roadtype;
+	private String roadarea;
+	private Integer area;
+	private Date updatadate;
+	private String person;
+	private String back;
+	private List<SysFunction> funcList;
+	private List<CityArea> areaList;
+	private RoadInfo roadInfo;
+
+	private Integer ids[];
+	private List<?> resultList;
+	private OperateResult operateResult = new OperateResult();
+
+	private PageHandle pageHandler;
+	private Page page;
+	private String pageMethod = "";
+	private String currentPage;
+
+	@Resource
+	private RoadInfoService roadInfoService;
+	@Resource
+	private CityService cityService;
+	@Resource
+	private CityAreaService cityAreaService;
+	@Resource
+	private SysUserService sysUserService;
+	@Resource
+	private SysRoleService sysRoleService;
+
+	public void setSysUserService(SysUserService sysUserService) {
+		this.sysUserService = sysUserService;
+	}
+
+	public void setSysRoleService(SysRoleService sysRoleService) {
+		this.sysRoleService = sysRoleService;
+	}
+
+	public void setRoadInfoService(RoadInfoService roadInfoService) {
+		this.roadInfoService = roadInfoService;
+	}
+
+	public void setCityService(CityService cityService) {
+		this.cityService = cityService;
+	}
+
+	public void setCityAreaService(CityAreaService cityAreaService) {
+		this.cityAreaService = cityAreaService;
+	}
+
+	public String roadInfoQuery() {
+		String resCode = Constants.QUERY_ROADINFO_QUERY;
+		Map<String, Object> session = ActionContext.getContext().getSession();
+
+		String resType = (String) session.get(Constants.RES_TYPE);
+		Integer urid;
+		if (Constants.RES_TYPE_USER.equals(resType)) {
+			urid = (Integer) session.get(Constants.UID);
+			funcList = sysUserService.selectFuncByUidAndResCode(urid, resCode);
+		} else {
+			urid = (Integer) session.get(Constants.RID);
+			funcList = sysRoleService.selectFuncByRidAndResCode(urid, resCode);
+		}
+		if (funcList == null || funcList.isEmpty()) {
+			return LOGIN;
+		}
+		int total = roadInfoService.countByExample(null);
+		pageHandler = new PageHandle();
+		page = pageHandler.getPage(null, currentPage, pageMethod, total);
+		resultList = roadInfoService.selectPageByExample(null,
+				page.getStartRow(), page.getPageSize());
+		return SUCCESS;
+	}
+
+	public String roadInfoToUpdate() {
+		roadInfo = roadInfoService.selectByPrimaryKey(id);
+		this.roadname = roadInfo.getRoadname();
+		this.roadtype = roadInfo.getRoadtype();
+		this.roadarea = roadInfo.getRoadarea();
+		this.area = roadInfo.getArea();
+		this.updatadate = roadInfo.getUpdatadate();
+		this.back = roadInfo.getBack();
+		resultList = cityService.selectByExample(null);
+		//目前只有杭州的行政分区，所以未加限制条件，后期cityarea可能会有改变
+		areaList = cityAreaService.selectByExample(null);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "修改路口配置信息")
+	public String roadInfoUpdate() {
+		Map<String, String> parms = new HashMap<String, String>();
+		parms.put("currentPage", currentPage);
+		operateResult.setOperation(WebConstants.ROADINFO_UPDATE);
+		operateResult.setUrl("roadInfoQuery.action");
+		operateResult.setParms(parms);
+		roadInfo = roadInfoService.selectByPrimaryKey(id);
+		roadInfo.setRoadname(roadname.trim());
+		roadInfo.setRoadtype(roadtype);
+		roadInfo.setRoadarea(roadarea);
+		roadInfo.setArea(area);
+		roadInfo.setUpdatadate(new Date());
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		roadInfo.setBack(back);
+
+		/*RoadInfoExample example = new RoadInfoExample();
+		// 指定城市，指定路口名的数据记�?
+		example.createCriteria().andRoadnameEqualTo(roadname.trim())
+				.andRoadareaEqualTo(roadarea);
+		if (!roadInfoService.checkSimilarity(example, id, 0)) { // 相似性数据检�?
+			logger.info("cannot update, for the inputed roadName is already exist");
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_ROADINFO_UPDATE);
+			return ERROR;
+		}*/
+		int rtn = roadInfoService.updateByPrimaryKey(roadInfo); // 执行更新
+		if (rtn != 1) {
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_ROADINFO_UPDATE);
+			return ERROR;
+		}
+		logger.info("roadInfo[" + id + "] is updated successfully");
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String roadInfoToCreate() {
+		resultList = cityService.selectByExample(null);
+		//目前只有杭州的行政分区，所以未加限制条件，后期cityarea可能会有改变
+		areaList = cityAreaService.selectByExample(null);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "创建路口配置信息")
+	public String roadInfoCreate() {
+		operateResult.setOperation(WebConstants.ROADINFO_CREATE);
+		operateResult.setUrl("roadInfoQuery.action");
+		RoadInfo record = new RoadInfo();
+		record.setRoadname(roadname.trim());
+		if (null == roadtype || "".equals(roadtype)) {
+			roadtype = 0;
+		}
+		record.setRoadtype(roadtype);
+		record.setRoadarea(roadarea);
+		record.setArea(area);
+		record.setUpdatadate(new Date());
+		person = (String) ActionContext.getContext().getSession()
+				.get(Constants.USER_NAME);
+		record.setPerson(person);
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		record.setBack(back);
+
+		/*RoadInfoExample example = new RoadInfoExample();
+		example.createCriteria().andRoadnameEqualTo(roadname)
+				.andRoadareaEqualTo(roadarea);
+		if (!roadInfoService.checkSimilarity(example, id, 1)) { // 验证数据库里是否有相似�?数据
+			logger.info("can't create, for the inputed roadName is already exist");
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_ROADINFO_CREATE);
+			return ERROR;
+		}*/
+		int rtn = roadInfoService.insertSelective(record); // 执行插入
+		if (rtn != 1) {
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_ROADINFO_CREATE);
+			return ERROR;
+		}
+
+		logger.info("roadInfo is created successfully");
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "删除路口配置信息")
+	public String roadInfoDelete() {
+		operateResult.setOperation(WebConstants.ROADINFO_DELETE);
+		operateResult.setUrl("roadInfoQuery.action");
+		for (int i = 0; i < ids.length; i++) {
+			roadInfoService.deleteByPrimaryKey(ids[i]);
+			logger.info("roadInfo[" + ids[i] + "] is deleted");
+		}
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getRoadname() {
+		return roadname;
+	}
+
+	public void setRoadname(String roadname) {
+		this.roadname = roadname;
+	}
+
+	public Integer getRoadtype() {
+		return roadtype;
+	}
+
+	public void setRoadtype(Integer roadtype) {
+		this.roadtype = roadtype;
+	}
+
+	public Date getUpdatadate() {
+		return updatadate;
+	}
+
+	public void setUpdatadate(Date updatadate) {
+		this.updatadate = updatadate;
+	}
+
+	public String getBack() {
+		return back;
+	}
+
+	public void setBack(String back) {
+		this.back = back;
+	}
+
+	public Integer[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Integer[] ids) {
+		this.ids = ids;
+	}
+
+	public List<?> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(List<?> resultList) {
+		this.resultList = resultList;
+	}
+
+	public OperateResult getOperateResult() {
+		return operateResult;
+	}
+
+	public void setOperateResult(OperateResult operateResult) {
+		this.operateResult = operateResult;
+	}
+
+	public PageHandle getPageHandler() {
+		return pageHandler;
+	}
+
+	public void setPageHandler(PageHandle pageHandler) {
+		this.pageHandler = pageHandler;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getPageMethod() {
+		return pageMethod;
+	}
+
+	public void setPageMethod(String pageMethod) {
+		this.pageMethod = pageMethod;
+	}
+
+	public String getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(String currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public String getRoadarea() {
+		return roadarea;
+	}
+
+	public void setRoadarea(String roadarea) {
+		this.roadarea = roadarea;
+	}
+
+	public String getPerson() {
+		return person;
+	}
+
+	public void setPerson(String person) {
+		this.person = person;
+	}
+
+	public List<SysFunction> getFuncList() {
+		return funcList;
+	}
+
+	public void setFuncList(List<SysFunction> funcList) {
+		this.funcList = funcList;
+	}
+
+	public Integer getArea() {
+		return area;
+	}
+
+	public void setArea(Integer area) {
+		this.area = area;
+	}
+
+	public List<CityArea> getAreaList() {
+		return areaList;
+	}
+
+	public void setAreaList(List<CityArea> areaList) {
+		this.areaList = areaList;
+	}
+
+	public RoadInfo getRoadInfo() {
+		return roadInfo;
+	}
+
+	public void setRoadInfo(RoadInfo roadInfo) {
+		this.roadInfo = roadInfo;
+	}
+}

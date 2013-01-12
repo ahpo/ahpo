@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF
+END
+spring.tld
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/spring.tld
+END
+spring-form.tld
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/spring-form.tld
+END
+enjoyor.tld
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/enjoyor.tld
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/vnie/!svn/ver/3/trunk/v-admin/WebRoot/WEB-INF/web.xml
+END

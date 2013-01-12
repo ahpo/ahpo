@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/vnie/!svn/ver/3/trunk/v-admin/work/org/apache/jsp/admin
+END
+menu_jsp.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/vnie/!svn/ver/3/trunk/v-admin/work/org/apache/jsp/admin/menu_jsp.java
+END
+invalid_jsp.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vnie/!svn/ver/3/trunk/v-admin/work/org/apache/jsp/admin/invalid_jsp.java
+END
+monitor_jsp.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/12/trunk/v-admin/work/org/apache/jsp/admin/monitor_jsp.java
+END
+menu_jsp.class
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vnie/!svn/ver/3/trunk/v-admin/work/org/apache/jsp/admin/menu_jsp.class
+END
+error_jsp.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vnie/!svn/ver/3/trunk/v-admin/work/org/apache/jsp/admin/error_jsp.java
+END
+ajaxDone_jsp.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/12/trunk/v-admin/work/org/apache/jsp/admin/ajaxDone_jsp.java
+END
+invalid_jsp.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/work/org/apache/jsp/admin/invalid_jsp.class
+END
+monitor_jsp.class
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vnie/!svn/ver/12/trunk/v-admin/work/org/apache/jsp/admin/monitor_jsp.class
+END
+error_jsp.class
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vnie/!svn/ver/3/trunk/v-admin/work/org/apache/jsp/admin/error_jsp.class
+END
+ajaxDone_jsp.class
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vnie/!svn/ver/12/trunk/v-admin/work/org/apache/jsp/admin/ajaxDone_jsp.class
+END

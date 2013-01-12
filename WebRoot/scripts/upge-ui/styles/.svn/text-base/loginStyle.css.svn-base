@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+#login-center{
+		width:805px;
+		height:480px;
+		background:url(../images/perfect_tech.jpg) no-repeat;
+	}
+	
+	#login-center-top{
+		height:250px;	
+	}
+	
+	#login-center-message{
+		height:30px; 
+		font-weight: bold;
+		color:#15428B; 
+		text-align:left;
+		width:300px;
+	}
+	
+	#login-center-content{
+		height:28px; 
+		font-weight: bold;
+		color:#15428B; 
+		text-align:left;
+		width:300px;
+	}

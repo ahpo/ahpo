@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb
+END
+CityServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/CityServiceImpl.class
+END
+LoginServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/LoginServiceImpl.class
+END
+UserRoadStatusServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/UserRoadStatusServiceImpl.class
+END
+RoadPositionServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/RoadPositionServiceImpl.class
+END
+CarIllegalInfoServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/CarIllegalInfoServiceImpl.class
+END
+TblLookupServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/TblLookupServiceImpl.class
+END
+RoadInfoListServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/RoadInfoListServiceImpl.class
+END
+CityAreaServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/CityAreaServiceImpl.class
+END
+HttpRoadListServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/HttpRoadListServiceImpl.class
+END
+RoadInfoServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/RoadInfoServiceImpl.class
+END
+RoadListServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/RoadListServiceImpl.class
+END
+RoadReportServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/RoadReportServiceImpl.class
+END
+SoftVersionServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/SoftVersionServiceImpl.class
+END
+TblDictionaryServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/ejdb/TblDictionaryServiceImpl.class
+END

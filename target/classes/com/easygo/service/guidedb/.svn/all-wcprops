@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb
+END
+RBRecordLInfoService.class
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/RBRecordLInfoService.class
+END
+RBRecordInfoService.class
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/RBRecordInfoService.class
+END
+GuideRoadInfoService.class
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/GuideRoadInfoService.class
+END
+RBInfoService.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/RBInfoService.class
+END
+RBRecordLHInfoService.class
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/RBRecordLHInfoService.class
+END
+RGenLInfoService.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/RGenLInfoService.class
+END
+GuideLoginService.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/GuideLoginService.class
+END
+RGenInfoService.class
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/guidedb/RGenInfoService.class
+END

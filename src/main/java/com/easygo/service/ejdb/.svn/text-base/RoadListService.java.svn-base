@@ -1,0 +1,36 @@
+package com.easygo.service.ejdb;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.easygo.vo.ejdb.RoadList;
+import com.easygo.vo.ejdb.RoadListExample;
+import com.pub.service.Service;
+
+public interface RoadListService extends Service {
+
+	public int countByExample(RoadListExample example);
+
+	public int deleteByPrimaryKey(Integer id);
+
+	public int insertSelective(RoadList record);
+
+	/**
+	 * 根据example获取分页信息
+	 * 
+	 * @param example
+	 * @param offset
+	 *            　行偏移
+	 * @param pageSize
+	 *            　分页大小
+	 * @return
+	 */
+	public List<RoadList> selectPageByExample(
+			@Param("example") RoadListExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+	public RoadList selectByPrimaryKey(Integer id);
+
+	public int updateByPrimaryKey(RoadList record);
+}

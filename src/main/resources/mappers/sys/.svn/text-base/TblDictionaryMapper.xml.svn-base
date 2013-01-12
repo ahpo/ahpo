@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easygo.dao.ejdb.TblDictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.easygo.vo.ejdb.TblDictionary" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="lookupkey" property="lookupkey" jdbcType="VARCHAR" />
+    <result column="lookupvalue" property="lookupvalue" jdbcType="VARCHAR" />
+    <result column="describeinfo" property="describeinfo" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="backup" property="backup" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, lookupkey, lookupvalue, describeinfo, updatetime, backup
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easygo.vo.ejdb.TblDictionaryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_dictionary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectPageByExample" parameterType="map" resultMap="BaseResultMap">
+    select
+    <if test="example != null and example.distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_dictionary
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example != null and example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+     limit #{offset}, #{pageSize}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.easygo.vo.ejdb.TblDictionaryExample" >
+    delete from tbl_dictionary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+    insert into tbl_dictionary (id, lookupkey, lookupvalue, 
+      describeinfo, updatetime, backup
+      )
+    values (#{id,jdbcType=INTEGER}, #{lookupkey,jdbcType=VARCHAR}, #{lookupvalue,jdbcType=VARCHAR}, 
+      #{describeinfo,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{backup,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+    insert into tbl_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lookupkey != null" >
+        lookupkey,
+      </if>
+      <if test="lookupvalue != null" >
+        lookupvalue,
+      </if>
+      <if test="describeinfo != null" >
+        describeinfo,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="backup != null" >
+        backup,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lookupkey != null" >
+        #{lookupkey,jdbcType=VARCHAR},
+      </if>
+      <if test="lookupvalue != null" >
+        #{lookupvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="describeinfo != null" >
+        #{describeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backup != null" >
+        #{backup,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.easygo.vo.ejdb.TblDictionaryExample" resultType="java.lang.Integer" >
+    select count(*) from tbl_dictionary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tbl_dictionary
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.lookupkey != null" >
+        lookupkey = #{record.lookupkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lookupvalue != null" >
+        lookupvalue = #{record.lookupvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describeinfo != null" >
+        describeinfo = #{record.describeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.backup != null" >
+        backup = #{record.backup,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tbl_dictionary
+    set id = #{record.id,jdbcType=INTEGER},
+      lookupkey = #{record.lookupkey,jdbcType=VARCHAR},
+      lookupvalue = #{record.lookupvalue,jdbcType=VARCHAR},
+      describeinfo = #{record.describeinfo,jdbcType=VARCHAR},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      backup = #{record.backup,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+    update tbl_dictionary
+    <set >
+      <if test="lookupkey != null" >
+        lookupkey = #{lookupkey,jdbcType=VARCHAR},
+      </if>
+      <if test="lookupvalue != null" >
+        lookupvalue = #{lookupvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="describeinfo != null" >
+        describeinfo = #{describeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backup != null" >
+        backup = #{backup,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+    update tbl_dictionary
+    set lookupkey = #{lookupkey,jdbcType=VARCHAR},
+      lookupvalue = #{lookupvalue,jdbcType=VARCHAR},
+      describeinfo = #{describeinfo,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      backup = #{backup,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

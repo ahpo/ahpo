@@ -1,0 +1,141 @@
+/**   
+ * @Title: CityAreaServiceImpl.java 
+ * @Package com.easygo.service.impl.ejdb 
+ * @author zgr  
+ * @date 2012-9-11 上午11:11:29 
+ * @version V1.0   
+ */
+package com.easygo.service.impl.ejdb;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.easygo.dao.ejdb.CityAreaMapper;
+import com.easygo.service.ejdb.CityAreaService;
+import com.easygo.vo.ejdb.CityArea;
+import com.easygo.vo.ejdb.CityAreaExample;
+import com.pub.service.impl.ServiceImpl;
+import com.pub.util.constant.Constants;
+
+/**
+ * @ClassName: CityAreaServiceImpl
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @author zgr
+ * @date 2012-9-11 上午11:11:29
+ * @version 1.0
+ */
+@Service("cityAreaService")
+public class CityAreaServiceImpl extends ServiceImpl implements CityAreaService {
+	@Resource
+	private CityAreaMapper cityAreaMapper;
+
+	public void setCityAreaMapper(CityAreaMapper cityAreaMapper) {
+		this.cityAreaMapper = cityAreaMapper;
+	}
+
+	/**
+	 * @param example
+	 * @return
+	 * @see com.easygo.service.ejdb.CityAreaService#selectByExample(com.easygo.vo.ejdb.CityAreaExample)
+	 */
+	@Override
+	public List<CityArea> selectByExample(CityAreaExample example) {
+		logger.info("select from cityarea by example...");
+		return cityAreaMapper.selectByExample(example);
+	}
+
+	/**
+	 * @param example
+	 * @param offset
+	 * @param pageSize
+	 * @return 
+	 * @see com.easygo.service.ejdb.CityAreaService#selectPageByExample(com.easygo.vo.ejdb.CityAreaExample, int, int)
+	 */
+	@Override
+	public List<CityArea> selectPageByExample(CityAreaExample example,
+			int offset, int pageSize) {
+		logger.info("select page info from cityarea by example...");
+		return cityAreaMapper.selectPageByExample(example, offset, pageSize);
+	}
+
+	/**
+	 * @param example
+	 * @return 
+	 * @see com.easygo.service.ejdb.CityAreaService#countByExample(com.easygo.vo.ejdb.CityAreaExample)
+	 */
+	@Override
+	public int countByExample(CityAreaExample example) {
+		logger.info("select count from cityarea by example...");
+		return cityAreaMapper.countByExample(example);
+	}
+
+	/**
+	 * @param id
+	 * @return 
+	 * @see com.easygo.service.ejdb.CityAreaService#deleteByPrimaryKey(java.lang.Integer)
+	 */
+	@Override
+	public int deleteByPrimaryKey(Integer id) {
+		logger.info("delete from cityarea by primarykey["+id+"]...");
+		return cityAreaMapper.deleteByPrimaryKey(id);
+	}
+
+	/**
+	 * @param record
+	 * @return 
+	 * @see com.easygo.service.ejdb.CityAreaService#insertSelective(com.easygo.vo.ejdb.CityArea)
+	 */
+	@Override
+	public int insertSelective(CityArea record) {
+		logger.info("insert record["+record.getArea()+"] into cityarea...");
+		return cityAreaMapper.insertSelective(record);
+	}
+
+	/**
+	 * @param id
+	 * @return 
+	 * @see com.easygo.service.ejdb.CityAreaService#selectByPrimaryKey(java.lang.Integer)
+	 */
+	@Override
+	public CityArea selectByPrimaryKey(Integer id) {
+		logger.info("select record from cityarea by primarykey["+id+"]...");
+		return cityAreaMapper.selectByPrimaryKey(id);
+	}
+
+	/**
+	 * @param record
+	 * @return 
+	 * @see com.easygo.service.ejdb.CityAreaService#updateByPrimaryKey(com.easygo.vo.ejdb.CityArea)
+	 */
+	@Override
+	public int updateByPrimaryKey(CityArea record) {
+		logger.info("update record into cityarea by primarykey["+record.getId()+"]...");
+		return cityAreaMapper.updateByPrimaryKey(record);
+	}
+
+	/**
+	 * @param example
+	 * @param id
+	 * @param flag
+	 * @return 
+	 * @see com.easygo.service.ejdb.CityAreaService#checkSimilarity(com.easygo.vo.ejdb.CityAreaExample, java.lang.Integer, int)
+	 */
+	@Override
+	public boolean checkSimilarity(CityAreaExample example, Integer id, int flag) {
+		List<CityArea> list = cityAreaMapper.selectByExample(example);
+		if (list == null || list.size() < 1) {
+			return true;
+		}
+
+		if (flag == Constants.CHECKSIMILARITY_MODE_UPDATE) { // update
+			if (list.size() == 1 && list.get(0).getId().equals(id)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+}

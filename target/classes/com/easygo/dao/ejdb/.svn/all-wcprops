@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb
+END
+TblDictionaryMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/TblDictionaryMapper.class
+END
+LoginMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/LoginMapper.class
+END
+CityMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/CityMapper.class
+END
+RoadPositionMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/RoadPositionMapper.class
+END
+CarIllegalInfoMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/CarIllegalInfoMapper.class
+END
+TblLookupMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/TblLookupMapper.class
+END
+SmsWsLogMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/SmsWsLogMapper.class
+END
+SoftVersionMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/SoftVersionMapper.class
+END
+SmsWsTelMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/SmsWsTelMapper.class
+END
+RoadReportMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/RoadReportMapper.class
+END
+RoadListMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/RoadListMapper.class
+END
+HttpRoadListMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/HttpRoadListMapper.class
+END
+TblExcMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/TblExcMapper.class
+END
+SmsWsSimMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/SmsWsSimMapper.class
+END
+UserRoadStatusMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/UserRoadStatusMapper.class
+END
+RoadInfoListMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/RoadInfoListMapper.class
+END
+RoadInfoMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/RoadInfoMapper.class
+END
+CityAreaMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/dao/ejdb/CityAreaMapper.class
+END

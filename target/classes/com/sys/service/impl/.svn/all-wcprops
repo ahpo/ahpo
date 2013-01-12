@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl
+END
+SysRoleRFServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysRoleRFServiceImpl.class
+END
+SysUserServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysUserServiceImpl.class
+END
+SysLogServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysLogServiceImpl.class
+END
+SysRoleServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysRoleServiceImpl.class
+END
+SysDepartmentServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysDepartmentServiceImpl.class
+END
+SysFunctionServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysFunctionServiceImpl.class
+END
+SysUserRFServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysUserRFServiceImpl.class
+END
+SysResourceServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/sys/service/impl/SysResourceServiceImpl.class
+END

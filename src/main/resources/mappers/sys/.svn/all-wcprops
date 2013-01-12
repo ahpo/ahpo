@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys
+END
+TblLookupMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/TblLookupMapper.xml
+END
+SysUserMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysUserMapper.xml
+END
+SysLogMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysLogMapper.xml
+END
+SysRoleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysRoleMapper.xml
+END
+TblExcMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/TblExcMapper.xml
+END
+SysDepartmentMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysDepartmentMapper.xml
+END
+SysFunctionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysFunctionMapper.xml
+END
+SysUserRFMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysUserRFMapper.xml
+END
+SysResourceMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysResourceMapper.xml
+END
+TblDictionaryMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/TblDictionaryMapper.xml
+END
+SysRoleRFMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/resources/mappers/sys/SysRoleRFMapper.xml
+END

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.SysRoleMapper">
+  <resultMap id="BaseResultMap" type="com.sys.vo.SysRole">
+    <id column="RID" jdbcType="INTEGER" property="rid" />
+    <result column="RNAME" jdbcType="VARCHAR" property="rname" />
+    <result column="ENABLE" jdbcType="CHAR" property="enable" />
+    <result column="PARENT_ID" jdbcType="INTEGER" property="parentId" />
+    <result column="IMG_URL" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="CREATED" jdbcType="TIMESTAMP" property="created" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+  </resultMap>
+  <resultMap id="ResFuncResultMap" type="com.sys.vo.SysResFuncRelation">
+  	<id column="RFID" property="rfid" jdbcType="INTEGER"/>
+  	<association column="RESID" property="sysResource" javaType="com.sys.vo.SysResource">
+  		<id column="RESID" property="resid" jdbcType="INTEGER" />
+	    <result column="RES_NAME" property="resName" jdbcType="VARCHAR" />
+	    <result column="RES_URL" property="url" jdbcType="VARCHAR" />
+	    <result column="RES_MEMO" property="memo" jdbcType="VARCHAR" />
+	    <result column="RES_PRIO" property="prio" jdbcType="INTEGER" />
+	    <result column="RES_RTYPE" property="rtype" jdbcType="CHAR" />
+	    <result column="RES_IS_PARENT" property="isParent" jdbcType="CHAR" />
+	    <result column="RES_PARENT_ID" property="parentId" jdbcType="INTEGER" />
+	    <result column="RES_LEVEL" property="resLevel" jdbcType="INTEGER" />
+	    <result column="RES_CODE" property="resCode" jdbcType="VARCHAR" />
+	    <result column="RES_IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+  	</association>
+  	<association column="FUNCID" property="sysFunction" javaType="com.sys.vo.SysFunction">
+	  	<id column="FUNCID" property="funcid" jdbcType="INTEGER" />
+	    <result column="FUNC_NAME" property="funcName" jdbcType="VARCHAR" />
+	    <result column="FUNC_MEMO" property="memo" jdbcType="VARCHAR" />
+	    <result column="FUNC_IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+  	</association>
+  </resultMap>
+  <resultMap id="FuncResultMap" type="com.sys.vo.SysFunction">
+  	<id column="FUNCID" property="funcid" jdbcType="INTEGER" />
+	    <result column="FUNC_NAME" property="funcName" jdbcType="VARCHAR" />
+	    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+	    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    RID, RNAME, ENABLE, PARENT_ID, IMG_URL, CREATED, CREATOR
+  </sql>
+  <select id="selectByExample" parameterType="com.sys.vo.SysRoleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectPageByExample" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="example != null and example.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_role
+    <if test="example != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example != null and example.orderByClause != null" >
+      order by ${example.orderByClause}
+    </if>
+    limit #{offset,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="selectResFuncByRoleId" resultMap="ResFuncResultMap" parameterType="java.lang.Integer">
+  	select rf.rfid, rf.resid, rf.funcid, res.resid, res.res_name, res.url res_url, res.prio res_prio, res.rtype res_rtype, 
+  	res.is_parent res_is_parent, res.parent_id res_parent_id, res.res_level, res.res_code, res.img_url res_img_url,
+  	func.funcid, func.func_name, func.img_url func_img_url,func.memo FUNC_MEMO
+  	from sys_rf rf left join sys_res res on rf.resid = res.resid left join sys_func func on rf.funcid = func.funcid 
+  	where rf.rfid in (select rfid from sys_role_rf where rid = #{rid,jdbcType=INTEGER})
+  </select>
+  <select id="selectFuncByRidAndResCode" resultMap="FuncResultMap">
+  	select f.* from sys_rf rf join sys_res r on rf.resid = r.resid join sys_func f on rf.funcid = f.funcid
+	 where r.res_code = #{resCode,jdbcType=VARCHAR} and rf.rfid in (select rfid from sys_role_rf where rid = #{rid,jdbcType=INTEGER})
+  </select>
+  <select id="selectRRFIDByRidAndResCodeAndFunc" resultType="java.lang.Integer">
+  	select rrf.rrfid from sys_role_rf rrf 
+ 	where rrf.rid = #{rid,jdbcType=INTEGER} and rrf.rfid = (select rf.rfid 
+ 									  from sys_rf rf join sys_res r on rf.resid = r.resid join sys_func f on rf.funcid = f.funcid 
+ 									  where r.res_code = #{resCode,jdbcType=VARCHAR} and f.memo = #{funcMemo,jdbcType=VARCHAR})
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where RID = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_role
+    where RID = #{rid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sys.vo.SysRoleExample">
+    delete from sys_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sys.vo.SysRole">
+    insert into sys_role (RID, RNAME, ENABLE, 
+      PARENT_ID, IMG_URL, CREATED, 
+      CREATOR)
+    values (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{enable,jdbcType=CHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{imgUrl,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sys.vo.SysRole">
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        RID,
+      </if>
+      <if test="rname != null">
+        RNAME,
+      </if>
+      <if test="enable != null">
+        ENABLE,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="imgUrl != null">
+        IMG_URL,
+      </if>
+      <if test="created != null">
+        CREATED,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="rname != null">
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sys.vo.SysRoleExample" resultType="java.lang.Integer">
+    select count(*) from sys_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_role
+    <set>
+      <if test="record.rid != null">
+        RID = #{record.rid,jdbcType=INTEGER},
+      </if>
+      <if test="record.rname != null">
+        RNAME = #{record.rname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enable != null">
+        ENABLE = #{record.enable,jdbcType=CHAR},
+      </if>
+      <if test="record.parentId != null">
+        PARENT_ID = #{record.parentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgUrl != null">
+        IMG_URL = #{record.imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null">
+        CREATED = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creator != null">
+        CREATOR = #{record.creator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_role
+    set RID = #{record.rid,jdbcType=INTEGER},
+      RNAME = #{record.rname,jdbcType=VARCHAR},
+      ENABLE = #{record.enable,jdbcType=CHAR},
+      PARENT_ID = #{record.parentId,jdbcType=INTEGER},
+      IMG_URL = #{record.imgUrl,jdbcType=VARCHAR},
+      CREATED = #{record.created,jdbcType=TIMESTAMP},
+      CREATOR = #{record.creator,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sys.vo.SysRole">
+    update sys_role
+    <set>
+      <if test="rname != null">
+        RNAME = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        ENABLE = #{enable,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null">
+        IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        CREATED = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RID = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sys.vo.SysRole">
+    update sys_role
+    set RNAME = #{rname,jdbcType=VARCHAR},
+      ENABLE = #{enable,jdbcType=CHAR},
+      PARENT_ID = #{parentId,jdbcType=INTEGER},
+      IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      CREATOR = #{creator,jdbcType=VARCHAR}
+    where RID = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>

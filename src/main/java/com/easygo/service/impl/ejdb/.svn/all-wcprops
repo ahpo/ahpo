@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb
+END
+RoadInfoListServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/RoadInfoListServiceImpl.java
+END
+CityAreaServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/CityAreaServiceImpl.java
+END
+HttpRoadListServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/HttpRoadListServiceImpl.java
+END
+RoadInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/RoadInfoServiceImpl.java
+END
+RoadListServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/RoadListServiceImpl.java
+END
+RoadReportServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/RoadReportServiceImpl.java
+END
+SoftVersionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/SoftVersionServiceImpl.java
+END
+TblDictionaryServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/TblDictionaryServiceImpl.java
+END
+CityServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/CityServiceImpl.java
+END
+LoginServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/LoginServiceImpl.java
+END
+UserRoadStatusServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/UserRoadStatusServiceImpl.java
+END
+RoadPositionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/RoadPositionServiceImpl.java
+END
+CarIllegalInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/CarIllegalInfoServiceImpl.java
+END
+TblLookupServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/vnie/!svn/ver/3/trunk/v-admin/src/main/java/com/easygo/service/impl/ejdb/TblLookupServiceImpl.java
+END

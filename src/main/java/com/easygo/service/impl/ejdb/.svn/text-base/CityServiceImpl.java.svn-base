@@ -1,0 +1,90 @@
+package com.easygo.service.impl.ejdb;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.easygo.dao.ejdb.CityMapper;
+import com.easygo.service.ejdb.CityService;
+import com.easygo.vo.ejdb.City;
+import com.easygo.vo.ejdb.CityExample;
+import com.pub.service.impl.ServiceImpl;
+import com.pub.util.constant.Constants;
+
+@Service("cityService")
+public class CityServiceImpl extends ServiceImpl implements CityService {
+
+	@Resource
+	private CityMapper cityMapper;
+
+	public CityMapper getCityMapper() {
+		return cityMapper;
+	}
+
+	public void setCityMapper(CityMapper cityMapper) {
+		this.cityMapper = cityMapper;
+	}
+
+	public int countByExample(CityExample example) {
+		logger.info("get count from city by example...");
+		return cityMapper.countByExample(example);
+	}
+
+	public List<City> selectPageByExample(CityExample example, int offset,
+			int pageSize) {
+		logger.info("get page info from city by example...");
+		return cityMapper.selectPageByExample(example, offset, pageSize);
+	}
+
+	public City selectByPrimaryKey(Integer id) {
+		logger.info("get city by primarykey[" + id + "]...");
+		return cityMapper.selectByPrimaryKey(id);
+	}
+
+	public int deleteByPrimaryKey(Integer id) {
+		logger.info("delete record from city by primarykey[" + id + "]...");
+		return cityMapper.deleteByPrimaryKey(id);
+	}
+
+	public int updateByPrimaryKey(City record) {
+		logger.info("update city by primarykey[" + record.getId() + "]...");
+		return cityMapper.updateByPrimaryKey(record);
+	}
+
+	public int insertSelective(City record) {
+		logger.info("insert record into city...");
+		return cityMapper.insertSelective(record);
+	}
+
+	/**
+	 * 相似性记录检�?
+	 * 
+	 * @param example
+	 * @param id
+	 *            city的id
+	 * @param flag
+	 *            表示符号 0:修改; 1:插入
+	 * @return true:不存在相似的记录; false:存在相似记录
+	 */
+	public boolean checkSimilarity(CityExample example, Integer id, int flag) {
+		List<City> list = cityMapper.selectByExample(example);
+		if (list == null || list.size() < 1) {
+			return true;
+		}
+
+		if (flag == Constants.CHECKSIMILARITY_MODE_UPDATE) { // update
+			if (list.size() == 1 && list.get(0).getId().equals(id)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public List<City> selectByExample(CityExample example) {
+		logger.info("get cities by example...");
+		return cityMapper.selectByExample(example);
+	}
+}

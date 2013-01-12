@@ -1,0 +1,23 @@
+package com.easygo.vo.ejdb;
+
+public class CarIllegalInfoWithBLOBs extends CarIllegalInfo {
+    private String carresultcode;
+
+    private String carresult;
+
+    public String getCarresultcode() {
+        return carresultcode;
+    }
+
+    public void setCarresultcode(String carresultcode) {
+        this.carresultcode = carresultcode;
+    }
+
+    public String getCarresult() {
+        return carresult;
+    }
+
+    public void setCarresult(String carresult) {
+        this.carresult = carresult;
+    }
+}

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/webguidedb
+END
+WebRBRecordLInfoServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/webguidedb/WebRBRecordLInfoServiceImpl.class
+END
+WebRBRecordLDInfoServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/webguidedb/WebRBRecordLDInfoServiceImpl.class
+END
+WebGuideRoadInfoServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/webguidedb/WebGuideRoadInfoServiceImpl.class
+END
+WebRBInfoServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/webguidedb/WebRBInfoServiceImpl.class
+END
+WebRGenLInfoServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/webguidedb/WebRGenLInfoServiceImpl.class
+END
+WebGuideLoginServiceImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/vnie/!svn/ver/3/trunk/v-admin/target/classes/com/easygo/service/impl/webguidedb/WebGuideLoginServiceImpl.class
+END

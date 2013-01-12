@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sys.dao.SysUserRFMapper" >
+	<select id="selectIDFromRFByResIdAndFuncId" resultType="java.lang.Integer">
+		select r.rfid from sys_rf r where r.resid = #{resid,jdbcType=INTEGER} and r.funcid = #{funcid,jdbcType=INTEGER}
+	</select>
+	<insert id="insertIntoUserRF">
+	 insert into sys_user_rf(uid, rfid) 
+	 values(#{uid,jdbcType=INTEGER}, #{rfid,jdbcType=INTEGER})
+	</insert>
+	<delete id="deleteUserRFByUid" parameterType="java.lang.Integer">
+	 delete from sys_user_rf 
+	 where uid = #{uid,jdbcType=INTEGER}
+	</delete>
+</mapper>

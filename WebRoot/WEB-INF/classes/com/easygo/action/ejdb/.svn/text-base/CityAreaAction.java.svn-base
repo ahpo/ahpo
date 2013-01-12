@@ -1,0 +1,271 @@
+/**   
+ * @Title: CityAreaAction.java 
+ * @Package com.easygo.action.ejdb 
+ * @author zgr  
+ * @date 2012-9-12 上午11:13:48 
+ * @version V1.0   
+ */
+package com.easygo.action.ejdb;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Controller;
+
+import com.easygo.service.ejdb.CityAreaService;
+import com.easygo.vo.ejdb.CityArea;
+import com.easygo.vo.ejdb.CityAreaExample;
+import com.opensymphony.xwork2.ActionContext;
+import com.pub.action.AbstractAction;
+import com.pub.util.constant.Constants;
+import com.pub.webapp.ui.pagination.Page;
+import com.pub.webapp.ui.pagination.PageHandle;
+import com.pub.webapp.ui.util.OperateResult;
+import com.pub.webapp.ui.util.WebConstants;
+import com.sys.vo.SysFunction;
+import com.sys.vo.SysResFuncRelation;
+
+/**
+ * @ClassName: CityAreaAction
+ * @Description: 城市区域
+ * @author zgr
+ * @date 2012-9-12 上午11:13:48
+ * @version 1.0
+ */
+@Controller
+@Scope("prototype")
+public class CityAreaAction extends AbstractAction {
+
+	/**
+	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
+	 */
+	private static final long serialVersionUID = -7099734077243962471L;
+	private Integer id;
+	private String area;
+	private CityArea cityArea;
+
+	private List<SysFunction> funcList;
+	private Integer ids[];
+	private List<?> resultList;
+	private OperateResult operateResult = new OperateResult();
+
+	private PageHandle pageHandler;
+	private Page page;
+	private String pageMethod = "";
+	private String currentPage;
+
+	@Resource
+	private CityAreaService cityAreaService;
+
+	public void setCityAreaService(CityAreaService cityAreaService) {
+		this.cityAreaService = cityAreaService;
+	}
+
+	public String cityAreaQuery() {
+		String resCode = Constants.QUERY_CITYAREA_QUERY;
+		Map<String, Object> session = ActionContext.getContext().getSession();
+
+		funcList = new ArrayList<SysFunction>();
+		@SuppressWarnings("unchecked")
+		List<SysResFuncRelation> list = (List<SysResFuncRelation>) session
+				.get(Constants.PRIVILEGE);
+		if (list != null) {
+			for (SysResFuncRelation relation : list) {
+				if (resCode.equals(relation.getSysResource().getResCode())) {
+					funcList.add(relation.getSysFunction());
+				}
+			}
+		}
+		if (funcList == null || funcList.isEmpty()) {
+			return LOGIN;
+		}
+		try {
+			int total = cityAreaService.countByExample(null);
+			pageHandler = new PageHandle();
+			page = pageHandler.getPage(null, currentPage, pageMethod, total);
+			resultList = cityAreaService.selectPageByExample(null,
+					page.getStartRow(), page.getPageSize());
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+
+		return SUCCESS;
+	}
+
+	public String cityAreaToUpdate() {
+		try {
+			cityArea = cityAreaService.selectByPrimaryKey(id);
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+
+		return SUCCESS;
+	}
+
+	public String cityAreaUpdate() {
+		Map<String, String> parms = new HashMap<String, String>();
+		parms.put("currentPage", currentPage);
+		operateResult.setParms(parms);
+		operateResult.setOperation(WebConstants.CITYAREA_UPDATE);
+		operateResult.setUrl("cityAreaQuery.action");
+		cityArea = cityAreaService.selectByPrimaryKey(id);
+		CityAreaExample example = new CityAreaExample();
+		example.createCriteria().andAreaEqualTo(area);
+		try {
+			if (!cityAreaService.checkSimilarity(example, id,
+					Constants.CHECKSIMILARITY_MODE_UPDATE)) {
+				LOGGER.info("cannot update, for the inputed area is already exist");
+				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+				operateResult
+						.setReason(WebConstants.OPERATERESULT_REASON_CITYAREA_UPDATE);
+				return ERROR;
+			}
+			cityArea.setArea(area);
+			cityAreaService.updateByPrimaryKey(cityArea);
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+		LOGGER.info("cityarea[" + id + "] is updated successfully");
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String cityAreaToCreate() {
+		return SUCCESS;
+	}
+
+	public String cityAreaCreate() {
+		operateResult.setOperation(WebConstants.CITYAREA_CREATE);
+		operateResult.setUrl("cityAreaQuery.action");
+
+		CityAreaExample example = new CityAreaExample();
+		example.createCriteria().andAreaEqualTo(area);
+		try {
+			if (!cityAreaService.checkSimilarity(example, id,
+					Constants.CHECKSIMILARITY_MODE_CREATE)) {
+				LOGGER.info("cannot create, for the inputed area is already exist");
+				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+				operateResult
+						.setReason(WebConstants.OPERATERESULT_REASON_CITYAREA_CREATE);
+				return ERROR;
+			}
+			CityArea cityArea = new CityArea();
+			cityArea.setArea(area);
+			cityAreaService.insertSelective(cityArea);
+		} catch (DataAccessException e) {
+			LOGGER.error("database exception-->", e);
+			return DBERROR;
+		}
+		LOGGER.info("cityarea is created successfully");
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String cityAreaDelete() {
+		operateResult.setOperation(WebConstants.CITYAREA_DELETE);
+		operateResult.setUrl("cityAreaQuery.action");
+		for (int i = 0; i < ids.length; i++) {
+			cityAreaService.deleteByPrimaryKey(ids[i]);
+			LOGGER.info("cityarea[" + ids[i] + "] is deleted");
+		}
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public CityArea getCityArea() {
+		return cityArea;
+	}
+
+	public void setCityArea(CityArea cityArea) {
+		this.cityArea = cityArea;
+	}
+
+	public Integer[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Integer[] ids) {
+		this.ids = ids;
+	}
+
+	public List<?> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(List<?> resultList) {
+		this.resultList = resultList;
+	}
+
+	public OperateResult getOperateResult() {
+		return operateResult;
+	}
+
+	public void setOperateResult(OperateResult operateResult) {
+		this.operateResult = operateResult;
+	}
+
+	public PageHandle getPageHandler() {
+		return pageHandler;
+	}
+
+	public void setPageHandler(PageHandle pageHandler) {
+		this.pageHandler = pageHandler;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getPageMethod() {
+		return pageMethod;
+	}
+
+	public void setPageMethod(String pageMethod) {
+		this.pageMethod = pageMethod;
+	}
+
+	public String getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(String currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public List<SysFunction> getFuncList() {
+		return funcList;
+	}
+
+	public void setFuncList(List<SysFunction> funcList) {
+		this.funcList = funcList;
+	}
+}

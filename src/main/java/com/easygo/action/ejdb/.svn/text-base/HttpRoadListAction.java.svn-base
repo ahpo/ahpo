@@ -1,0 +1,376 @@
+/**   
+ * @Title: HttpRoadListAction.java 
+ * @Package com.easygo.action.ejdb 
+ * @author zgr  
+ * @date 2012-9-12 下午2:07:08 
+ * @version V1.0   
+ */
+package com.easygo.action.ejdb;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.easygo.service.ejdb.HttpRoadListService;
+import com.easygo.service.ejdb.RoadInfoService;
+import com.easygo.vo.ejdb.HttpRoadList;
+import com.easygo.vo.ejdb.RoadInfo;
+import com.opensymphony.xwork2.ActionContext;
+import com.pub.action.AbstractAction;
+import com.pub.util.config.Des;
+import com.pub.util.constant.Constants;
+import com.pub.util.interceptor.SysOperLogAnnotation;
+import com.pub.webapp.ui.pagination.Page;
+import com.pub.webapp.ui.pagination.PageHandle;
+import com.pub.webapp.ui.util.OperateResult;
+import com.pub.webapp.ui.util.WebConstants;
+import com.sys.vo.SysFunction;
+import com.sys.vo.SysResFuncRelation;
+
+/** 
+ * @ClassName: HttpRoadListAction 
+ * @Description: TODO(这里用一句话描述这个类的作用) 
+ * @author zgr 
+ * @date 2012-9-12 下午2:07:08 
+ * @version 1.0 
+ */
+@Controller
+@Scope("prototype")
+public class HttpRoadListAction extends AbstractAction {
+
+	/** 
+	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 
+	 */ 
+	private static final long serialVersionUID = -8641549797827717947L;
+	private Integer id;
+	private Integer roadid;
+	private String url;
+	private String filepath;
+	private Integer used;
+	private Date updatadate;
+	private String person;
+	private String back;
+	private Integer mobiletype;
+	private String serverurl;
+	private List<SysFunction> funcList;
+
+	private List<?> resultList;
+	private Integer ids[];
+	private OperateResult operateResult = new OperateResult();
+	private List<RoadInfo> roads;
+
+	private PageHandle pageHandler;
+	private Page page;
+	private String currentPage;
+	private String pageMethod = "";
+
+	@Resource
+	private HttpRoadListService httpRoadListService;
+	@Resource
+	private RoadInfoService roadInfoService;
+
+	public void setHttpRoadListService(HttpRoadListService httpRoadListService) {
+		this.httpRoadListService = httpRoadListService;
+	}
+
+	public void setRoadInfoService(RoadInfoService roadInfoService) {
+		this.roadInfoService = roadInfoService;
+	}
+
+	public String httpRoadListChooseQueryCondition() {
+		return SUCCESS;
+	}
+
+	public String httpRoadListQuery() {
+		String resCode = Constants.QUERY_HTTPROADLIST_QUERY;
+		Map<String, Object> session = ActionContext.getContext().getSession();
+
+		funcList = new ArrayList<SysFunction>();
+		@SuppressWarnings("unchecked")
+		List<SysResFuncRelation> list = (List<SysResFuncRelation>) session
+				.get(Constants.PRIVILEGE);
+		if (list != null) {
+			for (SysResFuncRelation relation : list) {
+				if (resCode.equals(relation.getSysResource().getResCode())) {
+					funcList.add(relation.getSysFunction());
+				}
+			}
+		}
+		if (funcList == null || funcList.isEmpty()) {
+			return LOGIN;
+		}
+		pageHandler = new PageHandle();
+		int totalRows = 0;
+		totalRows = httpRoadListService.countByExample(null);
+		page = pageHandler.getPage(null, currentPage, pageMethod, totalRows);
+		resultList = httpRoadListService.selectPageByExample(null,
+				page.getStartRow(), page.getPageSize());
+
+		return SUCCESS;
+	}
+
+	public String httpRoadListToUpdate() {
+		HttpRoadList httpRoadList = httpRoadListService.selectByPrimaryKey(id);
+		this.roadid = httpRoadList.getRoadid();
+		this.url = Des.decrypt(httpRoadList.getUrl());
+		this.filepath = httpRoadList.getFilepath();
+		this.mobiletype = httpRoadList.getMobiletype();
+		this.serverurl = Des.decrypt(httpRoadList.getServerurl());
+		this.used = httpRoadList.getUsed();
+		this.back = httpRoadList.getBack();
+
+		roads = roadInfoService.selectByExample(null);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "修改视频信息")
+	public String httpRoadListUpdate() {
+		operateResult.setOperation(WebConstants.HTTPROADLIST_UPDATE);
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("currentPage", currentPage);
+		operateResult.setParms(param);
+		int rtn = 0;
+
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		HttpRoadList record = httpRoadListService.selectByPrimaryKey(id);
+		record.setRoadid(roadid);
+		record.setUrl(Des.encrypt(url));
+		record.setFilepath(filepath);
+		record.setMobiletype(mobiletype);
+		if ("".equals(serverurl.trim())) {
+			serverurl = null;
+		}
+		record.setServerurl(Des.encrypt(serverurl));
+		record.setUpdatadate(new Date());
+		record.setUsed(used);
+		record.setBack(back);
+		rtn = httpRoadListService.updateByPrimaryKey(record);
+		operateResult.setUrl("httpRoadListQuery.action");
+
+		if (rtn != 1) {
+			LOGGER.info("cannot update, something is wrong");
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_HTTPROADLIST_UPDATE);
+			return ERROR;
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public String httpRoadListToCreate() {
+		roads = roadInfoService.selectByExample(null);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "创建视频信息")
+	public String httpRoadListCreate() {
+		operateResult.setOperation(WebConstants.HTTPROADLIST_CREATE);
+		int rtn = 0;
+		if ("".equals(back.trim())) {
+			back = null;
+		}
+		person = (String) ActionContext.getContext().getSession()
+				.get(Constants.USER_NAME);
+		HttpRoadList record = new HttpRoadList();
+		record.setRoadid(roadid);
+		record.setUrl(Des.encrypt(url));
+		record.setFilepath(filepath);
+		record.setMobiletype(mobiletype);
+		if ("".equals(serverurl.trim())) {
+			serverurl = null;
+		}
+		record.setServerurl(Des.encrypt(serverurl));
+		record.setUpdatadate(new Date());
+		record.setUsed(used);
+		record.setPerson(person);
+		record.setBack(back);
+		rtn = httpRoadListService.insertSelective(record);
+		operateResult.setUrl("httpRoadListQuery.action");
+
+		if (rtn != 1) {
+			LOGGER.info("cannot create, something is wrong");
+			operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
+			operateResult
+					.setReason(WebConstants.OPERATERESULT_REASON_HTTPROADLIST_CREATE);
+			return ERROR;
+		}
+
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	@SysOperLogAnnotation(value = "删除视频信息")
+	public String httpRoadListDelete() {
+		operateResult.setOperation(WebConstants.HTTPROADLIST_DELETE);
+		for (int i = 0; i < ids.length; i++) {
+			httpRoadListService.deleteByPrimaryKey(ids[i]);
+			operateResult.setUrl("httpRoadListQuery.action");
+			LOGGER.info("record[" + ids[i] + "] is deleted");
+		}
+		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		return SUCCESS;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getRoadid() {
+		return roadid;
+	}
+
+	public void setRoadid(Integer roadid) {
+		this.roadid = roadid;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Integer getUsed() {
+		return used;
+	}
+
+	public void setUsed(Integer used) {
+		this.used = used;
+	}
+
+	public Date getUpdatadate() {
+		return updatadate;
+	}
+
+	public void setUpdatadate(Date updatadate) {
+		this.updatadate = updatadate;
+	}
+
+	public String getPerson() {
+		return person;
+	}
+
+	public void setPerson(String person) {
+		this.person = person;
+	}
+
+	public String getBack() {
+		return back;
+	}
+
+	public void setBack(String back) {
+		this.back = back;
+	}
+
+	public List<?> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(List<?> resultList) {
+		this.resultList = resultList;
+	}
+
+	public Integer[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Integer[] ids) {
+		this.ids = ids;
+	}
+
+	public OperateResult getOperateResult() {
+		return operateResult;
+	}
+
+	public void setOperateResult(OperateResult operateResult) {
+		this.operateResult = operateResult;
+	}
+
+	public PageHandle getPageHandler() {
+		return pageHandler;
+	}
+
+	public void setPageHandler(PageHandle pageHandler) {
+		this.pageHandler = pageHandler;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(String currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public String getPageMethod() {
+		return pageMethod;
+	}
+
+	public void setPageMethod(String pageMethod) {
+		this.pageMethod = pageMethod;
+	}
+
+	public List<RoadInfo> getRoads() {
+		return roads;
+	}
+
+	public void setRoads(List<RoadInfo> roads) {
+		this.roads = roads;
+	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+
+	public Integer getMobiletype() {
+		return mobiletype;
+	}
+
+	public void setMobiletype(Integer mobiletype) {
+		this.mobiletype = mobiletype;
+	}
+
+	public String getServerurl() {
+		return serverurl;
+	}
+
+	public void setServerurl(String serverurl) {
+		this.serverurl = serverurl;
+	}
+
+	public List<SysFunction> getFuncList() {
+		return funcList;
+	}
+
+	public void setFuncList(List<SysFunction> funcList) {
+		this.funcList = funcList;
+	}
+}

@@ -54,7 +54,7 @@ function del() {
 			</p>
 			<div class="unit">
 				<label>备注：</label>
-				<textarea name="sysResource.memo" class="editor" rows="10" cols="78" tools="mini">${sysResource.memo }</textarea>
+				<textarea name="sysResource.memo" class="editor" rows="7" cols="78" tools="mini">${sysResource.memo }</textarea>
 			</div>
 			
 			<div class="divider"></div>

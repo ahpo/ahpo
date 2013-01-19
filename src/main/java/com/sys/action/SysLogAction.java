@@ -38,6 +38,10 @@ import com.sys.vo.SysUser;
 public class SysLogAction extends AbstractAction {
 
 	private static final long serialVersionUID = 9031308829893765627L;
+	@Resource
+	private SysLogService sysLogService;
+	@Resource
+	private SysUserService sysUserService;
 	private SysLog sysLog;
 	private Integer logid;
 
@@ -54,27 +58,6 @@ public class SysLogAction extends AbstractAction {
 
 	private String beginTime;
 	private String endTime;
-
-	@Resource
-	private SysLogService sysLogService;
-	@Resource
-	private SysUserService sysUserService;
-
-	public SysLogService getSysLogService() {
-		return sysLogService;
-	}
-
-	public void setSysLogService(SysLogService sysLogService) {
-		this.sysLogService = sysLogService;
-	}
-
-	public SysUserService getSysUserService() {
-		return sysUserService;
-	}
-
-	public void setSysUserService(SysUserService sysUserService) {
-		this.sysUserService = sysUserService;
-	}
 
 	public String sysLogToQuery() {
 		resultList = sysUserService.selectByExample(null);

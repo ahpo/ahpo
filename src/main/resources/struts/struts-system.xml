@@ -48,7 +48,15 @@
 		<action name="sysResDetail" class="sysUserAction" method="sysResDetail">
 		    <result name="success">/WEB-INF/jsp/sys/sysUser/sysResDetail.jsp</result>
         </action>
-        <action name="res_*" class="sysUserAction" method="{1}"/>
+        
+        <action name="res_*" class="sysUserAction" method="{1}"/>        
+        
+        <action name="sysTask_*" class="sysTaskAction" method="{1}">
+        	<result name="success_query">/WEB-INF/jsp/sys/sysTask/query.jsp</result>
+        	<result name="success_view">/WEB-INF/jsp/sys/sysTask/view.jsp</result>
+        </action>
+        
+        
 		
 		<action name="sysRoleQuery" class="sysRoleAction" method="sysRoleQuery">
 			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRoleList.jsp</result>
@@ -138,15 +146,24 @@
 			method="tblLookupDelete">
 			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
 		</action>
+		
+		
+		
+		<action name="sysDict_*" class="tblDictionaryAction" method="{1}">
+        	<result name="success_query">/WEB-INF/jsp/sys/sysDict/query.jsp</result>
+        	<result name="success_update">/WEB-INF/jsp/sys/sysDict/update.jsp</result>
+        </action>
+		
+		<!-- 
 		<action name="tblDictionaryQuery" class="tblDictionaryAction" method="tblDictionaryQuery">
-			<result name="success">/WEB-INF/jsp/biz/tblDictionary/tblDictionaryList.jsp
-			</result>
+			<result name="success">/WEB-INF/jsp/sys/sysDict/query.jsp</result>
 		</action>
 		<action name="tblDictionaryToUpdate" class="tblDictionaryAction"
 			method="tblDictionaryToUpdate">
-			<result name="success">/WEB-INF/jsp/biz/tblDictionary/tblDictionaryUpdate.jsp
-			</result>
+			<result name="success">/WEB-INF/jsp/sys/sysDict/update.jsp</result>
 		</action>
+		 -->
+		
 		<action name="tblDictionaryUpdate" class="tblDictionaryAction"
 			method="tblDictionaryUpdate">
 			<result name="success">/dwz/demo/common/ajaxDone.html</result>

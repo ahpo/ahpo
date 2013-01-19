@@ -46,6 +46,11 @@ public class TblExcAction extends AbstractAction {
 	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
 	 */
 	private static final long serialVersionUID = -3307650883528298487L;
+	@Resource
+	private TblExcService tblExcService;
+	@Resource
+	private TblLookupService tblLookupService;
+	
 	private Integer id;
 	private String project;
 	private String type;
@@ -72,11 +77,6 @@ public class TblExcAction extends AbstractAction {
 	private String beginTime;
 	private String endTime;
 
-	@Resource
-	private TblExcService tblExcService;
-	@Resource
-	private TblLookupService tblLookupService;
-
 	public void setTblLookupService(TblLookupService tblLookupService) {
 		this.tblLookupService = tblLookupService;
 	}
@@ -96,7 +96,7 @@ public class TblExcAction extends AbstractAction {
 					.andLookupNameEqualTo(Constants.EG_EXC_TYPE);
 			typeList = tblLookupService.selectByExample(example);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 		return SUCCESS;
@@ -156,7 +156,7 @@ public class TblExcAction extends AbstractAction {
 			resultList = tblExcService.selectPageByExampleWithBLOBs(
 					tblExcExample, page.getStartRow(), page.getPageSize());
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 
@@ -175,7 +175,7 @@ public class TblExcAction extends AbstractAction {
 			typeList = tblLookupService.selectByExample(example);
 			tblExc = tblExcService.selectByPrimaryKey(id);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 		return SUCCESS;
@@ -202,11 +202,11 @@ public class TblExcAction extends AbstractAction {
 			tblExc.setTime(new Date());
 			tblExcService.updateByPrimaryKeyWithBLOBs(tblExc);
 		} catch (DataAccessException e) {
-			LOGGER.error("databse exception-->", e);
+			logger.error("databse exception-->", e);
 			return DBERROR;
 		}
 
-		LOGGER.info("tblExc[" + id + "] is updated successfully");
+		logger.info("tblExc[" + id + "] is updated successfully");
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
 		return SUCCESS;
 	}
@@ -270,10 +270,10 @@ public class TblExcAction extends AbstractAction {
 		try {
 			for (int i = 0; i < ids.length; i++) {
 				tblExcService.deleteByPrimaryKey(ids[i]);
-				LOGGER.info("tblExc [" + ids[i] + "] is deleted");
+				logger.info("tblExc [" + ids[i] + "] is deleted");
 			}
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 

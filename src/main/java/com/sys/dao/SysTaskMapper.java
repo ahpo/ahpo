@@ -1,10 +1,12 @@
 package com.sys.dao;
 
-import com.sys.vo.SysTask;
-import com.sys.vo.SysTaskExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.sys.vo.SysTask;
+import com.sys.vo.SysTaskExample;
 
 @Repository
 public interface SysTaskMapper {
@@ -29,4 +31,8 @@ public interface SysTaskMapper {
     int updateByPrimaryKeySelective(SysTask record);
 
     int updateByPrimaryKey(SysTask record);
+    
+    //manul
+	List<SysTask> selectPageByExample(@Param("example") SysTaskExample example,
+			@Param("offset") int offset, @Param("pageSize") int pageSize);
 }

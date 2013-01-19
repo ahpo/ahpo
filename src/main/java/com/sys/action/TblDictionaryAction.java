@@ -34,7 +34,7 @@ import com.sys.vo.TblDictionaryExample;
 
 /**
  * @ClassName: TblDictionaryAction
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: Dictionary variables action servlet
  * @author zgr
  * @date 2012-9-13 下午4:31:48
  * @version 1.0
@@ -43,10 +43,9 @@ import com.sys.vo.TblDictionaryExample;
 @Scope("prototype")
 public class TblDictionaryAction extends AbstractAction {
 
-	/**
-	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
-	 */
 	private static final long serialVersionUID = -7819798116219419018L;
+	@Resource
+	private TblDictionaryService tblDictionaryService;
 	private Integer id;
 	private String lookupkey;
 	private String lookupvalue;
@@ -65,15 +64,7 @@ public class TblDictionaryAction extends AbstractAction {
 	private String pageMethod = "";
 	private String currentPage;
 
-	@Resource
-	private TblDictionaryService tblDictionaryService;
-
-	public void setTblDictionaryService(
-			TblDictionaryService tblDictionaryService) {
-		this.tblDictionaryService = tblDictionaryService;
-	}
-
-	public String tblDictionaryQuery() {
+	public String query() {
 		String resCode = Constants.QUERY_TBLDICTIONARY_QUERY;
 		Map<String, Object> session = ActionContext.getContext().getSession();
 
@@ -98,22 +89,22 @@ public class TblDictionaryAction extends AbstractAction {
 			resultList = tblDictionaryService.selectPageByExample(null,
 					page.getStartRow(), page.getNumPerPage());
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 
-		return SUCCESS;
+		return SUCCESS+QUERY;
 	}
 
-	public String tblDictionaryToUpdate() {
+	public String update() {
 		try {
 			tblDictionary = tblDictionaryService.selectByPrimaryKey(id);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 
-		return SUCCESS;
+		return SUCCESS+UPDATE;
 	}
 
 	public String tblDictionaryUpdate() {
@@ -128,7 +119,7 @@ public class TblDictionaryAction extends AbstractAction {
 		try {
 			if (!tblDictionaryService.checkSimilarity(example, id,
 					Constants.CHECKSIMILARITY_MODE_UPDATE)) {
-				LOGGER.info("cannot update, for the inputed lookupkey["
+				logger.info("cannot update, for the inputed lookupkey["
 						+ lookupkey + "] is already exist");
 				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
 				operateResult
@@ -149,10 +140,10 @@ public class TblDictionaryAction extends AbstractAction {
 			tblDictionary.setBackup(backup);
 			tblDictionaryService.updateByPrimaryKey(tblDictionary);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
-		LOGGER.info("tblDictionary[" + id + "] is updated successfully");
+		logger.info("tblDictionary[" + id + "] is updated successfully");
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
 		return SUCCESS;
 	}
@@ -170,7 +161,7 @@ public class TblDictionaryAction extends AbstractAction {
 		try {
 			if (!tblDictionaryService.checkSimilarity(example, id,
 					Constants.CHECKSIMILARITY_MODE_CREATE)) {
-				LOGGER.info("cannot create, for the inputed lookupkey["
+				logger.info("cannot create, for the inputed lookupkey["
 						+ lookupkey + "] is already exist");
 				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
 				operateResult
@@ -191,7 +182,7 @@ public class TblDictionaryAction extends AbstractAction {
 			tblDictionary.setBackup(backup);
 			tblDictionaryService.insertSelective(tblDictionary);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
@@ -203,7 +194,7 @@ public class TblDictionaryAction extends AbstractAction {
 		operateResult.setUrl("tblDictionaryQuery.action");
 		for (int i = 0; i < ids.length; i++) {
 			tblDictionaryService.deleteByPrimaryKey(ids[i]);
-			LOGGER.info("tblDictionary[" + ids[i] + "] is deleted");
+			logger.info("tblDictionary[" + ids[i] + "] is deleted");
 		}
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
 		return SUCCESS;

@@ -47,6 +47,9 @@ public class TblLookupAction extends AbstractAction {
 	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
 	 */
 	private static final long serialVersionUID = -8408257014867756031L;
+	@Resource
+	private TblLookupService tblLookupService;
+	
 	private Integer id;
 	private String lookupName;
 	private String lookupKey;
@@ -65,13 +68,6 @@ public class TblLookupAction extends AbstractAction {
 	private Page page;
 	private String pageMethod = "";
 	private String currentPage;
-
-	@Resource
-	private TblLookupService tblLookupService;
-
-	public void setTblLookupService(TblLookupService tblLookupService) {
-		this.tblLookupService = tblLookupService;
-	}
 
 	public String tblLookupQuery() {
 		String resCode = Constants.QUERY_TBLLOOKUP_QUERY;
@@ -98,7 +94,7 @@ public class TblLookupAction extends AbstractAction {
 			resultList = tblLookupService.selectPageByExample(null,
 					page.getStartRow(), page.getNumPerPage());
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 
@@ -109,7 +105,7 @@ public class TblLookupAction extends AbstractAction {
 		try {
 			tblLookup = tblLookupService.selectByPrimaryKey(id);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 		return SUCCESS;
@@ -128,7 +124,7 @@ public class TblLookupAction extends AbstractAction {
 		try {
 			if (!tblLookupService.checkSimilarity(example, id,
 					Constants.CHECKSIMILARITY_MODE_UPDATE)) {
-				LOGGER.info("cannot update, for the inputed lookupName["
+				logger.info("cannot update, for the inputed lookupName["
 						+ lookupName + "] with lookupKey[" + lookupKey
 						+ "] is already exist");
 				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
@@ -147,10 +143,10 @@ public class TblLookupAction extends AbstractAction {
 			tblLookup.setUpdatetime(new Date());
 			tblLookupService.updateByPrimaryKey(tblLookup);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
-		LOGGER.info("tblLookup[" + id + "] is updated successfully");
+		logger.info("tblLookup[" + id + "] is updated successfully");
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
 		return SUCCESS;
 	}
@@ -169,7 +165,7 @@ public class TblLookupAction extends AbstractAction {
 		try {
 			if (!tblLookupService.checkSimilarity(example, id,
 					Constants.CHECKSIMILARITY_MODE_CREATE)) {
-				LOGGER.info("cannot create, for the inputed lookupName["
+				logger.info("cannot create, for the inputed lookupName["
 						+ lookupName + "] with lookupKey[" + lookupKey
 						+ "] is already exist");
 				operateResult.setResult(WebConstants.OPERATE_RESULT_FAIL);
@@ -188,7 +184,7 @@ public class TblLookupAction extends AbstractAction {
 			tblLookup.setUpdatetime(new Date());
 			tblLookupService.insertSelective(tblLookup);
 		} catch (DataAccessException e) {
-			LOGGER.error("database exception-->", e);
+			logger.error("database exception-->", e);
 			return DBERROR;
 		}
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
@@ -200,7 +196,7 @@ public class TblLookupAction extends AbstractAction {
 		operateResult.setUrl("tblLookupQuery.action");
 		for (int i = 0; i < ids.length; i++) {
 			tblLookupService.deleteByPrimaryKey(ids[i]);
-			LOGGER.info("tblLookup[" + ids[i] + "] is deleted");
+			logger.info("tblLookup[" + ids[i] + "] is deleted");
 		}
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
 		return SUCCESS;

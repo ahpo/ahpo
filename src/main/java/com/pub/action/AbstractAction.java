@@ -20,15 +20,22 @@ import com.sys.vo.SysFunction;
 
 /** 
  * @ClassName: AbstractAction 
- * @author zgr 
+ * @author yangxb 
  * @date 2012-8-10 下午2:37:28 
  * @version 1.0 
  */
 public abstract class AbstractAction extends ActionSupport implements IAction {
 	private static final long serialVersionUID = 1L;
-	protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+	
 	public static final String DBERROR = "dberror";
-	 
+	
+	public static final String QUERY = "_query";
+	
+	public static final String VIEW = "_view";	
+	
+	public static final String UPDATE = "_update";
+	
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public Map<String, Object> session;
 	
@@ -117,10 +124,6 @@ public abstract class AbstractAction extends ActionSupport implements IAction {
 		this.pageNum = currentPage;
 	}
 
-	public Logger getLOGGER() {
-		return LOGGER;
-	}
-	
 	protected void setJsonData(int code,String message) {
 		
 		String result = "{\"statusCode\":\""+code+"\"," +

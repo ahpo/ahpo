@@ -38,31 +38,14 @@ public class LoginAction extends AbstractAction implements SessionAware {
 	private SysRoleService roleService;
 	@Resource
 	private SysResourceService resourceService;
+	@Resource
+	private SysLogService sysLogService;
 	private String username;
 	private String password;
 	private String newPassword;
 	private String checkCode;
 	private String randCode;
 	private String errMsg;
-
-	@Resource
-	private SysLogService sysLogService;
-
-	public void setSysLogService(SysLogService sysLogService) {
-		this.sysLogService = sysLogService;
-	}
-
-	public void setSysUserService(SysUserService userService) {
-		this.userService = userService;
-	}
-
-	public void setRoleService(SysRoleService roleService) {
-		this.roleService = roleService;
-	}
-
-	public void setResourceService(SysResourceService resourceService) {
-		this.resourceService = resourceService;
-	}
 
 	public String ajaxRandCodeRequest() {
 		randCode = (String) session.get(Constants.RAND_CODE);
@@ -71,7 +54,7 @@ public class LoginAction extends AbstractAction implements SessionAware {
 	}
 
 	public String logout() {
-		LOGGER.info("logout");
+		logger.info("logout");
 		session.clear();
 		return "logout";
 	}
@@ -105,7 +88,7 @@ public class LoginAction extends AbstractAction implements SessionAware {
 	 * @return
 	 */
 	public String login() {
-		LOGGER.info("后台开启登录验证/login()");
+		logger.info("后台开启登录验证/login()");
 		// 校验用户名或者密码是否为空
 		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
 			//addActionMessage(Constants.LOGIN_ERROR_1);
@@ -223,7 +206,7 @@ public class LoginAction extends AbstractAction implements SessionAware {
 		}
 		buf.deleteCharAt(buf.length() - 1);
 		buf.append("]");
-		LOGGER.info(buf.toString());
+		logger.info(buf.toString());
 		return buf.toString();
 	}
 	

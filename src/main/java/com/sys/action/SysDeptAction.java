@@ -39,6 +39,13 @@ public class SysDeptAction extends AbstractAction {
 
 	
 	private static final long serialVersionUID = 2610732170527001408L;
+	@Resource
+	private SysDepartmentService sysDepartmentService;
+	@Resource
+	private SysUserService sysUserService;
+	@Resource
+	private SysRoleService sysRoleService;
+	
 	private SysDepartment sysDept;
 	private Integer did;
 
@@ -51,26 +58,6 @@ public class SysDeptAction extends AbstractAction {
 	private Integer parentId;
 
 	private String imgUrl;
-
-	@Resource
-	private SysDepartmentService sysDepartmentService;
-	@Resource
-	private SysUserService sysUserService;
-	@Resource
-	private SysRoleService sysRoleService;
-
-	public void setSysUserService(SysUserService sysUserService) {
-		this.sysUserService = sysUserService;
-	}
-
-	public void setSysRoleService(SysRoleService sysRoleService) {
-		this.sysRoleService = sysRoleService;
-	}
-
-	public void setSysDepartmentService(
-			SysDepartmentService sysDepartmentService) {
-		this.sysDepartmentService = sysDepartmentService;
-	}
 
 	public String sysDeptQuery() {
 		String resCode = Constants.QUERY_SYSDEPT_QUERY;
@@ -200,10 +187,10 @@ public class SysDeptAction extends AbstractAction {
 		for (int i = 0; i < ids.length; i++) {
 			rtn = sysDepartmentService.deleteByPrimaryKey(ids[i]);
 			if (rtn < 1) {
-				LOGGER.info("failed to delete sysDept[" + ids[i] + "]");
+				logger.info("failed to delete sysDept[" + ids[i] + "]");
 				errNum++;
 			} else {
-				LOGGER.info("sysDept[" + ids[i] + "] is deleted");
+				logger.info("sysDept[" + ids[i] + "] is deleted");
 				sucNum++;
 			}
 		}

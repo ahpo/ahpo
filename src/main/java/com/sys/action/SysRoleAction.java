@@ -54,6 +54,17 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 
 
 	private static final long serialVersionUID = -2076862416045602917L;
+	@Resource
+	private SysRoleService sysRoleService;
+	@Resource
+	private SysResourceService sysResourceService;
+	@Resource
+	private SysFunctionService sysFunctionService;
+	@Resource
+	private SysRoleRFService sysRoleRFService;
+	@Resource
+	private SysUserService sysUserService;
+	
 	private SysRole sysRole;
 	private Integer rid;
 
@@ -72,37 +83,6 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 	private String[] menuId;
 
 	private TreeNode roleTreeNode;
-
-	@Resource
-	private SysRoleService sysRoleService;
-	@Resource
-	private SysResourceService sysResourceService;
-	@Resource
-	private SysFunctionService sysFunctionService;
-	@Resource
-	private SysRoleRFService sysRoleRFService;
-	@Resource
-	private SysUserService sysUserService;
-
-	public void setSysUserService(SysUserService sysUserService) {
-		this.sysUserService = sysUserService;
-	}
-
-	public void setSysRoleService(SysRoleService sysRoleService) {
-		this.sysRoleService = sysRoleService;
-	}
-
-	public void setSysResourceService(SysResourceService sysResourceService) {
-		this.sysResourceService = sysResourceService;
-	}
-
-	public void setSysFunctionService(SysFunctionService sysFunctionService) {
-		this.sysFunctionService = sysFunctionService;
-	}
-
-	public void setSysRoleRFService(SysRoleRFService sysRoleRFService) {
-		this.sysRoleRFService = sysRoleRFService;
-	}
 
 	public String sysRoleQuery() {
 		String resCode = Constants.QUERY_SYSROLE_QUERY;
@@ -208,10 +188,10 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 		for (int i = 0; i < ids.length; i++) {
 			rtn = sysRoleService.deleteByPrimaryKey(ids[i]);
 			if (rtn < 1) {
-				LOGGER.info("failed to delete sysRole[" + ids[i] + "]");
+				logger.info("failed to delete sysRole[" + ids[i] + "]");
 				errNum++;
 			} else {
-				LOGGER.info("sysRole[" + ids[i] + "] is deleted");
+				logger.info("sysRole[" + ids[i] + "] is deleted");
 				sucNum++;
 			}
 		}
@@ -309,7 +289,7 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 			checkNode.setName(getText(res.getResName()));
 			checkNode.setParentId(res.getParentId().toString());
 			checkNode.setChecked(false);
-			LOGGER.info("checkNode:" + res.getResName());
+			logger.info("checkNode:" + res.getResName());
 			nodeItems.add(checkNode);
 			if ("N".equals(res.getIsParent())) {
 				funcIt = funcList.iterator();
@@ -332,7 +312,7 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 					checkNode.setParentId(res.getResid().toString());
 					checkNode.setChecked(checked);
 					checkNode.setType("f");
-					LOGGER.info("checkNode:" + func.getFuncName() + "pid"
+					logger.info("checkNode:" + func.getFuncName() + "pid"
 							+ checkNode.getParentId());
 					nodeItems.add(checkNode);
 				}

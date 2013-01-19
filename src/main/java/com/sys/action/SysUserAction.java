@@ -45,6 +45,19 @@ import com.sys.vo.SysUserExample;
 public class SysUserAction extends AbstractAction implements SessionAware {
 
 	private static final long serialVersionUID = 6690782758635638373L;
+	@Resource
+	private SysUserService sysUserService;
+	@Resource
+	private SysRoleService sysRoleService;
+	@Resource
+	private SysDepartmentService sysDepartmentService;
+	@Resource
+	private SysResourceService sysResourceService;
+	@Resource
+	private SysFunctionService sysFunctionService;
+	@Resource
+	private SysUserRFService sysUserRFService;
+	
 	private SysUser sysUser;
 	private Integer uid;
 	private Integer rid;
@@ -73,45 +86,9 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 	private List<SysDepartment> deptList;
 
 	private TreeNode userTreeNode;
-	@Resource
-	private SysUserService sysUserService;
-	@Resource
-	private SysRoleService sysRoleService;
-	@Resource
-	private SysDepartmentService sysDepartmentService;
-	@Resource
-	private SysResourceService sysResourceService;
-	@Resource
-	private SysFunctionService sysFunctionService;
-	@Resource
-	private SysUserRFService sysUserRFService;
+
 	
 	private SysResource sysResource;
-
-	public void setSysUserService(SysUserService sysUserService) {
-		this.sysUserService = sysUserService;
-	}
-
-	public void setSysRoleService(SysRoleService sysRoleService) {
-		this.sysRoleService = sysRoleService;
-	}
-
-	public void setSysDepartmentService(
-			SysDepartmentService sysDepartmentService) {
-		this.sysDepartmentService = sysDepartmentService;
-	}
-
-	public void setSysResourceService(SysResourceService sysResourceService) {
-		this.sysResourceService = sysResourceService;
-	}
-
-	public void setSysFunctionService(SysFunctionService sysFunctionService) {
-		this.sysFunctionService = sysFunctionService;
-	}
-
-	public void setSysUserRFService(SysUserRFService sysUserRFService) {
-		this.sysUserRFService = sysUserRFService;
-	}
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -350,10 +327,10 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 		for (int i = 0; i < ids.length; i++) {
 			rtn = sysUserService.deleteByPrimaryKey(ids[i]);
 			if (rtn < 1) {
-				LOGGER.info("failed to delete sysUser[" + ids[i] + "]");
+				logger.info("failed to delete sysUser[" + ids[i] + "]");
 				errNum++;
 			} else {
-				LOGGER.info("sysUser[" + ids[i] + "] is deleted");
+				logger.info("sysUser[" + ids[i] + "] is deleted");
 				sucNum++;
 			}
 		}

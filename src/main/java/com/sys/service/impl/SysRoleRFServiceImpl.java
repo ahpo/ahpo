@@ -31,14 +31,6 @@ public class SysRoleRFServiceImpl extends ServiceImpl implements
 	@Resource
 	private SysRoleRFMapper sysRoleRFMapper;
 
-	public SysRoleRFMapper getSysRoleRFMapper() {
-		return sysRoleRFMapper;
-	}
-
-	public void setSysRoleRFMapper(SysRoleRFMapper sysRoleRFMapper) {
-		this.sysRoleRFMapper = sysRoleRFMapper;
-	}
-
 	/**
 	 * @param rid
 	 * @param resid

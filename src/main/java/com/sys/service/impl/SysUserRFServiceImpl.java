@@ -31,14 +31,6 @@ public class SysUserRFServiceImpl extends ServiceImpl implements
 	@Resource
 	private SysUserRFMapper sysUserRFMapper;
 
-	public SysUserRFMapper getSysUserRFMapper() {
-		return sysUserRFMapper;
-	}
-
-	public void setSysUserRFMapper(SysUserRFMapper sysUserRFMapper) {
-		this.sysUserRFMapper = sysUserRFMapper;
-	}
-
 	/**
 	 * @param uid
 	 * @param resid

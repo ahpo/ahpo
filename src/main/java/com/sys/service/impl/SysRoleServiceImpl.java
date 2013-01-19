@@ -21,9 +21,6 @@ public class SysRoleServiceImpl extends ServiceImpl implements SysRoleService {
 	@Resource
 	private SysRoleMapper sysRoleMapper;
 
-	public void setSysRoleMapper(SysRoleMapper sysRoleMapper) {
-		this.sysRoleMapper = sysRoleMapper;
-	}
 
 	public int countByExample(SysRoleExample example) {
 		logger.info("get count of sys_role by example...");

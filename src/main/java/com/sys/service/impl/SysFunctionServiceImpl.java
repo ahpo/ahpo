@@ -32,14 +32,7 @@ public class SysFunctionServiceImpl extends ServiceImpl implements
 
 	@Resource
 	private SysFunctionMapper sysFunctionMapper;
-	
-	public SysFunctionMapper getSysFunctionMapper() {
-		return sysFunctionMapper;
-	}
 
-	public void setSysFunctionMapper(SysFunctionMapper sysFunctionMapper) {
-		this.sysFunctionMapper = sysFunctionMapper;
-	}
 
 	/**
 	 * @param example

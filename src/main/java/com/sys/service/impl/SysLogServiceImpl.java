@@ -32,14 +32,6 @@ public class SysLogServiceImpl extends ServiceImpl implements SysLogService {
 	@Resource
 	private SysLogMapper sysLogMapper;
 
-	public SysLogMapper getSysLogMapper() {
-		return sysLogMapper;
-	}
-
-	public void setSysLogMapper(SysLogMapper sysLogMapper) {
-		this.sysLogMapper = sysLogMapper;
-	}
-
 	/**
 	 * @param example
 	 * @return

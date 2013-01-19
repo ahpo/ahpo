@@ -16,14 +16,6 @@ public class SysResourceServiceImpl extends ServiceImpl implements SysResourceSe
 	@javax.annotation.Resource
 	private SysResourceMapper sysResourceMapper;
 
-	public SysResourceMapper getSysResourceMapper() {
-		return sysResourceMapper;
-	}
-
-	public void setSysResourceMapper(SysResourceMapper sysResourceMapper) {
-		this.sysResourceMapper = sysResourceMapper;
-	}
-
 	public int countByExample(SysResourceExample example) {
 		logger.info("get count from sys_res...");
 		return sysResourceMapper.countByExample(example);

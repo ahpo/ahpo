@@ -21,10 +21,6 @@ public class SysUserServiceImpl extends ServiceImpl implements SysUserService {
 	@Resource
 	private SysUserMapper sysUserMapper;
 
-	public void setSysUserMapper(SysUserMapper userMapper) {
-		this.sysUserMapper = userMapper;
-	}
-
 	public int deleteByPrimaryKey(Integer uid) {
 		logger.info("delete user from sys_user by primarykey[" + uid + "]...");
 		int rtn = 0;

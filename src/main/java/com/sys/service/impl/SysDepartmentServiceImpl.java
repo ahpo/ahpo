@@ -34,14 +34,6 @@ public class SysDepartmentServiceImpl extends ServiceImpl implements
 	@Resource
 	private SysDepartmentMapper sysDepartmentMapper;
 
-	public SysDepartmentMapper getSysDepartmentMapper() {
-		return sysDepartmentMapper;
-	}
-
-	public void setSysDepartmentMapper(SysDepartmentMapper sysDepartmentMapper) {
-		this.sysDepartmentMapper = sysDepartmentMapper;
-	}
-
 	/**
 	 * @param example
 	 * @return

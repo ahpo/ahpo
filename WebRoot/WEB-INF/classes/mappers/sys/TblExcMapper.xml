@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.easygo.dao.ejdb.TblExcMapper" >
-  <resultMap id="BaseResultMap" type="com.easygo.vo.ejdb.TblExc" >
+<mapper namespace="com.sys.dao.TblExcMapper" >
+  <resultMap id="BaseResultMap" type="com.sys.vo.TblExc" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="project" property="project" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
@@ -9,7 +9,7 @@
     <result column="operate" property="operate" jdbcType="VARCHAR" />
     <result column="time" property="time" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.easygo.vo.ejdb.TblExc" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.sys.vo.TblExc" extends="BaseResultMap" >
     <result column="message" property="message" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -76,7 +76,7 @@
   <sql id="Blob_Column_List" >
     message
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.easygo.vo.ejdb.TblExcExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.sys.vo.TblExcExample" >
     select
     <if test="distinct" >
       distinct
@@ -109,7 +109,7 @@
     </if>
      limit #{offset}, #{pageSize}
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easygo.vo.ejdb.TblExcExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sys.vo.TblExcExample" >
     select
     <if test="distinct" >
       distinct
@@ -135,13 +135,13 @@
     delete from tbl_exc
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.easygo.vo.ejdb.TblExcExample" >
+  <delete id="deleteByExample" parameterType="com.sys.vo.TblExcExample" >
     delete from tbl_exc
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.easygo.vo.ejdb.TblExc" >
+  <insert id="insert" parameterType="com.sys.vo.TblExc" >
     insert into tbl_exc (id, project, type, 
       status, operate, time, 
       message)
@@ -149,7 +149,7 @@
       #{status,jdbcType=VARCHAR}, #{operate,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
       #{message,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.easygo.vo.ejdb.TblExc" >
+  <insert id="insertSelective" parameterType="com.sys.vo.TblExc" >
     insert into tbl_exc
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -198,7 +198,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.easygo.vo.ejdb.TblExcExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.sys.vo.TblExcExample" resultType="java.lang.Integer" >
     select count(*) from tbl_exc
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -258,7 +258,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.easygo.vo.ejdb.TblExc" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sys.vo.TblExc" >
     update tbl_exc
     <set >
       <if test="project != null" >
@@ -282,7 +282,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.easygo.vo.ejdb.TblExc" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sys.vo.TblExc" >
     update tbl_exc
     set project = #{project,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
@@ -292,7 +292,7 @@
       message = #{message,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.easygo.vo.ejdb.TblExc" >
+  <update id="updateByPrimaryKey" parameterType="com.sys.vo.TblExc" >
     update tbl_exc
     set project = #{project,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},

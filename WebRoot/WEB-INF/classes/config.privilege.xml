@@ -8,6 +8,7 @@
 		<res_sysResDelete>system_res</res_sysResDelete>
 		<sysTask_query>system_task</sysTask_query>
 		<sysDict_query>tblDictionary</sysDict_query>
+		<sysDict_update>tblDictionary</sysDict_update>
 		
 		<sysRoleQuery>system_role</sysRoleQuery>
 		<sysDeptQuery>system_department</sysDeptQuery>
@@ -29,6 +30,7 @@
 		<res_sysResDelete>system_res.query</res_sysResDelete>
 		<sysTask_query>system_task.query</sysTask_query>
 		<sysDict_query>tblDictionary.query</sysDict_query>
+		<sysDict_update>tblDictionary.update</sysDict_update>
 		
 		<sysUserUpdate>system_user.update</sysUserUpdate>
 		<sysUserToUpdatePwd>system_user.update</sysUserToUpdatePwd>

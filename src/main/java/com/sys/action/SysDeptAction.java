@@ -28,7 +28,7 @@ import com.sys.vo.SysDepartmentExample;
 
 /**
  * @ClassName: SysDeptAction
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: the department control action
  * @author zgr
  * @date 2012-5-11 上午9:06:03
  * @version 1.0

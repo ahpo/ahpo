@@ -1,5 +1,4 @@
-#Wed May 16 08:40:20 CST 2012
-activeProfiles=
+activeProfiles=http\://maven.net.cn/content/groups/public/
 eclipse.preferences.version=1
 fullBuildGoals=process-test-resources
 resolveWorkspaceProjects=true

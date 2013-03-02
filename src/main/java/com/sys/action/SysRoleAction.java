@@ -43,7 +43,7 @@ import com.sys.vo.SysRoleExample;
 
 /**
  * @ClassName: SysRoleAction
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: 角色管理
  * @author zgr
  * @date 2012-5-8 上午11:19:51
  * @version 1.0
@@ -176,6 +176,7 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 			operateResult.setResult("创建失败");
 			operateResult.setReason("输入信息有误，请核对后重试！");
 		}
+		setJsonData(200, "删除成功", "sysRoleQuery.action");
 		return SUCCESS;
 	}
 
@@ -185,8 +186,10 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 		operateResult.setUrl("sysRoleQuery.action");
 		int errNum = 0, sucNum = 0;
 		int rtn = 0;
+		String[] ids = cids.split(",");
+		
 		for (int i = 0; i < ids.length; i++) {
-			rtn = sysRoleService.deleteByPrimaryKey(ids[i]);
+			rtn = sysRoleService.deleteByPrimaryKey(Integer.parseInt(ids[i]));
 			if (rtn < 1) {
 				logger.info("failed to delete sysRole[" + ids[i] + "]");
 				errNum++;
@@ -199,6 +202,7 @@ public class SysRoleAction extends AbstractAction implements SessionAware {
 		if (errNum > 0) {
 			operateResult.setReason("该角色正在被使用或者不存在");
 		}
+		setJsonData(200, "操作成功", "sysRoleQuery.action");
 		return SUCCESS;
 	}
 

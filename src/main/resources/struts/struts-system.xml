@@ -12,9 +12,7 @@
 			</result>
 			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
 		</action>
-		<action name="sysUserUpdate" class="sysUserAction" method="sysUserUpdate">
-			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
-		</action>
+		<action name="sysUserUpdate" class="sysUserAction" method="sysUserUpdate"/>
 		<action name="sysUserToUpdatePwd" class="sysUserAction" method="sysUserToUpdatePwd">
 			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserUpdatePwd.jsp
 			</result>
@@ -27,12 +25,8 @@
 			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserCreate.jsp
 			</result>
 		</action>
-		<action name="sysUserCreate" class="sysUserAction" method="sysUserCreate">
-			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
-		</action>
-		<action name="sysUserDelete" class="sysUserAction" method="sysUserDelete">
-			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
-		</action>
+		<action name="sysUserCreate" class="sysUserAction" method="sysUserCreate"/>
+		<action name="sysUserDelete" class="sysUserAction" method="sysUserDelete"/>
 		<action name="sysUserToPrivilege" class="sysUserAction" method="sysUserToPrivilege">
 			<result name="success">/WEB-INF/jsp/sys/sysUser/sysUserPrivilege.jsp
 			</result>
@@ -57,7 +51,7 @@
         </action>
         
         
-		
+        <!-- sysRole -->		
 		<action name="sysRoleQuery" class="sysRoleAction" method="sysRoleQuery">
 			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRoleList.jsp</result>
 		</action>
@@ -66,20 +60,15 @@
 			</result>
 			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
 		</action>
-		<action name="sysRoleUpdate" class="sysRoleAction" method="sysRoleUpdate">
-			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
-			<result name="error">/WEB-INF/jsp/pub/resultPage.jsp</result>
-		</action>
+		<action name="sysRoleUpdate" class="sysRoleAction" method="sysRoleUpdate"/>
+		
 		<action name="sysRoleToCreate" class="sysRoleAction" method="sysRoleToCreate">
 			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRoleCreate.jsp
 			</result>
 		</action>
-		<action name="sysRoleCreate" class="sysRoleAction" method="sysRoleCreate">
-			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
-		</action>
-		<action name="sysRoleDelete" class="sysRoleAction" method="sysRoleDelete">
-			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
-		</action>
+		<action name="sysRoleCreate" class="sysRoleAction" method="sysRoleCreate"/>
+		<action name="sysRoleDelete" class="sysRoleAction" method="sysRoleDelete"/>
+		
 		<action name="sysRoleToPrivilege" class="sysRoleAction" method="sysRoleToPrivilege">
 			<result name="success">/WEB-INF/jsp/sys/sysRole/sysRolePrivilege.jsp
 			</result>
@@ -88,12 +77,11 @@
 		<action name="sysRolePrivilege" class="sysRoleAction" method="sysRolePrivilege">
 			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
 		</action>
-		<action name="sysLogToQuery" class="sysLogAction" method="sysLogToQuery">
-			<result name="success">/WEB-INF/jsp/sys/sysLog/sysLogQuery.jsp</result>
-		</action>
+		
 		<action name="sysLogQuery" class="sysLogAction" method="sysLogQuery">
 			<result name="success">/WEB-INF/jsp/sys/sysLog/sysLogQuery.jsp</result>
 		</action>
+		
 		<action name="sysDeptQuery" class="sysDeptAction" method="sysDeptQuery">
 			<result name="success">/WEB-INF/jsp/sys/sysDept/sysDeptList.jsp</result>
 		</action>
@@ -119,12 +107,11 @@
 		
 				
 		<action name="tblLookupQuery" class="tblLookupAction" method="tblLookupQuery">
-			<result name="success">/WEB-INF/jsp/biz/tblLookup/tblLookupList.jsp
-			</result>
+			<result name="success_query">/WEB-INF/jsp/sys/sysLookup/tblLookupList.jsp</result>
 		</action>
 		<action name="tblLookupToUpdate" class="tblLookupAction"
 			method="tblLookupToUpdate">
-			<result name="success">/WEB-INF/jsp/biz/tblLookup/tblLookupUpdate.jsp
+			<result name="success">/WEB-INF/jsp/sys/sysLookup/tblLookupUpdate.jsp
 			</result>
 		</action>
 		<action name="tblLookupUpdate" class="tblLookupAction"
@@ -134,7 +121,7 @@
 		</action>
 		<action name="tblLookupToCreate" class="tblLookupAction"
 			method="tblLookupToCreate">
-			<result name="success">/WEB-INF/jsp/biz/tblLookup/tblLookupCreate.jsp
+			<result name="success">/WEB-INF/jsp/sys/sysLookup/tblLookupCreate.jsp
 			</result>
 		</action>
 		<action name="tblLookupCreate" class="tblLookupAction"
@@ -146,8 +133,6 @@
 			method="tblLookupDelete">
 			<result name="success">/WEB-INF/jsp/pub/resultPage.jsp</result>
 		</action>
-		
-		
 		
 		<action name="sysDict_*" class="tblDictionaryAction" method="{1}">
         	<result name="success_query">/WEB-INF/jsp/sys/sysDict/query.jsp</result>

@@ -11,6 +11,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -83,18 +84,23 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 	private String mender;
 	private String[] menuId;
 	
-	private List<SysDepartment> deptList;
-
 	private TreeNode userTreeNode;
 
-	
 	private SysResource sysResource;
-
+	
+	private List<SysRole> sysRoles;
+	private List<SysDepartment> sysDepartments;
+	
+	
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
 	public String sysUserQuery() {
+		
+		sysRoles = sysRoleService.selectByExample(null);
+		sysDepartments = sysDepartmentService.selectByExample(null);
+		
 		String resCode = Constants.QUERY_SYSUSER_QUERY;
 		String resType = (String) session.get(Constants.RES_TYPE);
 		Integer urid;
@@ -108,10 +114,25 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 		if (funcList == null || funcList.isEmpty()) {
 			return LOGIN;
 		}
-		int total = sysUserService.countByExample(null);
+		
+		SysUserExample example= new SysUserExample();
+		if(null!=did && 0!=did) {
+			example.createCriteria().andDidEqualTo(did);
+		}
+		if(null!=rid && 0!=rid) {
+			example.createCriteria().andRidEqualTo(rid);
+		}
+		if(StringUtils.isNotEmpty(keywords)) {
+			example.createCriteria().andTruenameLike(keywords);
+		}
+		
+		int total = sysUserService.countByExample(example);
 		pageHandler = new PageHandle();
 		page = pageHandler.getPage(null, pageNum, pageMethod, total);
-		resultList = sysUserService.selectPageByExample(null,
+		
+		
+		
+		resultList = sysUserService.selectPageByExample(example,
 				page.getStartRow(), page.getNumPerPage());
 		if (resultList == null) {
 			operateResult.setOperation(Constants.OPERATE_QUERY);
@@ -205,8 +226,8 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 	public String sysUserToUpdate() {
 		sysUser = sysUserService.selectByPrimaryKey(uid);
 		if (sysUser != null) {
-			resultList = sysRoleService.selectByExample(null);
-			deptList = sysDepartmentService.selectByExample(null);
+			sysRoles = sysRoleService.selectByExample(null);
+			sysDepartments = sysDepartmentService.selectByExample(null);
 			return SUCCESS;
 		} else {
 			Map<String, String> parms = new HashMap<String, String>();
@@ -281,8 +302,8 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 	}
 
 	public String sysUserToCreate() {
-		resultList = sysRoleService.selectByExample(null);
-		deptList = sysDepartmentService.selectByExample(null);
+		sysRoles = sysRoleService.selectByExample(null);
+		sysDepartments = sysDepartmentService.selectByExample(null);
 		return SUCCESS;
 	}
 
@@ -315,6 +336,7 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 			operateResult.setResult("创建失败");
 			operateResult.setResult("新用户名已存在");
 		}
+		setJsonData(200, "操作成功", "sysUserQuery.action");
 		return SUCCESS;
 	}
 
@@ -324,8 +346,9 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 		operateResult.setUrl("sysUserQuery.action");
 		int sucNum = 0, errNum = 0;
 		int rtn = 0;
+		String[] ids = cids.split(",");
 		for (int i = 0; i < ids.length; i++) {
-			rtn = sysUserService.deleteByPrimaryKey(ids[i]);
+			rtn = sysUserService.deleteByPrimaryKey(Integer.parseInt(ids[i]));
 			if (rtn < 1) {
 				logger.info("failed to delete sysUser[" + ids[i] + "]");
 				errNum++;
@@ -338,6 +361,7 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 		if (errNum > 0) {
 			operateResult.setReason("该用户记录正在被使用或者不存在");
 		}
+		setJsonData(200, "操作成功", "sysUserQuery.action");
 		return SUCCESS;
 	}
 
@@ -677,26 +701,28 @@ public class SysUserAction extends AbstractAction implements SessionAware {
 		this.oldpassword = oldpassword;
 	}
 
-	public List<SysDepartment> getDeptList() {
-		return deptList;
-	}
-
-	public void setDeptList(List<SysDepartment> deptList) {
-		this.deptList = deptList;
-	}
-
-	/** 
-	 * @return sysResource 
-	 */
 	public SysResource getSysResource() {
 		return sysResource;
 	}
 
-	/**
-	 * @param sysResource the sysResource to set
-	 */
 	public void setSysResource(SysResource sysResource) {
 		this.sysResource = sysResource;
+	}
+
+	public List<SysDepartment> getSysDepartments() {
+		return sysDepartments;
+	}
+
+	public void setSysDepartments(List<SysDepartment> sysDepartments) {
+		this.sysDepartments = sysDepartments;
+	}
+
+	public List<SysRole> getSysRoles() {
+		return sysRoles;
+	}
+
+	public void setSysRoles(List<SysRole> sysRoles) {
+		this.sysRoles = sysRoles;
 	}
 	
 }

@@ -145,6 +145,7 @@ public class TblDictionaryAction extends AbstractAction {
 		}
 		logger.info("tblDictionary[" + id + "] is updated successfully");
 		operateResult.setResult(WebConstants.OPERATE_RESULT_SUCCESS);
+		setJsonData(200, "修改成功", "sysDict_query.action");
 		return SUCCESS;
 	}
 

@@ -9,6 +9,7 @@ package com.sys.action;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -58,17 +59,17 @@ public class SysLogAction extends AbstractAction {
 
 	private String beginTime;
 	private String endTime;
-
-	public String sysLogToQuery() {
-		resultList = sysUserService.selectByExample(null);
-		return SUCCESS;
-	}
+	
+	private List<SysUser> sysUsers;
 
 	public String sysLogQuery() {
+		sysUsers = sysUserService.selectByExample(null);
+		Map<String, String> parms = new HashMap<String, String>();
 		SysLogExample example = new SysLogExample();
 		com.sys.vo.SysLogExample.Criteria criteria = example.createCriteria();
 		if (uid != null && uid > 0) {
 			criteria.andUidEqualTo(uid);
+			parms.put(Constants.UID, this.uid.toString());
 		}
 		try {
 			if (beginTime != null && endTime != null && beginTime.length() > 0
@@ -76,21 +77,21 @@ public class SysLogAction extends AbstractAction {
 				criteria.andLogDateBetween(
 						DateUtil.parse(beginTime, "yyyy-MM-dd HH:mm:ss"),
 						DateUtil.parse(endTime, "yyyy-MM-dd HH:mm:ss"));
+
+				parms.put(Constants.BEGIN_TIME, this.beginTime);
 			} else if (beginTime != null && beginTime.length() > 0) {
 				criteria.andLogDateGreaterThanOrEqualTo(DateUtil.parse(
 						beginTime, "yyyy-MM-dd HH:mm:ss"));
 			} else if (endTime != null && endTime.length() > 0) {
 				criteria.andLogDateLessThanOrEqualTo(DateUtil.parse(endTime,
 						"yyyy-MM-dd HH:mm:ss"));
+				parms.put(Constants.END_TIME, this.endTime);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Map<String, String> parms = new HashMap<String, String>();
-		parms.put(Constants.UID, this.uid.toString());
-		parms.put(Constants.BEGIN_TIME, this.beginTime);
-		parms.put(Constants.END_TIME, this.endTime);
+		
 		int total = sysLogService.countByExample(example);
 		pageHandler = new PageHandle();
 		page = pageHandler.getPage(parms, pageNum, pageMethod, total);
@@ -177,5 +178,13 @@ public class SysLogAction extends AbstractAction {
 
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+
+	public List<SysUser> getSysUsers() {
+		return sysUsers;
+	}
+
+	public void setSysUsers(List<SysUser> sysUsers) {
+		this.sysUsers = sysUsers;
 	}
 }

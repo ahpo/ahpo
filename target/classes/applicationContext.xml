@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
 <!--配置数据源属性文件 -->
 	<bean id="propertyConfigurer"
@@ -52,4 +60,13 @@
 			value="com.easygo.dao.ejdb,com.sys.dao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory_01" />
 	</bean>
+	<!-- 
+	<task:scheduled-tasks>
+		<task:scheduled ref="BikeService" method="syncBikes"
+			cron="* * * 5/5 * *" />
+		 <task:scheduled ref="testService" method="sayBye" cron="7/13 * * * 
+			* ?" /> 
+	</task:scheduled-tasks>
+	 -->
+	
 </beans>

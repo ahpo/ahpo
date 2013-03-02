@@ -6,23 +6,19 @@
 		<sysResDetail>system_res</sysResDetail>
 		<res_sysResUpdate>system_res</res_sysResUpdate>
 		<res_sysResDelete>system_res</res_sysResDelete>
+		<sysTask_query>system_task</sysTask_query>
+		<sysDict_query>tblDictionary</sysDict_query>
+		<sysDict_update>tblDictionary</sysDict_update>
 		
 		<sysRoleQuery>system_role</sysRoleQuery>
 		<sysDeptQuery>system_department</sysDeptQuery>
-		<roadInfoQuery>roadinfo</roadInfoQuery>
-		<roadListQuery>road_video</roadListQuery>
-		<httpRoadListQuery>http_road_video</httpRoadListQuery>
-		<roadInfoListQuery>road_image</roadInfoListQuery>
-		<roadReportQuery>road_report</roadReportQuery>
-		<carIllegalInfoQuery>carIllegalInfo</carIllegalInfoQuery>
-		<cityQuery>city</cityQuery>
-		<cityAreaQuery>cityArea</cityAreaQuery>
+		
+		
+
 		<tblLookupQuery>tblLookup</tblLookupQuery>
 		<tblDictionaryQuery>tblDictionary</tblDictionaryQuery>
-		<roadPositionQuery>road_position</roadPositionQuery>
 		<softVersionQuery>soft_version</softVersionQuery>
 		<userQuery>login_user</userQuery>
-		<userRoadStatusQuery>userRoadStatus</userRoadStatusQuery>
 	</query>
 	<request>
 		<sysUserQuery>system_user.query</sysUserQuery>
@@ -32,6 +28,9 @@
 		<sysResDetail>system_res.query</sysResDetail>
 		<res_sysResUpdate>system_res.query</res_sysResUpdate>
 		<res_sysResDelete>system_res.query</res_sysResDelete>
+		<sysTask_query>system_task.query</sysTask_query>
+		<sysDict_query>tblDictionary.query</sysDict_query>
+		<sysDict_update>tblDictionary.update</sysDict_update>
 		
 		<sysUserUpdate>system_user.update</sysUserUpdate>
 		<sysUserToUpdatePwd>system_user.update</sysUserToUpdatePwd>
@@ -67,61 +66,7 @@
 		<userCreate>login_user.create</userCreate>
 		<userDelete>login_user.delete</userDelete>
 		
-		<roadReportQuery>road_report.query</roadReportQuery>
-		<roadReportToUpdate>road_report.update</roadReportToUpdate>
-		<roadReportUpdate>road_report.update</roadReportUpdate>
-		<roadReportToCreate>road_report.create</roadReportToCreate>
-		<roadReportCreate>road_report.create</roadReportCreate>
-		<roadReportDelete>road_report.delete</roadReportDelete>
 		
-		<roadInfoQuery>roadinfo.query</roadInfoQuery>
-		<roadInfoToUpdate>roadinfo.update</roadInfoToUpdate>
-		<roadInfoUpdate>roadinfo.update</roadInfoUpdate>
-		<roadInfoToCreate>roadinfo.create</roadInfoToCreate>
-		<roadInfoCreate>roadinfo.create</roadInfoCreate>
-		<roadInfoDelete>roadinfo.delete</roadInfoDelete>
-		
-		<roadListQuery>road_video.query</roadListQuery>
-		<roadListToUpdate>road_video.update</roadListToUpdate>
-		<roadListUpdate>road_video.update</roadListUpdate>
-		<roadListToCreate>road_video.create</roadListToCreate>
-		<roadListCreate>road_video.create</roadListCreate>
-		<roadListDelete>road_video.delete</roadListDelete>
-		
-		<roadInfoListQuery>road_image.query</roadInfoListQuery>
-		<roadInfoListToUpdate>road_image.update</roadInfoListToUpdate>
-		<roadInfoListUpdate>road_image.update</roadInfoListUpdate>
-		<roadInfoListToCreate>road_image.create</roadInfoListToCreate>
-		<roadInfoListCreate>road_image.create</roadInfoListCreate>
-		<roadInfoListDelete>road_image.delete</roadInfoListDelete>
-		
-		<roadPositionQuery>road_position.query</roadPositionQuery>
-		<roadPositionToUpdate>road_position.update</roadPositionToUpdate>
-		<roadPositionUpdate>road_position.update</roadPositionUpdate>
-		<roadPositionToCreate>road_position.create</roadPositionToCreate>
-		<roadPositionCreate>road_position.create</roadPositionCreate>
-		<roadPositionDelete>road_position.delete</roadPositionDelete>
-		
-		<cityQuery>city.query</cityQuery>
-		<cityToUpdate>city.update</cityToUpdate>
-		<cityUpdate>city.update</cityUpdate>
-		<cityToCreate>city.create</cityToCreate>
-		<cityCreate>city.create</cityCreate>
-		<cityDelete>city.delete</cityDelete>
-		
-		<cityAreaQuery>cityArea.query</cityAreaQuery>
-		<cityAreaToUpdate>cityArea.update</cityAreaToUpdate>
-		<cityAreaUpdate>cityArea.update</cityAreaUpdate>
-		<cityAreaToCreate>cityArea.create</cityAreaToCreate>
-		<cityAreaCreate>cityArea.create</cityAreaCreate>
-		<cityAreaDelete>cityArea.delete</cityAreaDelete>
-		
-		<carIllegalInfoQuery>carIllegalInfo.query</carIllegalInfoQuery>
-		<carIllegalInfoToUpdate>carIllegalInfo.update</carIllegalInfoToUpdate>
-		<carIllegalInfoUpdate>carIllegalInfo.update</carIllegalInfoUpdate>
-		<carIllegalInfoToCreate>carIllegalInfo.create</carIllegalInfoToCreate>
-		<carIllegalInfoCreate>carIllegalInfo.create</carIllegalInfoCreate>
-		<carIllegalInfoDelete>carIllegalInfo.delete</carIllegalInfoDelete>
 		
 		<softVersionQuery>soft_version.query</softVersionQuery>
 		<softVersionToUpdate>soft_version.update</softVersionToUpdate>
@@ -129,20 +74,6 @@
 		<softVersionToCreate>soft_version.create</softVersionToCreate>
 		<softVersionCreate>soft_version.create</softVersionCreate>
 		<softVersionDelete>soft_version.delete</softVersionDelete>
-		
-		<httpRoadListQuery>http_road_video.query</httpRoadListQuery>
-		<httpRoadListToUpdate>http_road_video.update</httpRoadListToUpdate>
-		<httpRoadListUpdate>http_road_video.update</httpRoadListUpdate>
-		<httpRoadListToCreate>http_road_video.create</httpRoadListToCreate>
-		<httpRoadListCreate>http_road_video.create</httpRoadListCreate>
-		<httpRoadListDelete>http_road_video.delete</httpRoadListDelete>
-		
-		<userRoadStatusQuery>userRoadStatus.query</userRoadStatusQuery>
-		<userRoadStatusToUpdate>userRoadStatus.update</userRoadStatusToUpdate>
-		<userRoadStatusUpdate>userRoadStatus.update</userRoadStatusUpdate>
-		<userRoadStatusToCreate>userRoadStatus.create</userRoadStatusToCreate>
-		<userRoadStatusCreate>userRoadStatus.create</userRoadStatusCreate>
-		<userRoadStatusDelete>userRoadStatus.delete</userRoadStatusDelete>
 		
 		<tblLookupQuery>tblLookup.query</tblLookupQuery>
 		<tblLookupToUpdate>tblLookup.update</tblLookupToUpdate>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.easygo.dao.ejdb.TblDictionaryMapper" >
-  <resultMap id="BaseResultMap" type="com.easygo.vo.ejdb.TblDictionary" >
+<mapper namespace="com.sys.dao.TblDictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.sys.vo.TblDictionary" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="lookupkey" property="lookupkey" jdbcType="VARCHAR" />
     <result column="lookupvalue" property="lookupvalue" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     id, lookupkey, lookupvalue, describeinfo, updatetime, backup
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easygo.vo.ejdb.TblDictionaryExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sys.vo.TblDictionaryExample" >
     select
     <if test="distinct" >
       distinct
@@ -109,13 +109,13 @@
     delete from tbl_dictionary
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.easygo.vo.ejdb.TblDictionaryExample" >
+  <delete id="deleteByExample" parameterType="com.sys.vo.TblDictionaryExample" >
     delete from tbl_dictionary
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+  <insert id="insert" parameterType="com.sys.vo.TblDictionary" >
     insert into tbl_dictionary (id, lookupkey, lookupvalue, 
       describeinfo, updatetime, backup
       )
@@ -123,7 +123,7 @@
       #{describeinfo,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{backup,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+  <insert id="insertSelective" parameterType="com.sys.vo.TblDictionary" >
     insert into tbl_dictionary
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -166,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.easygo.vo.ejdb.TblDictionaryExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.sys.vo.TblDictionaryExample" resultType="java.lang.Integer" >
     select count(*) from tbl_dictionary
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -210,7 +210,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sys.vo.TblDictionary" >
     update tbl_dictionary
     <set >
       <if test="lookupkey != null" >
@@ -231,7 +231,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.easygo.vo.ejdb.TblDictionary" >
+  <update id="updateByPrimaryKey" parameterType="com.sys.vo.TblDictionary" >
     update tbl_dictionary
     set lookupkey = #{lookupkey,jdbcType=VARCHAR},
       lookupvalue = #{lookupvalue,jdbcType=VARCHAR},

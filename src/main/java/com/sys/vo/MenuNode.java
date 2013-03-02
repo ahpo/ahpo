@@ -1,9 +1,12 @@
 package com.sys.vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuNode {
+public class MenuNode implements Serializable {
+	
+	private static final long serialVersionUID = 6871260063589305396L;
 
 	private SysResFuncRelation sysResFuncRelation;
 

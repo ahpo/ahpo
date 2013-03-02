@@ -1,145 +1,104 @@
-<%@page pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/jsp/pub/common.jsp" %>
-<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/date/My97DatePicker/WdatePicker.js"></script>
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#sysUserUpdate-div").toPanel({
-			title:"修改系统用户"
-		});
-		
-		$("#work-list").striped();
-		
-		$.formValidator.initConfig({onError:function(){return false;}});
-		$("#username").formValidator({onshow:"",onfocus:""})
-				 .InputValidator({min:1,onerror:"<s:text name='jsp.common.validate.null'/>"});
-		$("#enable").val(<s:property value="%{sysUser.enable}"/>);
-	});
-</script>
-
-<div id="toolbar" class="toolbar">
-	<ul>
-		<li>
-			<img src="<%=request.getContextPath()%>/images/arror.gif" width="7" height="11" border="0" alt="">用户管理
-			<img src="<%=request.getContextPath()%>/images/arror.gif" width="7" height="11" border="0" alt="">系统用户
-		</li>
-	</ul>
-</div>
-
-<div class="min-div"></div>
-
-<div id="sysUserUpdate-div">
-	<s:form id="sysUserUpdate" name="sysUserUpdate" action="sysUserUpdate" namespace="/" method="post" onsubmit="return jQuery.formValidator.PageIsValid('1');">
-		<input type="hidden" name="uid" value="<s:property value="%{sysUser.uid}"/>"/>
-		<input type="hidden" name="currentPage" value="<s:property value="currentPage"/>"/>
-		<table id="work-list" class="addTable">
-			<tr>
-				<td class="left-td">用户ID</td>
-				<td class="middle-td"><label><s:property value="%{sysUser.uid}"/></label></td>
-				<td class="right-td"><div id="uidTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">用户名</td>
-				<td class="middle-td">
-					<input type="text" id="username" name="username" value="<s:property value="%{sysUser.username}"/>"/><font color="#FF0000">*</font>
-				</td>
-				<td class="right-td"><div id="usernameTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">真实姓名</td>
-				<td class="middle-td">
-					<input type="text" id="truename" name="truename" value="<s:property value="%{sysUser.truename}"/>"/>
-				</td>
-				<td class="right-td"><div id="truenameTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">用户角色</td>
-				<td class="middle-td">
-					<select id="rid" name="rid">
-					<s:iterator value="resultList" id="roles">
-						<s:if test="#roles.rid==sysUser.sysRole.rid">
-						<option selected value="<s:property value="#roles.rid"/>"><s:property value="#roles.rname"/></option>
-						</s:if>
-						<s:else>
-						<option value="<s:property value="#roles.rid"/>"><s:property value="#roles.rname"/></option>
-						</s:else>
-					</s:iterator>
-					</select>
-					<font color="#FF0000">*</font>
-				</td>
-				<td class="right-td"><div id="ridTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">所属部门</td>
-				<td class="middle-td">
-					<select id="did" name="did">
-					<s:iterator value="deptList" id="dept">
-						<s:if test="#dept.did == sysUser.sysDepartment.did">
-						<option selected value="<s:property value="#dept.did"/>"><s:property value="#dept.dname"/></option>
-						</s:if>
-						<s:else>
-						<option value="<s:property value="#dept.did"/>"><s:property value="#dept.dname"/></option>
-						</s:else>
-					</s:iterator>
-					</select>
-					<font color="#FF0000">*</font>
-				</td>
-				<td class="right-td"><div id="didTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">手机号码</td>
-				<td class="middle-td">
-					<input type="text" id="mobile" name="mobile" value="<s:property value="%{sysUser.mobile}"/>"/>
-				</td>
-				<td class="right-td"><div id="mobileTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">电话</td>
-				<td class="middle-td">
-					<input type="text" id="tel" name="tel" value="<s:property value="%{sysUser.tel}"/>"/>
-				</td>
-				<td class="right-td"><div id="telTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">传真</td>
-				<td class="middle-td">
-					<input type="text" id="fax" name="fax" value="<s:property value="%{sysUser.fax}"/>"/>
-				</td>
-				<td class="right-td"><div id="faxTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">电子邮箱</td>
-				<td class="middle-td">
-					<input type="email" id="email" name="email" value="<s:property value="%{sysUser.email}"/>"/>
-				</td>
-				<td class="right-td"><div id="emailTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">通讯地址</td>
-				<td class="middle-td">
-					<input type="text" id="address" name="address" value="<s:property value="%{sysUser.address}"/>"/>
-				</td>
-				<td class="right-td"><div id="addressTip"></div></td>
-			</tr>
-			<tr>
-				<td class="left-td">启用标志</td>
-				<td class="middle-td">
-					<select id="enable" name="enable">
-						<option value="1">启用</option>
-						<option value="0">禁用</option>
-					</select><font color="#FF0000">*</font>
-				</td>
-				<td class="right-td"><div id="enableTip"></div></td>
-			</tr>
-		</table>
-	
-	
-	<div class="button-div">
-		<input type="submit" name="submit1"	class="button" value="<s:text name="jsp.common.update"/>"/>
-		<span></span>
-		<input type="reset" name="submit2" 	class="button" value="<s:text name="jsp.common.reset"/>"/>
-	</div>
-	
-
-	</s:form>
+<div class="pageContent">
+    <form method="post" action="sysUserUpdate.action" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+        <div class="pageFormContent" layoutH="56">
+            <p>
+                <label>ID</label>
+                <input name="uid" type="text" size="30" value="${sysUser.uid }" readonly="readonly"/>
+            </p>
+            <p>
+                <label>用户名：</label>
+                <input name="username" class="required" type="text" size="30" value="${sysUser.username }" alt=""/>
+            </p>
+            <p>
+                <label>真实姓名：</label>
+                <input name="truename" class="required" type="text" size="30" value="${sysUser.truename }" alt=""/>
+            </p>
+            <p>
+                <label>用户角色：</label>
+                <select id="rid" name="rid">
+                 <s:iterator value="sysRoles" id="roles">
+                     <s:if test="#roles.rid==sysUser.sysRole.rid">
+                     <option selected value="<s:property value="#roles.rid"/>"><s:property value="#roles.rname"/></option>
+                     </s:if>
+                     <s:else>
+                     <option value="<s:property value="#roles.rid"/>"><s:property value="#roles.rname"/></option>
+                     </s:else>
+                 </s:iterator>
+                 </select>
+            </p>
+            <p>
+                <label>所属部门：</label>
+                <select id="did" name="did">
+                    <s:iterator value="sysDepartments" id="dept">
+                        <s:if test="#dept.did == sysUser.sysDepartment.did">
+                        <option selected value="<s:property value="#dept.did"/>"><s:property value="#dept.dname"/></option>
+                        </s:if>
+                        <s:else>
+                        <option value="<s:property value="#dept.did"/>"><s:property value="#dept.dname"/></option>
+                        </s:else>
+                    </s:iterator>
+                </select>
+            </p>
+            
+            <p>
+                <label>手机号码：</label>
+                <input name="mobile" type="text" size="30" value="${sysUser.mobile }" alt=""/>
+            </p>
+            <p>
+                <label>电话：</label>
+                <input name="tel" type="text" size="30" value="${sysUser.tel }" alt=""/>
+            </p>
+            <p>
+                <label>传真：</label>
+                <input name="fax" type="text" size="30" value="${sysUser.fax }" alt=""/>
+            </p>
+            <p>
+                <label>电子邮箱：</label>
+                <input name="email" type="text" size="30" value="${sysUser.email }" alt=""/>
+            </p>
+            <p>
+                <label>通讯地址：</label>
+                <input name="address" type="text" size="30" value="${sysUser.address }" alt=""/>
+            </p>
+            <p>
+                <label>启用标志：</label>
+                <select id="enable" name="enable">
+                    <option value="1">启用</option>
+                    <option value="0">禁用</option>
+                </select>
+            </p>
+            <p>
+                <label>上次登录时间</label>
+                <s:date name="sysUser.lastTime" format="yyyy-MM-dd HH:mm:ss" />
+            </p>
+            <p>
+                <label>上次登录IP</label>
+                ${sysUser.lastIp }
+            </p>      
+            <p>
+                <label>更新时间</label>
+                <s:date name="sysUser.updated" format="yyyy-MM-dd HH:mm:ss" />
+            </p>      
+            <p>
+                <label>创建时间</label>
+                <s:date name="sysUser.created" format="yyyy-MM-dd HH:mm:ss" />
+            </p> 
+            <p>
+                <label>创建人</label>
+                ${sysUser.creator }
+            </p>             
+            
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li>
+                    <div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+                </li>
+            </ul>
+        </div>
+    </form>
 </div>

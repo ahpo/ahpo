@@ -41,6 +41,12 @@ public abstract class AbstractAction extends ActionSupport implements IAction {
 	
 	public List<SysFunction> funcList;
 	public Integer ids[];
+
+	//the list of checkbox, seprate by ,
+	public String cids;
+	//the keywords
+	public String keywords;
+	
 	public List<?> resultList;
 	public OperateResult operateResult = new OperateResult();
 
@@ -140,10 +146,10 @@ public abstract class AbstractAction extends ActionSupport implements IAction {
 		
 		String result = "{\"statusCode\":\""+code+"\"," +
 				"\"message\":\""+message+"\"," +
-				"\"navTabId\":\"\"," +
+				"\"navTabId\":\"navTab\"," +
 				"\"rel\":\"\"," +
 				"\"callbackType\":\"forward\"," +
-				"\"forwardUrl\":\"sysResQuery.action\"" +
+				"\"forwardUrl\":\""+url+"\"" +
 				"}";
 		setJSON_DATA(result);
 	}
@@ -161,4 +167,22 @@ public abstract class AbstractAction extends ActionSupport implements IAction {
 	public void setJSON_DATA(String jSON_DATA) {
 		JSON_DATA = jSON_DATA;
 	}
+
+	public String getCids() {
+		return cids;
+	}
+
+	public void setCids(String cids) {
+		this.cids = cids;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+	
+	
 }

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sys.dao.SysTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.sys.vo.SysTask" >
+    <id column="task_id" property="taskId" jdbcType="INTEGER" />
+    <result column="task_name" property="taskName" jdbcType="VARCHAR" />
+    <result column="task_class" property="taskClass" jdbcType="VARCHAR" />
+    <result column="task_method" property="taskMethod" jdbcType="VARCHAR" />
+    <result column="task_cron" property="taskCron" jdbcType="VARCHAR" />
+    <result column="task_desc" property="taskDesc" jdbcType="VARCHAR" />
+    <result column="task_style" property="taskStyle" jdbcType="BIT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    task_id, task_name, task_class, task_method, task_cron, task_desc, task_style, created, 
+    creator, updated
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sys.vo.SysTaskExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sys.vo.SysTaskExample" >
+    delete from sys_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sys.vo.SysTask" >
+    insert into sys_task (task_id, task_name, task_class, 
+      task_method, task_cron, task_desc, 
+      task_style, created, creator, 
+      updated)
+    values (#{taskId,jdbcType=INTEGER}, #{taskName,jdbcType=VARCHAR}, #{taskClass,jdbcType=VARCHAR}, 
+      #{taskMethod,jdbcType=VARCHAR}, #{taskCron,jdbcType=VARCHAR}, #{taskDesc,jdbcType=VARCHAR}, 
+      #{taskStyle,jdbcType=BIT}, #{created,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
+      #{updated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sys.vo.SysTask" >
+    insert into sys_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="taskName != null" >
+        task_name,
+      </if>
+      <if test="taskClass != null" >
+        task_class,
+      </if>
+      <if test="taskMethod != null" >
+        task_method,
+      </if>
+      <if test="taskCron != null" >
+        task_cron,
+      </if>
+      <if test="taskDesc != null" >
+        task_desc,
+      </if>
+      <if test="taskStyle != null" >
+        task_style,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="taskName != null" >
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskClass != null" >
+        #{taskClass,jdbcType=VARCHAR},
+      </if>
+      <if test="taskMethod != null" >
+        #{taskMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="taskCron != null" >
+        #{taskCron,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDesc != null" >
+        #{taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStyle != null" >
+        #{taskStyle,jdbcType=BIT},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sys.vo.SysTaskExample" resultType="java.lang.Integer" >
+    select count(*) from sys_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_task
+    <set >
+      <if test="record.taskId != null" >
+        task_id = #{record.taskId,jdbcType=INTEGER},
+      </if>
+      <if test="record.taskName != null" >
+        task_name = #{record.taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskClass != null" >
+        task_class = #{record.taskClass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskMethod != null" >
+        task_method = #{record.taskMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskCron != null" >
+        task_cron = #{record.taskCron,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskDesc != null" >
+        task_desc = #{record.taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskStyle != null" >
+        task_style = #{record.taskStyle,jdbcType=BIT},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creator != null" >
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_task
+    set task_id = #{record.taskId,jdbcType=INTEGER},
+      task_name = #{record.taskName,jdbcType=VARCHAR},
+      task_class = #{record.taskClass,jdbcType=VARCHAR},
+      task_method = #{record.taskMethod,jdbcType=VARCHAR},
+      task_cron = #{record.taskCron,jdbcType=VARCHAR},
+      task_desc = #{record.taskDesc,jdbcType=VARCHAR},
+      task_style = #{record.taskStyle,jdbcType=BIT},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sys.vo.SysTask" >
+    update sys_task
+    <set >
+      <if test="taskName != null" >
+        task_name = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskClass != null" >
+        task_class = #{taskClass,jdbcType=VARCHAR},
+      </if>
+      <if test="taskMethod != null" >
+        task_method = #{taskMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="taskCron != null" >
+        task_cron = #{taskCron,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDesc != null" >
+        task_desc = #{taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStyle != null" >
+        task_style = #{taskStyle,jdbcType=BIT},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sys.vo.SysTask" >
+    update sys_task
+    set task_name = #{taskName,jdbcType=VARCHAR},
+      task_class = #{taskClass,jdbcType=VARCHAR},
+      task_method = #{taskMethod,jdbcType=VARCHAR},
+      task_cron = #{taskCron,jdbcType=VARCHAR},
+      task_desc = #{taskDesc,jdbcType=VARCHAR},
+      task_style = #{taskStyle,jdbcType=BIT},
+      created = #{created,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      updated = #{updated,jdbcType=TIMESTAMP}
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <!-- Manul -->
+  <select id="selectPageByExample" resultMap="BaseResultMap" parameterType="map" >
+  
+   select 
+    <include refid="Base_Column_List" />
+    from sys_task
+    <if test="example != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example != null and example.orderByClause != null" >
+      order by ${example.orderByClause}
+    </if>
+    limit #{offset,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

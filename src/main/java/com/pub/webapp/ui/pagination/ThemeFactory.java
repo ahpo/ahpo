@@ -1,7 +1,7 @@
 package com.pub.webapp.ui.pagination;
 
 /**
- * 主题静�?工厂�?
+ * 主题
  * @author bing.peng
  *
  */

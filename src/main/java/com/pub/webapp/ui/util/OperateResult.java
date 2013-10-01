@@ -12,10 +12,10 @@ import java.util.Map;
  */
 public class OperateResult {
 	private String operation;	//操作类型
-	private String result;		//操作结果（成功或失败�?
+	private String result;		//操作结果成功或失败
 	private String reason;		//失败原因
 	private String url;			//结果页返回的url
-	private Map<String,String> parms = new HashMap<String, String>();     //�?��保存的查询条件，用于结果页返�?
+	private Map<String,String> parms = new HashMap<String, String>();     //保存的查询条件，用于结果页返
 	private Map<String,String> deleteResult = new LinkedHashMap<String, String>();  //保存删除时外键关联的数据
 	
 	public String getOperation() {

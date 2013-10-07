@@ -3,7 +3,7 @@
 <generatorConfiguration>
 	<!-- 设置mysql驱动路径 -->
 	<classPathEntry
-		location="/home/yangxb/workspace/v-admin/WebRoot/WEB-INF/lib/mysql-connector-java-5.0.8.jar" />
+		location="F:/Workspace/git/ahpo/WebRoot/WEB-INF/lib/mysql-connector-java-5.0.8.jar" />
 	<!-- 此处指定生成针对MyBatis3的DAO -->
 	<context id="context1" targetRuntime="MyBatis3">
 		<!-- 去除自动生成的注释 -->
@@ -16,13 +16,13 @@
 			connectionURL="jdbc:mysql://localhost:3306/vdb" userId="root"
 			password="root" />
 		<!-- 生成vo对象 -->
-		<javaModelGenerator targetPackage="com.sys.vo"
+		<javaModelGenerator targetPackage="com.pub.vo"
 			targetProject="../java" />
 		<!-- 生成用于查询的Example对象 -->
-		<sqlMapGenerator targetPackage="com.sys.vo"
+		<sqlMapGenerator targetPackage="com.pub.vo"
 			targetProject="../java" />
 		<!-- 生成DAO的类文件以及配置文件 -->
-		<javaClientGenerator targetPackage="com.sys.dao"
+		<javaClientGenerator targetPackage="com.pub.dao"
 			targetProject="../java" type="XMLMAPPER" />
 		<!-- 想要生成的数据库表,自动化工具会根据该表的结构生成相应的vo对象 -->
 		<!-- <table catalog="" schema="" tableName="login" domainObjectName="Login"/> -->
@@ -58,7 +58,16 @@
 		<table catalog="" schema="" tableName="sys_dept"
 			domainObjectName="Department" />
 		 -->
-		 <table catalog="" schema="" tableName="sys_task"
-			domainObjectName="SysTask" />
+		 <table catalog="" schema="" tableName="pub_info"
+			domainObjectName="PubInfo" />
+			
+		<table catalog="" schema="" tableName="pub_info_attach"
+            domainObjectName="PubInfoAttach" />
+            
+		<table catalog="" schema="" tableName="pub_info_content"
+            domainObjectName="PubInfoContent" />
+            
+		<table catalog="" schema="" tableName="pub_info_remark"
+            domainObjectName="PubInfoRemark" />
 	</context>
 </generatorConfiguration>

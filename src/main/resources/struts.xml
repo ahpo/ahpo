@@ -57,6 +57,7 @@
 		</action>
 	</package>
 	<include file="struts/struts-identify.xml" />
-	<include file="struts/struts-system.xml" />
-	<include file="struts/struts-business.xml" />
+	<include file="struts/struts-sys.xml" />
+	<include file="struts/struts-pub.xml" />
+	<include file="struts/struts-biz.xml" />
 </struts>    

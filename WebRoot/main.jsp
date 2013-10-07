@@ -114,7 +114,6 @@ $(function(){
                     <li><a href="logout.action">退出</a></li>
                 </ul>
                 <ul class="themeList" id="themeList">
-                	<li><marquee>fsdfsdfffffffffffffffddffffffffffffffffffffffffffffffffffffffffffffff</marquee></li>
                 	<li></li>
                     <li theme="default"><div class="selected">蓝色</div></li>
                     <li theme="green"><div>绿色</div></li>

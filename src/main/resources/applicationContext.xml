@@ -57,7 +57,7 @@
 	<bean id="mapperScannerConfigurer_01" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
 		<property name="basePackage"
-			value="com.easygo.dao.ejdb,com.sys.dao" />
+			value="com.sys.dao,com.pub.dao,com.biz.dao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory_01" />
 	</bean>
 	<!-- 
